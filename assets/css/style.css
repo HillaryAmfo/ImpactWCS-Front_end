@@ -1,0 +1,116 @@
+ body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f8f8; /* A very light, clean background */
+            line-height: 1.6;
+        }
+        .navbar-transition {
+            transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, padding 0.3s ease-in-out;
+        }
+        .form-input {
+            transition: all 0.2s ease-in-out;
+            border: 1px solid #d1d5db; /* gray-300 */
+            background-color: #ffffff;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #059669; /* Emerald-600 */
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2); /* Emerald-600 with transparency */
+        }
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+
+        /* Animations for sections */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        .animate-delay-100 { animation-delay: 0.1s; }
+        .animate-delay-200 { animation-delay: 0.2s; }
+        .animate-delay-300 { animation-delay: 0.3s; }
+        .animate-delay-400 { animation-delay: 0.4s; }
+        .animate-delay-500 { animation-delay: 0.5s; }
+
+        /* Animal Walking Animation */
+        @keyframes walk-across {
+            0% { transform: translateX(-150%) scaleX(1); } /* Start far left, normal direction */
+            49% { transform: translateX(100vw) scaleX(1); } /* Walk across to far right */
+            50% { transform: translateX(100vw) scaleX(-1); } /* Flip horizontally at midpoint */
+            99% { transform: translateX(-150%) scaleX(-1); } /* Walk back to far left, flipped */
+            100% { transform: translateX(-150%) scaleX(1); } /* Reset for next loop, normal direction */
+        }
+        .animal-walk {
+            position: absolute; /* Allows movement across the container */
+            animation: walk-across 20s linear infinite; /* Adjusted duration for smoother, continuous loop */
+            height: 70px; /* Make them more visible */
+            width: 70px; /* Make them more visible */
+            object-fit: contain; /* Ensure images fit without stretching */
+            z-index: 20; /* Ensure they are above other content */
+        }
+        .animal-container {
+            position: relative;
+            height: 100px; /* Sufficient height for animals to "walk" */
+            overflow: hidden; /* Hide animals when off-screen */
+        }
+
+        /* Hero Image Specific Styles for better replication of reference */
+        .hero-background-image {
+            background-image: url('https://placehold.co/1920x600/10B981/FFFFFF?text=Aquatic+Wildlife+Banner'); /* Placeholder for aquatic wildlife */
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0; /* Ensure it's behind the overlay and text */
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.55); /* Slightly darker overlay for strong contrast */
+            z-index: 1;
+        }
+        
+        .section-heading {
+            position: relative;
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: 800; /* font-extrabold */
+            color: #1a202c; /* gray-900 */
+            margin-bottom: 2.5rem; /* mb-10 */
+            padding-bottom: 0.5rem; /* pb-2 */
+            display: inline-block; /* allows margin-bottom on this element */
+        }
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px; /* Line width */
+            height: 4px; /* Line thickness */
+            background-color: #059669; /* Emerald-600 */
+            border-radius: 2px;
+        }

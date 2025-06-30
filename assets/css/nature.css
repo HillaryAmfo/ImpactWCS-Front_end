@@ -1,0 +1,125 @@
+body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f8f8;
+            line-height: 1.6;
+            color: #333;
+        }
+        .navbar-transition {
+            transition: transform 0.3s ease-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .navbar-hidden {
+            transform: translateY(-100%);
+        }
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+
+        /* Animations for sections */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        .animate-delay-100 { animation-delay: 0.1s; }
+        .animate-delay-200 { animation-delay: 0.2s; }
+        .animate-delay-300 { animation-delay: 0.3s; }
+        .animate-delay-400 { animation-delay: 0.4s; }
+        .animate-delay-500 { animation-delay: 0.5s; }
+
+        /* Hero Section Background */
+        .hero-bg-natures-stronghold {
+            background-image: url('../img/Eli_Miller_Belize__1_\ \(1\).jpg'); /* Placeholder for a lush forest/wildlife banner */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-overlay {
+            background-color: rgba(0, 0, 0, 0.4); /* Slightly lighter overlay for this page */
+        }
+        
+        .section-heading {
+            position: relative;
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: 800; /* font-extrabold */
+            color: #1a202c; /* gray-900 */
+            margin-bottom: 2.5rem; /* mb-10 */
+            padding-bottom: 0.5rem; /* pb-2 */
+            display: inline-block; /* allows margin-bottom on this element */
+        }
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            left: 0; /* Align left */
+            bottom: 0;
+            width: 80px; /* Line width */
+            height: 4px; /* Line thickness */
+            background-color: #059669; /* Emerald-600 */
+            border-radius: 2px;
+        }
+
+        .quote-block {
+            border-left: 5px solid #059669; /* Green accent */
+        }
+        .card-hover-effect {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* lg shadow */
+        }
+
+        /* Floating Animal Animation (New) */
+        @keyframes bob {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); } /* Moves up 10px */
+            100% { transform: translateY(0); }
+        }
+
+        .floating-animal-container {
+            position: fixed;
+            top: 50%; /* Center vertically */
+            transform: translateY(-50%); /* Adjust for height centering */
+            width: 80px; /* Container width */
+            height: 80px; /* Container height */
+            z-index: 100; /* High z-index to be above everything */
+            pointer-events: none; /* Allows clicks to pass through */
+        }
+
+        .floating-animal-left {
+            left: 20px; /* Position from left edge */
+        }
+
+        .floating-animal-right {
+            right: 20px; /* Position from right edge */
+        }
+
+        .floating-animal-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            animation: bob 3s ease-in-out infinite; /* Apply bobbing animation */
+        }
+        .floating-animal-container.animate-delay-1 {
+            animation-delay: 0.5s; /* Stagger animation for second animal */
+        }

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Wildlife Haven</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font - Weight 300 to 800 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons (instead of Font Awesome for general icons, keep FA for brands) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Font Awesome for social media brand icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../ImpactWCS-Front_end/assets/css/style.css">
+</head>
+<body class="text-gray-800">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 py-4 navbar-transition bg-transparent text-white">
+        <div class="container mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8">
+            <!-- Logo -->
+            <a href="../ImpactWCS-Front_end/index.html" class="flex items-center space-x-2">
+                <img src="https://placehold.co/40x40/047857/FFFFFF?text=WL" alt="Wildlife Logo" class="rounded-full">
+                <span class="text-2xl font-bold">Wildlife Haven</span>
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="lg:hidden focus:outline-none p-2 rounded-md hover:bg-gray-700/30 transition-colors duration-200">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+
+            <!-- Navigation Links (Hidden on small screens) -->
+            <div id="navbar-links" class="hidden lg:flex flex-col lg:flex-row lg:space-x-8 mt-4 lg:mt-0 items-center">
+                <a href="#" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Home</a>
+                <div class="relative group">
+      <button class="px-4 py-2 border border-white rounded-full text-white group-hover:bg-white group-hover:text-blue-800 transition">About</button>
+      <div class="absolute hidden group-hover:block bg-white text-left mt-2 py-2 rounded shadow-md min-w-[200px] z-10">
+        <a href="#" class="block px-4 py-2 text-blue-800 hover:text-green-600 transition">WCS</a>
+        <a href="../ImpactWCS-Front_end/nature's.html" class="block px-4 py-2 text-blue-800 hover:text-green-600 transition">Nature's Stronghold</a>
+        <a href="#" class="block px-4 py-2 text-blue-800 hover:text-green-600 transition">Partners</a>
+      </div>
+    </div>
+               
+                <a href="#" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Our Work</a>
+                <a href="#" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Projects</a>
+                <a href="#" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Support Us</a>
+                <a href="#contact-section" class="block lg:inline-block text-lg font-bold py-2 lg:py-0 transition-colors duration-200 border-b-2 border-green-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-70 z-40 hidden"></div>
+
+    <!-- Mobile Menu Sidebar -->
+    <div id="mobile-menu-sidebar" class="fixed top-0 right-0 w-64 h-full bg-white z-50 transform translate-x-full transition-transform duration-300 ease-in-out p-6 shadow-xl">
+        <div class="flex justify-end mb-8">
+            <button id="close-mobile-menu" class="text-gray-700 focus:outline-none p-2 rounded-md hover:bg-gray-100">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex flex-col space-y-4">
+            <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">Home</a>
+            <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">About Us</a>
+            <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">Our Work</a>
+            <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">Projects</a>
+            <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">Support Us</a>
+            <a href="#contact-section" class="block text-xl font-bold text-green-600 hover:text-green-700 transition-colors duration-200 py-2">Contact</a>
+        </nav>
+    </div>
+
+    <!-- Hero Section with Background Image -->
+    <header class="relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden min-h-[450px] flex items-center justify-center text-center">
+        <!-- Background Image -->
+        <div class="hero-background-image animate-fadeIn">
+            <img src="../ImpactWCS-Front_end/assets/img/pexels-pixabay-73759.jpg" alt="">
+        </div>
+        
+        <!-- Image Overlay for Text Readability -->
+        <div class="hero-overlay"></div>
+
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 text-white">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight animate-fadeInUp animate-delay-200">
+                Connect with WCS Impact
+            </h1>
+            <p class="text-lg sm:text-xl lg:text-2xl opacity-90 max-w-3xl mx-auto animate-fadeInUp animate-delay-300">
+                We're passionate about protecting our planet's incredible wildlife.
+                Reach out for inquiries, collaborations, or to lend your support.
+            </p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+        <!-- Animated Animals Section -->
+        <section class="animal-container mb-12 relative overflow-hidden">
+            <!-- Animal 1: Horse Fish (PNG) -->
+            <img class="animal-walk" src="../ImpactWCS-Front_end/assets/img/animal_13704682.png" alt="Horse Fish" style="left: 0; top: 10px; animation-duration: 20s; animation-delay: 0s; width: 70px; height: 70px;" onerror="this.onerror=null;this.src='https://placehold.co/70x70/E2E8F0/1A202C?text=Image+Error';">
+
+            <!-- Animal 2: Dolphin (PNG) -->
+            <img class="animal-walk" src="../ImpactWCS-Front_end/assets/img/animal_13704713.png" alt="Dolphin" style="left: 0; top: 0px; animation-duration: 15s; animation-delay: -5s; width: 70px; height: 70px;" onerror="this.onerror=null;this.src='https://placehold.co/70x70/E2E8F0/1A202C?text=Image+Error';">
+
+            <!-- Animal 3: Lion (PNG) -->
+            <img class="animal-walk" src="../ImpactWCS-Front_end/assets/img/zoo_13704581.png" alt="Lion" style="left: 0; top: 15px; animation-duration: 25s; animation-delay: -8s; width: 70px; height: 70px;" onerror="this.onerror=null;this.src='https://placehold.co/70x70/E2E8F0/1A202C?text=Image+Error';">
+
+            <!-- Animal 3: Lion (PNG) -->
+            <img class="animal-walk" src="../ImpactWCS-Front_end/assets/img/animal_13704723.png" alt="octopus" style="left: 0; top: 15px; animation-duration: 25s; animation-delay: -12s; width: 70px; height: 70px;" onerror="this.onerror=null;this.src='https://placehold.co/70x70/E2E8F0/1A202C?text=Image+Error';">
+
+            <!-- Animal 3: Lion (PNG) -->
+            <img class="animal-walk" src="../ImpactWCS-Front_end/assets/img/animal_13704718.png" alt="Eagle" style="left: 0; top: 0px; animation-duration: 25s; animation-delay: -15s; width: 70px; height: 70px;" onerror="this.onerror=null;this.src='https://placehold.co/70x70/E2E8F0/1A202C?text=Image+Error';">
+
+            <!-- Animal 3: Lion (PNG) -->
+            <img class="animal-walk" src="../ImpactWCS-Front_end/assets/img/animal_13704728.png" alt="zebra" style="left: 0; top: 15px; animation-duration: 25s; animation-delay: -20s; width: 70px; height: 70px;" onerror="this.onerror=null;this.src='https://placehold.co/70x70/E2E8F0/1A202C?text=Image+Error';">
+
+
+            
+            </div>
+        </section>
+
+
+        <!-- Main Content Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Contact Form Section -->
+            <section id="contact-form-section" class="bg-white p-8 md:p-10 rounded-lg shadow-lg border border-gray-100 animate-fadeInUp animate-delay-400">
+                <h2 class="section-heading mx-auto mb-10 text-center">Send Us a Message</h2>
+                <form id="contact-form" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-semibold text-gray-700 mb-1">Full Name <span class="text-red-500">*</span></label>
+                        <input type="text" id="name" name="name" required
+                               class="w-full px-4 py-2 border rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 form-input"
+                               placeholder="Your Name">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-semibold text-gray-700 mb-1">Email Address <span class="text-red-500">*</span></label>
+                        <input type="email" id="email" name="email" required
+                               class="w-full px-4 py-2 border rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 form-input"
+                               placeholder="you@example.com">
+                    </div>
+                    <div>
+                        <label for="organization" class="block text-sm font-semibold text-gray-700 mb-1">Organization (Optional)</label>
+                        <input type="text" id="organization" name="organization"
+                               class="w-full px-4 py-2 border rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 form-input"
+                               placeholder="Your organization's name">
+                    </div>
+                    <div>
+                        <label for="subject" class="block text-sm font-semibold text-gray-700 mb-1">Subject <span class="text-red-500">*</span></label>
+                        <input type="text" id="subject" name="subject" required
+                               class="w-full px-4 py-2 border rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 form-input"
+                               placeholder="Briefly describe your inquiry">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-semibold text-gray-700 mb-1">Your Message <span class="text-red-500">*</span></label>
+                        <textarea id="message" name="message" rows="5" required
+                                  class="w-full px-4 py-2 border rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 form-input resize-y"
+                                  placeholder="Type your message here..."></textarea>
+                    </div>
+                    <div class="flex justify-center pt-4">
+                        <button type="submit"
+                                class="inline-flex items-center px-8 py-3 border border-transparent text-base font-semibold rounded-full shadow-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all duration-200 ease-in-out transform hover:scale-105">
+                            <i data-lucide="send" class="mr-2 w-5 h-5"></i> Send Message
+                        </button>
+                    </div>
+                </form>
+                <!-- Success message container (initially hidden) -->
+                <div id="success-message" class="mt-8 p-4 bg-green-50 border border-green-200 text-green-700 rounded-md hidden animate-fadeIn">
+                    <div class="flex items-center">
+                        <i data-lucide="check-circle" class="text-green-500 mr-3 w-6 h-6"></i>
+                        <p class="text-lg font-medium">Thank you for your message! We will get back to you shortly.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Other Ways to Connect - Separated Cards -->
+            <section class="animate-fadeInUp animate-delay-500">
+                <h2 class="section-heading mx-auto mb-10 text-center">Other Ways to Connect</h2>
+                <div class="space-y-6">
+                    <!-- Address Card -->
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 flex items-start space-x-4 contact-card-item">
+                        <div class="flex-shrink-0 w-12 h-12 bg-green-50 rounded-full flex items-center justify-center text-green-600">
+                           <i data-lucide="map-pin" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Our Main Office</h3>
+                            <address class="not-italic text-gray-600">
+                                123 Conservation Drive,<br>
+                                Nature's Sanctuary, XY 12345<br>
+                                United States
+                            </address>
+                        </div>
+                    </div>
+
+                    <!-- Phone Card -->
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 flex items-start space-x-4 contact-card-item">
+                        <div class="flex-shrink-0 w-12 h-12 bg-green-50 rounded-full flex items-center justify-center text-green-600">
+                           <i data-lucide="phone" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Call Us</h3>
+                            <p class="text-gray-600 mb-1">General Inquiries: <a href="tel:+15551234567" class="text-green-600 hover:underline">+1 (555) 123-4567</a></p>
+                            <p class="text-gray-600">Office Hours: Mon - Fri, 9 AM - 5 PM (EST)</p>
+                        </div>
+                    </div>
+
+                    <!-- Email Card -->
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 flex items-start space-x-4 contact-card-item">
+                        <div class="flex-shrink-0 w-12 h-12 bg-green-50 rounded-full flex items-center justify-center text-green-600">
+                           <i data-lucide="mail" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Email Us</h3>
+                            <p class="text-gray-600 mb-1">General: <a href="mailto:info@wildlifehaven.org" class="text-green-600 hover:underline">info@wildlifehaven.org</a></p>
+                            <p class="text-600">Support: <a href="mailto:support@wildlifehaven.org" class="text-green-600 hover:underline">support@wildlifehaven.org</a></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Volunteer Section (New) -->
+        <section class="text-center bg-green-100 p-10 rounded-lg shadow-md border border-green-200 mt-16 animate-fadeInUp animate-delay-300">
+            <h2 class="text-3xl font-extrabold text-green-800 mb-6">Be an Agent for Change!</h2>
+            <p class="text-green-700 text-xl max-w-2xl mx-auto mb-8">
+                Save your life and save the planet. Be a volunteer with Wildlife Haven and contribute directly to conservation efforts.
+            </p>
+            <a href="#" class="inline-flex items-center px-10 py-4 border border-transparent text-lg font-semibold rounded-full shadow-lg text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all duration-300 ease-in-out transform hover:scale-105">
+                <i data-lucide="heart" class="mr-3 w-6 h-6"></i> Volunteer Now
+            </a>
+        </section>
+
+        <!-- Map Section -->
+        <section class="mt-16 mb-16 animate-fadeInUp animate-delay-400">
+            <h2 class="section-heading mx-auto mb-10 text-center">Where to Find Us</h2>
+            <div class="relative overflow-hidden rounded-lg shadow-xl border border-gray-200" style="padding-top: 56.25%;">
+                <!-- 16:9 Aspect Ratio -->
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.2847116744383!2d-122.41941608468205!3d37.77492987975932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808580879f9b5a03%3A0x4a7e9e6e8e8e8e8e!2sGolden%20Gate%20Park!5e0!3m2!1sen!2sus!4v1678901234567!5m2!1sen!2sus"
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                    class="absolute top-0 left-0 w-full h-full rounded-lg"
+                    title="Google Map of Golden Gate Park">
+                </iframe>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <!-- Social Media Links (Moved from previous section) -->
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold text-gray-200 mb-4">Stay Connected</h3>
+                <div class="flex justify-center space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 transform hover:scale-110" aria-label="Facebook">
+                        <i class="fab fa-facebook-f text-3xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 transform hover:scale-110" aria-label="Twitter">
+                        <i class="fab fa-twitter text-3xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 transform hover:scale-110" aria-label="Instagram">
+                        <i class="fab fa-instagram text-3xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 transform hover:scale-110" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in text-3xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 transform hover:scale-110" aria-label="YouTube">
+                        <i class="fab fa-youtube text-3xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <p class="text-gray-400 text-sm">&copy; 2024 WCS Impact. All rights reserved.</p>
+            <div class="flex justify-center space-x-4 mt-4 text-sm">
+                <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Privacy Policy</a>
+                <span class="text-gray-600">|</span>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+<script src="../ImpactWCS-Front_end/assets/js/contact.js"></script>  
+</body>
+</html>
