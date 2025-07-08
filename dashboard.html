@@ -134,6 +134,130 @@
         </div>
       </div>
     </section>
+
+    <section id="global-biodiversity-dashboard" class="bg-gray-100 flex items-center justify-center p-4 sm:p-6 lg:p-8">
+  <div class="container mx-auto bg-white rounded-xl shadow-lg overflow-hidden md:flex md:max-w-6xl">
+    <!-- Content -->
+    <div class="md:flex-shrink-0 w-full md:w-1/2 p-6 md:p-8 flex flex-col justify-between">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-6 text-center md:text-left">Global Biodiversity Dashboard</h1>
+      <p class="text-gray-600 mb-8 leading-relaxed text-center md:text-left">Explore the world's biodiversity! Hover over the continents on the map to discover fascinating flora and fauna unique to those areas.</p>
+      <div id="biodiversity-info" class="info-card p-6 rounded-lg transition-all duration-300">
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">Region Information</h2>
+        <div id="info-content" class="text-gray-700 transition-opacity duration-300">
+          <p>Hover over a continent on the map to see its biodiversity details.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Map -->
+    <div class="w-full md:w-1/2 bg-gradient-to-br from-green-300 to-green-500 flex items-center justify-center p-4 sm:p-6 md:p-8 rounded-b-xl md:rounded-r-xl md:rounded-bl-none">
+      <div class="map-container max-w-full h-auto">
+        <svg viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
+          <path id="region-na" class="map-region" d="M170 200 L200 150 L250 160 L280 180 L290 220 L270 250 L200 280 L180 250 Z M190 220 L220 200 L240 210 L230 230 Z"></path>
+          <path id="region-sa" class="map-region" d="M250 350 L280 320 L300 350 L310 380 L300 420 L280 450 L240 460 L220 420 Z"></path>
+          <path id="region-eu" class="map-region" d="M480 150 L520 130 L550 150 L570 180 L560 210 L520 220 L490 200 Z"></path>
+          <path id="region-af" class="map-region" d="M490 280 L530 260 L570 280 L590 320 L580 360 L540 380 L500 360 L480 320 Z"></path>
+          <path id="region-as" class="map-region" d="M600 150 L650 120 L750 130 L800 160 L820 200 L800 250 L750 280 L680 270 L620 220 Z"></path>
+          <path id="region-au" class="map-region" d="M780 400 L820 380 L850 400 L860 430 L840 460 L800 470 L770 440 Z"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .map-container svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .map-region {
+      fill: #a7f3d0;
+      stroke: #34d399;
+      stroke-width: 0.5;
+      transition: fill 0.3s ease-in-out, transform 0.1s ease-in-out;
+      cursor: pointer;
+      transform-origin: center center;
+    }
+    .map-region:hover {
+      fill: #10b981;
+      transform: scale(1.01);
+    }
+    .info-card {
+      background-color: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+
+  <script>
+    const biodiversityData = {
+      'region-na': {
+        name: 'North America',
+        flora: ['Redwood Trees', 'Giant Sequoias', 'Cactus', 'Maple Trees'],
+        fauna: ['Grizzly Bear', 'Bald Eagle', 'Bison', 'Moose', 'Coyote']
+      },
+      'region-sa': {
+        name: 'South America',
+        flora: ['Amazon Water Lily', 'Orchids', 'Bromeliads', 'Rubber Tree'],
+        fauna: ['Jaguar', 'Capybara', 'Anaconda', 'Toucan', 'Sloth']
+      },
+      'region-eu': {
+        name: 'Europe',
+        flora: ['Oak Trees', 'Beech Trees', 'Heather', 'Olive Trees'],
+        fauna: ['Red Deer', 'Wild Boar', 'Brown Bear', 'European Robin', 'Wolf']
+      },
+      'region-af': {
+        name: 'Africa',
+        flora: ['Baobab Trees', 'Acacia Trees', 'Protea', 'Aloe Vera'],
+        fauna: ['Lion', 'Elephant', 'Giraffe', 'Zebra', 'Rhinoceros']
+      },
+      'region-as': {
+        name: 'Asia',
+        flora: ['Bamboo', 'Cherry Blossom', 'Lotus Flower', 'Rhododendron'],
+        fauna: ['Tiger', 'Panda', 'Orangutan', 'Snow Leopard', 'Komodo Dragon']
+      },
+      'region-au': {
+        name: 'Australia',
+        flora: ['Eucalyptus Trees', 'Kangaroo Paw', 'Wattle', 'Banksia'],
+        fauna: ['Kangaroo', 'Koala', 'Platypus', 'Emu', 'Tasmanian Devil']
+      }
+    };
+
+    const infoContent = document.getElementById('info-content');
+    const mapRegions = document.querySelectorAll('.map-region');
+
+    function displayBiodiversityInfo(regionId) {
+      const data = biodiversityData[regionId];
+      if (data) {
+        infoContent.innerHTML = `
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">${data.name}</h3>
+          <div class="mb-3">
+            <p class="font-medium text-gray-700">Flora:</p>
+            <ul class="list-disc list-inside text-gray-600 ml-4">
+              ${data.flora.map(item => `<li>${item}</li>`).join('')}
+            </ul>
+          </div>
+          <div>
+            <p class="font-medium text-gray-700">Fauna:</p>
+            <ul class="list-disc list-inside text-gray-600 ml-4">
+              ${data.fauna.map(item => `<li>${item}</li>`).join('')}
+            </ul>
+          </div>
+        `;
+      }
+    }
+
+    mapRegions.forEach(region => {
+      region.addEventListener('mouseenter', (e) => {
+        const regionId = e.target.id;
+        displayBiodiversityInfo(regionId);
+      });
+
+      // Instead of clearing, keep showing the last hovered info
+    });
+  </script>
+</section>
+
     
     <!-- Stats Section -->
     <section class="mb-12">
