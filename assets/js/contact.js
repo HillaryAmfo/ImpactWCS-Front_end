@@ -1,100 +1,138 @@
-// Get references to DOM elements
-        const navbar = document.getElementById('navbar');
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-        const mobileMenuSidebar = document.getElementById('mobile-menu-sidebar');
-        const closeMobileMenuButton = document.getElementById('close-mobile-menu');
-        const contactForm = document.getElementById('contact-form');
-        const successMessage = document.getElementById('success-message');
+// ===== Navbar, Mobile Menu, Smooth Scroll, Contact Form, Lucide, and About button color sync =====
+document.addEventListener('DOMContentLoaded', () => {
+  // --- Element refs ---
+  const navbar = document.getElementById('navbar');
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+  const mobileMenuSidebar = document.getElementById('mobile-menu-sidebar');
+  const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+  const contactForm = document.getElementById('contact-form');
+  const successMessage = document.getElementById('success-message');
+  const aboutToggle = document.getElementById('about-toggle'); // <-- important for scroll color fix
 
-        // Function to handle navbar scroll behavior
-        function handleNavbarScroll() {
-            // Check if the scroll position is greater than 50 pixels from the top
-            if (window.scrollY > 50) {
-                // Add Tailwind classes to make the navbar sticky, give it a background, and shadow
-                navbar.classList.add('bg-white', 'shadow-lg', 'py-3', 'text-gray-800');
-                navbar.classList.remove('py-4', 'bg-transparent', 'text-white');
-            } else {
-                // Remove Tailwind classes when scrolled back to the top
-                navbar.classList.remove('bg-white', 'shadow-lg', 'py-3', 'text-gray-800');
-                navbar.classList.add('py-4', 'bg-transparent', 'text-white');
-            }
-        }
+  // --- Helpers ---
+  const isScrolled = () => window.scrollY > 50;
 
-        // Add scroll event listener to the window to trigger navbar changes
-        window.addEventListener('scroll', handleNavbarScroll);
+  // Keep the About button legible against transparent (dark) vs white (light) navbar
+  function updateAboutStyles(scrolled) {
+    if (!aboutToggle) return;
+    if (scrolled) {
+      // On white nav, use dark text/border
+      aboutToggle.classList.add('text-gray-800', 'border-gray-800');
+      aboutToggle.classList.remove('text-white', 'border-white');
+    } else {
+      // On transparent nav, use white text/border
+      aboutToggle.classList.add('text-white', 'border-white');
+      aboutToggle.classList.remove('text-gray-800', 'border-gray-800');
+    }
+  }
 
-        // Mobile menu toggle functionality
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenuSidebar.classList.remove('translate-x-full');
-            mobileMenuOverlay.classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling when sidebar is open
-        });
+  // Navbar scroll behavior (transparent -> white)
+  function handleNavbarScroll() {
+    if (!navbar) return;
+    const scrolled = isScrolled();
 
-        closeMobileMenuButton.addEventListener('click', () => {
-            mobileMenuSidebar.classList.add('translate-x-full');
-            mobileMenuOverlay.classList.add('hidden');
-            document.body.style.overflow = ''; // Restore scrolling
-        });
+    if (scrolled) {
+      navbar.classList.add('bg-white', 'shadow-lg', 'py-3', 'text-gray-800');
+      navbar.classList.remove('py-4', 'bg-transparent', 'text-white');
+    } else {
+      navbar.classList.remove('bg-white', 'shadow-lg', 'py-3', 'text-gray-800');
+      navbar.classList.add('py-4', 'bg-transparent', 'text-white');
+    }
 
-        mobileMenuOverlay.addEventListener('click', () => {
-            mobileMenuSidebar.classList.add('translate-x-full');
-            mobileMenuOverlay.classList.add('hidden');
-            document.body.style.overflow = ''; // Restore scrolling
-        });
+    updateAboutStyles(scrolled);
+  }
 
-        // Smooth scroll for internal links (e.g., "Contact" in navbar)
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault(); // Prevent default jump behavior
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
+  // Init navbar state on load
+  handleNavbarScroll();
+  window.addEventListener('scroll', handleNavbarScroll, { passive: true });
 
-                if (targetElement) {
-                    // Close mobile menu if open before scrolling
-                    mobileMenuSidebar.classList.add('translate-x-full');
-                    mobileMenuOverlay.classList.add('hidden');
-                    document.body.style.overflow = '';
+  // --- Mobile menu open/close ---
+  function openMobileMenu() {
+    if (!mobileMenuSidebar || !mobileMenuOverlay) return;
+    mobileMenuSidebar.classList.remove('translate-x-full');
+    mobileMenuOverlay.classList.remove('hidden');
+    document.body.style.overflow = 'hidden'; // lock scroll
+    // focus first focusable element for a11y
+    const firstFocusable = mobileMenuSidebar.querySelector('a,button,summary,[tabindex]:not([tabindex="-1"])');
+    if (firstFocusable) firstFocusable.focus();
+  }
 
-                    // Scroll to the target element smoothly, offsetting for the fixed navbar
-                    const navbarHeight = navbar.offsetHeight;
-                    const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - navbarHeight;
+  function closeMobileMenu() {
+    if (!mobileMenuSidebar || !mobileMenuOverlay) return;
+    mobileMenuSidebar.classList.add('translate-x-full');
+    mobileMenuOverlay.classList.add('hidden');
+    document.body.style.overflow = ''; // restore scroll
+    if (mobileMenuButton) mobileMenuButton.focus();
+  }
 
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
+  if (mobileMenuButton) {
+    mobileMenuButton.addEventListener('click', openMobileMenu);
+  }
+  if (closeMobileMenuButton) {
+    closeMobileMenuButton.addEventListener('click', closeMobileMenu);
+  }
+  if (mobileMenuOverlay) {
+    mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+  }
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenuSidebar && !mobileMenuSidebar.classList.contains('translate-x-full')) {
+      closeMobileMenu();
+    }
+  });
 
-        // Handle form submission
-        contactForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent default form submission
+  // --- Smooth scroll for internal links ---
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', (e) => {
+      const targetId = anchor.getAttribute('href');
+      // Ignore bare "#" links
+      if (!targetId || targetId === '#') return;
 
-            console.log('Form submitted!');
-            const formData = new FormData(contactForm);
-            const data = {};
-            for (let [key, value] of formData.entries()) {
-                data[key] = value;
-            }
-            console.log('Form Data:', data);
+      const targetEl = document.querySelector(targetId);
+      if (!targetEl) return;
 
-            // Simulate API call delay
-            setTimeout(() => {
-                // Display success message
-                successMessage.classList.remove('hidden');
+      e.preventDefault();
 
-                // Optionally, hide the success message and clear form after a few seconds
-                setTimeout(() => {
-                    successMessage.classList.add('hidden');
-                    contactForm.reset();
-                }, 5000); // Hide after 5 seconds
-            }, 500); // Simulate network delay
+      // If mobile menu is open, close it before scrolling
+      if (mobileMenuSidebar && !mobileMenuSidebar.classList.contains('translate-x-full')) {
+        closeMobileMenu();
+      }
 
-        });
+      const navbarHeight = navbar ? navbar.offsetHeight : 0;
+      const targetPos = targetEl.getBoundingClientRect().top + window.scrollY - navbarHeight;
 
-        // Initialize Lucide icons after the DOM is loaded
-        document.addEventListener('DOMContentLoaded', (event) => {
-            lucide.createIcons();
-        });
+      window.scrollTo({
+        top: targetPos,
+        behavior: 'smooth',
+      });
+    });
+  });
+
+  // --- Contact form submit (simulated) ---
+  if (contactForm && successMessage) {
+    contactForm.addEventListener('submit', (event) => {
+      event.preventDefault(); // stay on page
+
+      // Collect form data (optional debug)
+      const formData = new FormData(contactForm);
+      const data = {};
+      for (const [key, value] of formData.entries()) data[key] = value;
+      console.log('Form submitted!', data);
+
+      // Simulate API delay
+      setTimeout(() => {
+        successMessage.classList.remove('hidden');
+        setTimeout(() => {
+          successMessage.classList.add('hidden');
+          contactForm.reset();
+        }, 5000);
+      }, 500);
+    });
+  }
+
+  // --- Lucide icons ---
+  if (window.lucide && typeof window.lucide.createIcons === 'function') {
+    window.lucide.createIcons();
+  }
+});

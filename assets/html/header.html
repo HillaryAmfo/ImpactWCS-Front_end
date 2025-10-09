@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font - Weight 300 to 800 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons (instead of Font Awesome for general icons, keep FA for brands) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Font Awesome for social media brand icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .navbar-transition {
+            transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, padding 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+ <!-- header.html -->
+<header>
+  <!-- Navbar -->
+  <nav id="navbar" class="fixed top-0 left-0 w-full z-50 py-4 navbar-transition bg-transparent text-white">
+    <div class="container mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8">
+      <!-- Logo -->
+      <a href="/index.html" class="flex items-center space-x-2">
+        <img src="https://placehold.co/40x40/047857/FFFFFF?text=WL" alt="Wildlife Logo" class="rounded-full">
+        <span class="text-2xl font-bold">WCS Impact</span>
+      </a>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-button" class="lg:hidden focus:outline-none p-2 rounded-md hover:bg-gray-700/30 transition-colors duration-200">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+
+      <!-- Navigation Links -->
+      <div id="navbar-links" class="hidden lg:flex flex-col lg:flex-row lg:space-x-8 mt-4 lg:mt-0 items-center">
+        <a href="#" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2">Home</a>
+
+        <!-- Dropdown -->
+        <div class="relative group">
+          <button class="px-4 py-2 border border-white rounded-full text-white group-hover:bg-white group-hover:text-blue-800 transition">
+            About
+          </button>
+          <div class="absolute hidden group-hover:block bg-white mt-2 py-2 rounded shadow-md min-w-[200px] z-10">
+            <a href="/about.html" class="block px-4 py-2 text-blue-800 hover:text-green-600">WCS</a>
+            <a href="/nature's.html" class="block px-4 py-2 text-blue-800 hover:text-green-600">Nature's Stronghold</a>
+            <a href="#" class="block px-4 py-2 text-blue-800 hover:text-green-600">Partners</a>
+          </div>
+        </div>
+
+        <a href="#" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2">Our Work</a>
+        <a href="#" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2">Projects</a>
+        <a href="#" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2">Support Us</a>
+        <a href="#contact-section" class="block lg:inline-block text-lg font-bold py-2 border-b-2 border-green-300">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-70 z-40 hidden"></div>
+
+  <!-- Mobile Menu Sidebar -->
+  <div id="mobile-menu-sidebar"
+    class="fixed top-0 right-0 w-64 h-full bg-white z-50 transform translate-x-full transition-transform duration-300 ease-in-out p-6 shadow-xl">
+    <div class="flex justify-end mb-8">
+      <button id="close-mobile-menu" class="text-gray-700 p-2 rounded-md hover:bg-gray-100">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <nav class="flex flex-col space-y-4">
+      <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600">Home</a>
+      <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600">About Us</a>
+      <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600">Our Work</a>
+      <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600">Projects</a>
+      <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600">Support Us</a>
+      <a href="#contact-section" class="block text-xl font-bold text-green-600 hover:text-green-700">Contact</a>
+    </nav>
+  </div>
+</header>
+<script>
+    // Mobile Menu Toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+    const mobileMenuSidebar = document.getElementById('mobile-menu-sidebar');
+    const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenuOverlay.classList.remove('hidden');
+        mobileMenuSidebar.classList.remove('translate-x-full');
+    });
+
+    closeMobileMenuButton.addEventListener('click', () => {
+        mobileMenuOverlay.classList.add('hidden');
+        mobileMenuSidebar.classList.add('translate-x-full');
+    });
+
+    mobileMenuOverlay.addEventListener('click', () => {
+        mobileMenuOverlay.classList.add('hidden');
+        mobileMenuSidebar.classList.add('translate-x-full');
+    });
+
+    // Navbar Scroll Effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.remove('bg-transparent', 'text-white', 'py-4');
+            navbar.classList.add('bg-white', 'text-gray-800', 'shadow-md', 'py-2');
+        } else {
+            navbar.classList.remove('bg-white', 'text-gray-800', 'shadow-md', 'py-2');
+            navbar.classList.add('bg-transparent', 'text-white', 'py-4');
+        }
+    });
+</script>
+
+</body>
+</html>

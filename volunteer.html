@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font - Weight 300 to 800 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons (instead of Font Awesome for general icons, keep FA for brands) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Font Awesome for social media brand icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    
+
+    <style>
+      .carousel-slide {
+        transition: opacity 500ms ease;
+      }
+      .volunteer-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .volunteer-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+      .impact-stats {
+        background: linear-gradient(rgba(4, 120, 87, 0.9), rgba(4, 120, 87, 0.8)), url('/assets/img/pexels-timmossholder-1618424.jpg');
+        background-size: cover;
+        background-position: center;
+      }
+    </style>
+
+
+   <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 py-4 navbar-transition bg-transparent text-white">
+        <div class="container mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8">
+            <!-- Logo -->
+            <a href="/index.html" class="flex items-center space-x-2">
+                <img src="https://placehold.co/40x40/047857/FFFFFF?text=WL" alt="Wildlife Logo" class="rounded-full">
+                <span class="text-2xl font-bold">WCS Impact</span>
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="lg:hidden focus:outline-none p-2 rounded-md hover:bg-gray-700/30 transition-colors duration-200">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+
+            <!-- Navigation Links (Hidden on small screens) -->
+            <div id="navbar-links" class="hidden lg:flex flex-col lg:flex-row lg:space-x-8 mt-4 lg:mt-0 items-center">
+                <a href="#" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Home</a>
+                <div class="relative group">
+      <button  id="about-toggle" class="px-4 py-2  text-white group-hover:bg-white group-hover:text-blue-800 transition">About</button>
+      <div class="absolute hidden group-hover:block bg-white text-left mt-2 py-2 rounded shadow-md min-w-[200px] z-10">
+        <a href="/about.html" class="block px-4 py-2 text-blue-800 hover:text-green-600 transition">WCS</a>
+        <a href="/nature's.html" class="block px-4 py-2 text-blue-800 hover:text-green-600 transition">Nature's Stronghold</a>
+        <a href="#" class="block px-4 py-2 text-blue-800 hover:text-green-600 transition">Partners</a>
+      </div>
+    </div>
+               
+                <a href="#" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Our Work</a>
+                <a href="#" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Projects</a>
+                <a href="#" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Support Us</a>
+                <a href="#contact-section" class="block lg:inline-block text-lg font-bold py-2 lg:py-0 transition-colors duration-200 border-b-2 border-green-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-70 z-40 hidden"></div>
+
+    <!-- Mobile Menu Sidebar -->
+    <div id="mobile-menu-sidebar" class="fixed top-0 right-0 w-64 h-full bg-white z-50 transform translate-x-full transition-transform duration-300 ease-in-out p-6 shadow-xl">
+        <div class="flex justify-end mb-8">
+            <button id="close-mobile-menu" class="text-gray-700 focus:outline-none p-2 rounded-md hover:bg-gray-100">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex flex-col space-y-4">
+            <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">Home</a>
+            <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">About Us</a>
+            <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">Our Work</a>
+            <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">Projects</a>
+            <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">Support Us</a>
+            <a href="#contact-section" class="block text-xl font-bold text-green-600 hover:text-green-700 transition-colors duration-200 py-2">Contact</a>
+        </nav>
+    </div>
+  </header>
+  
+  <!-- Hero Section for Volunteer Page -->
+
+  <!-- Hero Section with Background Image -->
+    <header class="relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden min-h-[450px] flex items-center justify-center text-center">
+        <!-- Background Image -->
+        <div class="hero-background-image animate-fadeIn absolute inset-0 w-full h-full">
+            <img src="./assets/img/pexels-shvetsa-5029853.jpg" alt=" " class="object-cover object-center w-full h-full">
+        </div>
+        
+        <!-- Image Overlay for Text Readability -->
+        <div class="hero-overlay"></div>
+
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 text-white">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight animate-fadeInUp animate-delay-200"> Volunteer With WCS</h1>
+            <p class="text-lg sm:text-xl lg:text-2xl opacity-90 max-w-3xl mx-auto animate-fadeInUp animate-delay-300">
+                Join our global community of conservation volunteers and make a direct impact on wildlife and wild places
+            </p>
+            <a href="#opportunities" class="mt-6 inline-block px-6 py-3 bg-white text-green-900 font-semibold rounded-full hover:bg-gray-100 transition">View Opportunities</a>
+      </div>
+        </div>
+    </header>
+  
+
+  <!-- Why Volunteer Section -->
+  <section class="py-16 px-6 md:px-20 bg-slate-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Volunteer With WCS?</h2>
+        <p class="text-gray-700 max-w-3xl mx-auto">Our volunteers play a crucial role in advancing our mission to save wildlife and wild places worldwide.</p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-lg shadow-sm volunteer-card">
+          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+            <i class="fas fa-hands-helping text-green-700 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Make a Direct Impact</h3>
+          <p class="text-gray-600">Your efforts contribute directly to conservation projects that protect endangered species and ecosystems.</p>
+        </div>
+        
+        <div class="bg-white p-8 rounded-lg shadow-sm volunteer-card">
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+            <i class="fas fa-globe-americas text-blue-700 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Global Opportunities</h3>
+          <p class="text-gray-600">Volunteer locally or internationally across our network of zoos, aquariums, and field programs.</p>
+        </div>
+        
+        <div class="bg-white p-8 rounded-lg shadow-sm volunteer-card">
+          <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-6">
+            <i class="fas fa-graduation-cap text-yellow-700 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Learn & Grow</h3>
+          <p class="text-gray-600">Gain valuable skills, knowledge, and experience in conservation science and practice.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Volunteer Impact Stats -->
+  <section class="py-16 px-6 md:px-20 impact-stats text-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Volunteer Impact</h2>
+        <p class="text-xl max-w-3xl mx-auto">Our volunteers are essential to achieving our conservation goals</p>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <p class="text-4xl md:text-5xl font-bold mb-2">5,000+</p>
+          <p class="text-lg">Active Volunteers</p>
+        </div>
+        <div>
+          <p class="text-4xl md:text-5xl font-bold mb-2">250K+</p>
+          <p class="text-lg">Hours Contributed Annually</p>
+        </div>
+        <div>
+          <p class="text-4xl md:text-5xl font-bold mb-2">40+</p>
+          <p class="text-lg">Countries</p>
+        </div>
+        <div>
+          <p class="text-4xl md:text-5xl font-bold mb-2">95%</p>
+          <p class="text-lg">Satisfaction Rate</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Volunteer Opportunities -->
+  <section id="opportunities" class="py-16 px-6 md:px-20 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Volunteer Opportunities</h2>
+        <p class="text-gray-700 max-w-3xl mx-auto">Explore our diverse range of volunteer positions across different locations and focus areas.</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Opportunity 1 -->
+        <div class="bg-slate-50 rounded-lg overflow-hidden shadow-sm volunteer-card">
+          <div class="h-48 bg-green-600 flex items-center justify-center">
+            <img src="" alt="">
+            <i class="fas fa-tree text-white text-5xl"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Field Research Assistant</h3>
+            <p class="text-gray-600 mb-4">Support wildlife monitoring and data collection in key conservation landscapes.</p>
+            <div class="flex items-center text-sm text-gray-500 mb-4">
+              <i class="fas fa-map-marker-alt mr-2"></i>
+              <span>Global Field Sites</span>
+            </div>
+            <div class="flex items-center text-sm text-gray-500 mb-4">
+              <i class="far fa-clock mr-2"></i>
+              <span>3-6 months</span>
+            </div>
+            <a href="#" class="inline-block px-4 py-2 bg-green-700 text-white rounded hover:bg-green-800 transition">Learn More</a>
+          </div>
+        </div>
+        
+        <div class="bg-slate-50 rounded-lg overflow-hidden shadow-sm volunteer-card">
+          <div class="h-48 bg-green-600 flex items-center justify-center">
+            <img src="" alt="">
+            <i class="fas fa-tree text-white text-5xl"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Field Research Assistant</h3>
+            <p class="text-gray-600 mb-4">Support wildlife monitoring and data collection in key conservation landscapes.</p>
+            <div class="flex items-center text-sm text-gray-500 mb-4">
+              <i class="fas fa-map-marker-alt mr-2"></i>
+              <span>Global Field Sites</span>
+            </div>
+            <div class="flex items-center text-sm text-gray-500 mb-4">
+              <i class="far fa-clock mr-2"></i>
+              <span>3-6 months</span>
+            </div>
+            <a href="#" class="inline-block px-4 py-2 bg-green-700 text-white rounded hover:bg-green-800 transition">Learn More</a>
+          </div>
+        </div>
+        <!-- Opportunity 2 -->
+        <div class="bg-slate-50 rounded-lg overflow-hidden shadow-sm volunteer-card">
+          <div class="h-48 bg-blue-600 flex items-center justify-center">
+            <i class="fas fa-users text-white text-5xl"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Education & Outreach Volunteer</h3>
+            <p class="text-gray-600 mb-4">Engage communities and visitors in conservation education programs.</p>
+            <div class="flex items-center text-sm text-gray-500 mb-4">
+              <i class="fas fa-map-marker-alt mr-2"></i>
+              <span>Zoos & Aquariums</span>
+            </div>
+            <div class="flex items-center text-sm text-gray-500 mb-4">
+              <i class="far fa-clock mr-2"></i>
+              <span>Flexible hours</span>
+            </div>
+            <a href="#" class="inline-block px-4 py-2 bg-green-700 text-white rounded hover:bg-green-800 transition">Learn More</a>
+          </div>
+        </div>
+        
+        <!-- Opportunity 3 -->
+        <div class="bg-slate-50 rounded-lg overflow-hidden shadow-sm volunteer-card">
+          <div class="h-48 bg-yellow-600 flex items-center justify-center">
+            <i class="fas fa-laptop-code text-white text-5xl"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Digital Conservation Volunteer</h3>
+            <p class="text-gray-600 mb-4">Support technology initiatives, data analysis, and digital outreach.</p>
+            <div class="flex items-center text-sm text-gray-500 mb-4">
+              <i class="fas fa-map-marker-alt mr-2"></i>
+              <span>Remote / On-site</span>
+            </div>
+            <div class="flex items-center text-sm text-gray-500 mb-4">
+              <i class="far fa-clock mr-2"></i>
+              <span>Flexible schedule</span>
+            </div>
+            <a href="#" class="inline-block px-4 py-2 bg-green-700 text-white rounded hover:bg-green-800 transition">Learn More</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-12">
+        <a href="#" class="inline-block px-6 py-3 border border-green-700 text-green-700 rounded-full hover:bg-green-700 hover:text-white transition">
+          View All Opportunities
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+
+  
+    <style>
+        .volunteer-stories-section {
+            position: relative;
+            padding: 0 60px; /* Add padding to make space for arrows */
+        }
+        
+        .volunteer-stories-container {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .volunteer-stories-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .volunteer-story-pair {
+            flex: 0 0 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .volunteer-story-pair {
+                flex-direction: row;
+                gap: 2rem;
+            }
+        }
+        
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .carousel-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #cbd5e1;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .carousel-indicator.active {
+            background-color: #047857;
+        }
+        
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            z-index: 10;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .volunteer-stories-section:hover .carousel-nav {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .carousel-nav:hover {
+            background-color: #047857;
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        /* Position arrows completely outside the container */
+        .carousel-nav.prev {
+            left: 0;
+        }
+        
+        .carousel-nav.next {
+            right: 0;
+        }
+        
+        @media (max-width: 767px) {
+            .volunteer-stories-section {
+                padding: 0 20px;
+            }
+            .carousel-nav {
+                display: none;
+            }
+        }
+        
+        .story-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 320px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .volunteer-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #e5e7eb;
+        }
+    </style>
+</head>
+<body>
+    <!-- Volunteer Stories Section -->
+    <section class="volunteer-stories-section py-20 bg-slate-50">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center m-14">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Volunteer Stories</h2>
+                <p class="text-gray-700 max-w-3xl mx-auto">Hear from our volunteers about their experiences making a difference</p>
+            </div>
+            
+            <!-- Carousel Container -->
+            <div class="volunteer-stories-container">
+                <!-- Stories Wrapper -->
+                <div class="volunteer-stories-wrapper" id="storiesWrapper">
+                    <!-- Story Pair 1 -->
+                    <div class="volunteer-story-pair">
+                        <!-- Story 1 -->
+                        <div class="bg-white p-6 rounded-lg shadow-sm story-card">
+                            <div class="flex items-center mb-4">
+                                <img src="./assets/img/pexels-ron-lach-9829317.jpg" 
+                                     alt="Maria Santos" class="volunteer-image mr-4">
+                                <div>
+                                    <h3 class="font-bold text-lg">Maria Santos</h3>
+                                    <p class="text-gray-600 text-sm">Field Research Volunteer, Brazil</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 text-sm mb-4 flex-grow">"Volunteering with WCS in the Amazon changed my perspective on conservation. Working alongside local researchers, I helped monitor jaguar populations and saw firsthand how community engagement is key to protecting these magnificent animals."</p>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Story 2 -->
+                        <div class="bg-white p-6 rounded-lg shadow-sm story-card">
+                            <div class="flex items-center mb-4">
+                                <img src="./assets/img/pexels-artempodrez-6584748.jpg" 
+                                     alt="Thomas Johnson" class="volunteer-image mr-4">
+                                <div>
+                                    <h3 class="font-bold text-lg">Thomas Johnson</h3>
+                                    <p class="text-gray-600 text-sm">Education Volunteer, New York</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 text-sm mb-4 flex-grow">"As a retired teacher, volunteering at the Bronx Zoo has been incredibly rewarding. I get to share my passion for wildlife with visitors of all ages and inspire the next generation of conservationists."</p>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Story Pair 2 -->
+                    <div class="volunteer-story-pair">
+                        <!-- Story 3 -->
+                        <div class="bg-white p-6 rounded-lg shadow-sm story-card">
+                            <div class="flex items-center mb-4">
+                                <img src="./assets/img/pexels-daniel-oni-2153429744-33724550.jpg" 
+                                     alt="Aisha Khan" class="volunteer-image mr-4">
+                                <div>
+                                    <h3 class="font-bold text-lg">Aisha Khan</h3>
+                                    <p class="text-gray-600 text-sm">Marine Conservation, Indonesia</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 text-sm mb-4 flex-grow">"Working with WCS on coral reef restoration in Indonesia was a life-changing experience. I contributed to rebuilding ecosystems that support thousands of marine species and local fishing communities."</p>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Story 4 -->
+                        <div class="bg-white p-6 rounded-lg shadow-sm story-card">
+                            <div class="flex items-center mb-4">
+                                <img src="./assets/img/pexels-marc-nsikita-162807728-10841466.jpg" 
+                                     alt="David Rodriguez" class="volunteer-image mr-4">
+                                <div>
+                                    <h3 class="font-bold text-lg">David Rodriguez</h3>
+                                    <p class="text-gray-600 text-sm">Wildlife Rehabilitation, Kenya</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 text-sm mb-4 flex-grow">"My six months at the WCS wildlife rehabilitation center in Kenya taught me so much about animal care. Helping injured animals recover and return to the wild was the most fulfilling work I've ever done."</p>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Story Pair 3 -->
+                    <div class="volunteer-story-pair">
+                        <!-- Story 5 -->
+                        <div class="bg-white p-6 rounded-lg shadow-sm story-card">
+                            <div class="flex items-center mb-4">
+                                <img src="./assets/img/pexels-yaroslav-shuraev-6283228.jpg" 
+                                     alt="Li Wei" class="volunteer-image mr-4">
+                                <div>
+                                    <h3 class="font-bold text-lg">Li Wei</h3>
+                                    <p class="text-gray-600 text-sm">Community Outreach, China</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 text-sm mb-4 flex-grow">"As a WCS volunteer in rural China, I helped bridge the gap between conservation science and local communities. We developed programs that reduced human-wildlife conflict while protecting endangered species."</p>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Story 6 -->
+                        <div class="bg-white p-6 rounded-lg shadow-sm story-card">
+                            <div class="flex items-center mb-4">
+                                <img src="./assets/img/pexels-rocket-effect-739232054-20183905.jpg" 
+                                     alt="Sophie Parker" class="volunteer-image mr-4">
+                                <div>
+                                    <h3 class="font-bold text-lg">Sophie Parker</h3>
+                                    <p class="text-gray-600 text-sm">Remote Sensing, Global</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 text-sm mb-4 flex-grow">"Even from my home office, I've been able to contribute significantly to WCS's conservation efforts. Using satellite imagery, I help monitor deforestation across multiple countries."</p>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Story Pair 4 -->
+                    <div class="volunteer-story-pair">
+                        <!-- Story 7 -->
+                        <div class="bg-white p-6 rounded-lg shadow-sm story-card">
+                            <div class="flex items-center mb-4">
+                                <img src="./assets/img/pexels-filipgrobgaard-28426642.jpg" 
+                                     alt="James Wilson" class="volunteer-image mr-4">
+                                <div>
+                                    <h3 class="font-bold text-lg">James Wilson</h3>
+                                    <p class="text-gray-600 text-sm">Forest Conservation, Canada</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 text-sm mb-4 flex-grow">"Protecting Canada's boreal forest with WCS has been an incredible journey. I've worked with Indigenous communities to preserve critical habitats for caribou and other wildlife species."</p>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Story 8 -->
+                        <div class="bg-white p-6 rounded-lg shadow-sm story-card">
+                            <div class="flex items-center mb-4">
+                                <img src="./assets/img/pexels-ab-pixels-ng-33844621.jpg" 
+                                     alt="Sarah Chen" class="volunteer-image mr-4">
+                                <div>
+                                    <h3 class="font-bold text-lg">Sarah Chen</h3>
+                                    <p class="text-gray-600 text-sm">Climate Research, Arctic</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 text-sm mb-4 flex-grow">"My time in the Arctic with WCS opened my eyes to the urgent need for climate action. Documenting changes in polar bear habitats has been both challenging and profoundly important work."</p>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Story Pair 5 -->
+                    <div class="volunteer-story-pair">
+                        <!-- Story 9 -->
+                        <div class="bg-white p-6 rounded-lg shadow-sm story-card">
+                            <div class="flex items-center mb-4">
+                                <img src="./assets/img/pexels-artempodrez-6584748.jpg" 
+                                     alt="Michael Brown" class="volunteer-image mr-4">
+                                <div>
+                                    <h3 class="font-bold text-lg">Michael Brown</h3>
+                                    <p class="text-gray-600 text-sm">Anti-Poaching, Zambia</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 text-sm mb-4 flex-grow">"Working with anti-poaching units in Zambia has been both dangerous and deeply meaningful. Every elephant we protect represents hope for future generations."</p>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Story 10 -->
+                        <div class="bg-white p-6 rounded-lg shadow-sm story-card">
+                            <div class="flex items-center mb-4">
+                                <img src="./assets/img/pexels-korede-adenola-2888552-20742108.jpg" 
+                                     alt="Elena Rodriguez" class="volunteer-image mr-4">
+                                <div>
+                                    <h3 class="font-bold text-lg">Elena Rodriguez</h3>
+                                    <p class="text-gray-600 text-sm">Marine Biology, Galapagos</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 text-sm mb-4 flex-grow">"Studying marine life in the Galapagos with WCS has been a dream come true. Protecting these unique ecosystems is crucial for global biodiversity and our planet's health."</p>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+
+            <!-- Navigation Arrows - Positioned outside the container -->
+            <div class="flex justify-center gap-10 items-center mt-4">
+    <!-- Navigation Arrows - Positioned outside the container -->
+    <div class="carousel-nav prev" id="prevBtn">
+        <i class="fas fa-chevron-left text-lg"></i>
+    </div>
+    <div class="carousel-nav next" id="nextBtn">
+        <i class="fas fa-chevron-right text-lg"></i>
+    </div>
+
+    <!-- Indicators -->
+    <div class="carousel-indicators" id="indicators">
+        <!-- Indicators will be generated by JavaScript -->
+    </div>
+</div>
+
+            
+        </div>
+    </section>
+
+    
+
+  <!-- Volunteer Stories -->
+  <!-- <section class="py-16 px-6 md:px-20 bg-slate-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Volunteer Stories</h2>
+        <p class="text-gray-700 max-w-3xl mx-auto">Hear from our volunteers about their experiences making a difference</p>
+      </div>
+       -->
+      <!-- <div class="grid md:grid-cols-2 gap-10">
+        <!-- Story 1 -->
+        <!-- <div class="bg-white p-8 rounded-lg shadow-sm">
+          <div class="flex items-center mb-6">
+            <div class="w-16 h-16 bg-green-200 rounded-full flex items-center justify-center mr-4">
+              <span class="text-green-800 font-bold text-xl">MS</span>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg">Maria Santos</h3>
+              <p class="text-gray-600">Field Research Volunteer, Brazil</p>
+            </div>
+          </div>
+          <p class="text-gray-700 italic mb-4">"Volunteering with WCS in the Amazon changed my perspective on conservation. Working alongside local researchers, I helped monitor jaguar populations and saw firsthand how community engagement is key to protecting these magnificent animals."</p>
+          <div class="flex text-yellow-400">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+        
+        <!-- Story 2 -->
+        <!-- <div class="bg-white p-8 rounded-lg shadow-sm">
+          <div class="flex items-center mb-6">
+            <div class="w-16 h-16 bg-blue-200 rounded-full flex items-center justify-center mr-4">
+              <span class="text-blue-800 font-bold text-xl">TJ</span>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg">Thomas Johnson</h3>
+              <p class="text-gray-600">Education Volunteer, New York</p>
+            </div>
+          </div>
+          <p class="text-gray-700 italic mb-4">"As a retired teacher, volunteering at the Bronx Zoo has been incredibly rewarding. I get to share my passion for wildlife with visitors of all ages and inspire the next generation of conservationists. The training and support from WCS staff have been exceptional."</p>
+          <div class="flex text-yellow-400">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+      </div> -->
+    <!-- </div> -->
+  </section> 
+
+  <!-- Application Process -->
+  <section class="py-16 px-6 md:px-20 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">How to Apply</h2>
+        <p class="text-gray-700 max-w-3xl mx-auto">Our straightforward application process makes it easy to get started</p>
+      </div>
+      
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-green-700 font-bold text-xl">1</span>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Explore</h3>
+          <p class="text-gray-600 text-sm">Browse opportunities and find the right fit for your skills and interests</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-green-700 font-bold text-xl">2</span>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Apply</h3>
+          <p class="text-gray-600 text-sm">Complete our online application form and submit your resume</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-green-700 font-bold text-xl">3</span>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Interview</h3>
+          <p class="text-gray-600 text-sm">Participate in an interview to discuss your interests and availability</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-green-700 font-bold text-xl">4</span>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Onboard</h3>
+          <p class="text-gray-600 text-sm">Complete orientation and training before starting your volunteer role</p>
+        </div>
+      </div>
+      
+      <div class="mt-12 text-center">
+        <a href="#application" class="inline-block px-8 py-3 bg-green-700 text-white font-semibold rounded-full hover:bg-green-800 transition">
+          Start Your Application
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Application Form -->
+  <section id="application" class="py-16 px-6 md:px-20 bg-slate-50">
+    <div class="max-w-4xl mx-auto">
+      <div class="bg-white rounded-lg shadow-md p-8 md:p-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-2">Volunteer Application</h2>
+        <p class="text-gray-600 mb-8">Ready to make a difference? Complete the form below to start your volunteer journey with WCS.</p>
+        
+        <form class="grid md:grid-cols-2 gap-6">
+          <div>
+            <label for="firstName" class="block text-gray-700 mb-2">First Name</label>
+            <input type="text" id="firstName" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500" required>
+          </div>
+          
+          <div>
+            <label for="lastName" class="block text-gray-700 mb-2">Last Name</label>
+            <input type="text" id="lastName" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500" required>
+          </div>
+          
+          <div>
+            <label for="email" class="block text-gray-700 mb-2">Email Address</label>
+            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500" required>
+          </div>
+          
+          <div>
+            <label for="phone" class="block text-gray-700 mb-2">Phone Number</label>
+            <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500" required>
+          </div>
+          
+          <div class="md:col-span-2">
+            <label for="location" class="block text-gray-700 mb-2">Preferred Location</label>
+            <select id="location" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500" required>
+              <option value="">Select a location</option>
+              <option value="local">Local Zoo/Aquarium</option>
+              <option value="field">Field Program (International)</option>
+              <option value="remote">Remote/Online</option>
+              <option value="any">Any Location</option>
+            </select>
+          </div>
+          
+          <div class="md:col-span-2">
+            <label for="interest" class="block text-gray-700 mb-2">Area of Interest</label>
+            <select id="interest" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500" required>
+              <option value="">Select an area</option>
+              <option value="research">Field Research</option>
+              <option value="education">Education & Outreach</option>
+              <option value="digital">Digital Conservation</option>
+              <option value="community">Community Engagement</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          
+          <div class="md:col-span-2">
+            <label for="experience" class="block text-gray-700 mb-2">Relevant Experience & Skills</label>
+            <textarea id="experience" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Tell us about your background, skills, and why you're interested in volunteering with WCS..."></textarea>
+          </div>
+          
+          <div class="md:col-span-2">
+            <label for="availability" class="block text-gray-700 mb-2">Availability</label>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div class="flex items-center">
+                <input type="checkbox" id="weekdays" class="mr-2">
+                <label for="weekdays">Weekdays</label>
+              </div>
+              <div class="flex items-center">
+                <input type="checkbox" id="weekends" class="mr-2">
+                <label for="weekends">Weekends</label>
+              </div>
+              <div class="flex items-center">
+                <input type="checkbox" id="full-time" class="mr-2">
+                <label for="full-time">Full-time</label>
+              </div>
+              <div class="flex items-center">
+                <input type="checkbox" id="part-time" class="mr-2">
+                <label for="part-time">Part-time</label>
+              </div>
+            </div>
+          </div>
+          
+          <div class="md:col-span-2">
+            <label for="resume" class="block text-gray-700 mb-2">Upload Resume (Optional)</label>
+            <input type="file" id="resume" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500">
+          </div>
+          
+          <div class="md:col-span-2 flex items-center">
+            <input type="checkbox" id="agree" class="mr-2" required>
+            <label for="agree" class="text-gray-700">I agree to the <a href="#" class="text-green-700 hover:underline">terms and conditions</a> and understand that this is a volunteer position.</label>
+          </div>
+          
+          <div class="md:col-span-2 text-center">
+            <button type="submit" class="px-8 py-3 bg-green-700 text-white font-semibold rounded-full hover:bg-green-800 transition">Submit Application</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 px-6 md:px-20 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+        <p class="text-gray-700 max-w-3xl mx-auto">Find answers to common questions about volunteering with WCS</p>
+      </div>
+      
+      <div class="space-y-6">
+        <div class="border border-gray-200 rounded-lg p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Do I need previous experience to volunteer?</h3>
+          <p class="text-gray-600">While some positions require specific skills or experience, many of our volunteer opportunities are open to individuals with a passion for conservation and a willingness to learn. We provide comprehensive training for all volunteers.</p>
+        </div>
+        
+        <div class="border border-gray-200 rounded-lg p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Are there age restrictions for volunteers?</h3>
+          <p class="text-gray-600">Most positions require volunteers to be at least 18 years old. However, we do offer some youth volunteer programs for teenagers aged 14-17 with parental consent.</p>
+        </div>
+        
+        <div class="border border-gray-200 rounded-lg p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Do you provide accommodation for international volunteers?</h3>
+          <p class="text-gray-600">For long-term field positions in remote locations, we typically provide basic accommodation. For other international opportunities, volunteers are responsible for their own accommodation, though we can provide guidance and recommendations.</p>
+        </div>
+        
+        <div class="border border-gray-200 rounded-lg p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">How much time do I need to commit?</h3>
+          <p class="text-gray-600">Time commitments vary by position. Local zoo/aquarium roles might require 4-8 hours per week, while field research positions often require longer commitments of 3-6 months. We try to be flexible to accommodate different availability.</p>
+        </div>
+      </div>
+      
+      <div class="text-center mt-12">
+        <p class="text-gray-700">Have more questions? <a href="/contact.html" class="text-green-700 font-semibold hover:underline">Contact our volunteer team</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Signup Section -->
+  <section class="bg-slate-100 py-16 px-6 md:px-20">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-start">
+      <div>
+        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-2">Stay Connected</h2>
+        <p class="text-gray-700">Get updates on new volunteer opportunities and conservation news</p>
+      </div>
+      <div>
+        <form class="flex flex-col space-y-4">
+          <div class="flex rounded-full overflow-hidden bg-white shadow">
+            <input type="email" placeholder="Email Address" class="px-4 py-2 w-full focus:outline-none" required>
+            <button type="submit" class="px-6 bg-gray-300 text-gray-700 font-semibold text-sm uppercase tracking-wide">Subscribe</button>
+          </div>
+          <p class="text-xs text-gray-500">
+            By clicking "Subscribe" I accept the terms and conditions of the privacy policy and consent to receive email updates from Wildlife Conservation Society.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-gray-900 text-white py-10 px-6 md:px-20 text-center">
+    <div class="mb-6">
+      <img src="https://placehold.co/40x40/047857/FFFFFF?text=WL" alt="WCS Impact" class="mx-auto h-10">
+    </div>
+    <nav class="flex justify-center gap-8 items-center mb-6 relative">
+      <!-- About Dropdown -->
+      <div class="relative group">
+        <button class="px-4 py-2 border border-white rounded-full text-white group-hover:bg-white group-hover:text-blue-800 transition">About</button>
+        <div class="absolute hidden group-hover:block bg-white text-left mt-2 py-2 rounded shadow-md min-w-[200px] z-10">
+          <a href="/about.html" class="block px-4 py-2 text-blue-800 hover:text-green-600 transition">WCS</a>
+          <a href="/nature's.html" class="block px-4 py-2 text-blue-800 hover:text-green-600 transition">Nature's Stronghold</a>
+          <a href="#" class="block px-4 py-2 text-blue-800 hover:text-green-600 transition">Partners</a>
+        </div>
+      </div>
+
+      <!-- Dashboard Link -->
+      <a href="./map_data.html" class="relative after:content-[''] after:block after:h-0.5 after:bg-blue-500 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left">Dashboard</a>
+
+      <!-- Volunteer Link -->
+      <a href="./volunteer.html" class="relative after:content-[''] after:block after:h-0.5 after:bg-blue-500 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left font-semibold">Volunteer</a>
+
+      <!-- Contact Link -->
+      <a href="./contact.html" class="relative after:content-[''] after:block after:h-0.5 after:bg-blue-500 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left">Contact</a>
+    </nav>
+    <p class="text-sm text-gray-400">Copyright 2025 by Wildlife Conservation Society &nbsp; | &nbsp; <a href="#" class="hover:underline">Privacy Policy</a> &nbsp; | &nbsp; <a href="#" class="hover:underline">User Agreement</a></p>
+  </footer>
+
+<script src="./assets/js/volunteer.js"></script>
+</body>
+</html>

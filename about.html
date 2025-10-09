@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Wildlife World</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Poppins for headings, Lato for body -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Font Awesome for social media brand icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/about.css">
+</head>
+<body class="text-gray-800">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 py-4 navbar-transition bg-transparent text-white">
+        <div class="container mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8">
+            <!-- Logo -->
+            <a href="./index.html" class="flex items-center space-x-2">
+                <img src="https://placehold.co/40x40/166534/FFFFFF?text=WW" alt="Wildlife World Logo" class="rounded-full">
+                <span class="text-2xl font-extrabold">Wildlife Impact</span>
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="lg:hidden focus:outline-none p-2 rounded-md hover:bg-gray-700/30 transition-colors duration-200">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+
+            <!-- Navigation Links (Hidden on small screens) -->
+            <div id="navbar-links" class="hidden lg:flex flex-col lg:flex-row lg:space-x-8 mt-4 lg:mt-0 items-center">
+                <a href="#" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Home</a>
+                <a href="#" class="block lg:inline-block text-lg font-bold py-2 lg:py-0 transition-colors duration-200 border-b-2 border-green-300">About Us</a>
+                <a href="#" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Conservation</a>
+                <a href="#" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Research</a>
+                <a href="#" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Dashboard</a>
+                <a href="./contact.html" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-70 z-40 hidden"></div>
+
+    <!-- Mobile Menu Sidebar -->
+    <div id="mobile-menu-sidebar" class="fixed top-0 right-0 w-64 h-full bg-white z-50 transform translate-x-full transition-transform duration-300 ease-in-out p-6 shadow-xl">
+        <div class="flex justify-end mb-8">
+            <button id="close-mobile-menu" class="text-gray-700 focus:outline-none p-2 rounded-md hover:bg-gray-100">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex flex-col space-y-4">
+            <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">Home</a>
+            <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">About Us</a>
+            <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">Conservation</a>
+            <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">Research</a>
+            <a href="#" class="block text-xl font-bold text-green-600 hover:text-green-700 transition-colors duration-200 py-2">Dashboard</a>
+            <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">Contact</a>
+        </nav>
+    </div>
+
+    <!-- Hero Section (Cinematic Slideshow) -->
+    <header class="relative h-[650px] flex items-center justify-center text-center text-white overflow-hidden">
+        <!-- Slideshow Container -->
+        <div id="slideshow" class="absolute inset-0">
+            <!-- Slides are inserted here by JavaScript -->
+        </div>
+
+        <!-- Overlay -->
+        <div class="absolute inset-0 hero-overlay"></div>
+        
+        <!-- Dynamic Text Content Container -->
+        <div class="relative z-30 container mx-auto px-4">
+            <div id="hero-text-container" class="slide-text-content flex flex-col items-center">
+                <!-- Static Title -->
+                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight mb-4 tracking-tighter">
+                    Join the Global Wildlife Fight.
+                </h1>
+                <!-- Dynamic Typing Text -->
+                <p id="typing-text" class="mt-4 text-xl sm:text-2xl font-light opacity-90 max-w-3xl mx-auto">
+                    <!-- Dynamic Typing content goes here -->
+                </p>
+                <!-- CTA Button -->
+                <div class="mt-8">
+                    <a href="#" class="px-10 py-4 text-lg font-bold rounded-full bg-green-600 text-white hover:bg-green-700 transition duration-300 shadow-xl">
+                        Discover Our Mission
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+        <!-- NEW: Mission, Vision, Values Section with Cards and Hover Zoom -->
+        <section class="max-w-6xl mx-auto mb-20">
+            <h2 class="wcs-section-heading mx-auto text-center mb-16">Our Core Purpose</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                
+                <!-- Mission Card -->
+                <div class="mission-card animate-fadeInUp animate-delay-100">
+                    <img src="./assets/img/pexels-jay-brand-1763356224-32181432.jpg" alt="Mission image - tropical forest" class="object-cover">
+                    <div class="p-6 text-center">
+                        <h3 class="wcs-sub-heading text-green-700 mb-3">Our Mission</h3>
+                        <p class="text-gray-700">To protect wildlife and wild places worldwide through science, conservation action, and sustainable partnerships.</p>
+                    </div>
+                </div>
+                
+                <!-- Vision Card -->
+                <div class="mission-card animate-fadeInUp animate-delay-200">
+                    <img src="./assets/img/pexels-monkeytactics-750540 (1).jpg" alt="Vision image - clear ocean" class="object-cover">
+                    <div class="p-6 text-center">
+                        <h3 class="wcs-sub-heading text-green-700 mb-3">Our Vision</h3>
+                        <p class="text-gray-700">A future where wildlife thrives in a just and sustainable world, valued by all people.</p>
+                    </div>
+                </div>
+
+                <!-- Values Card -->
+                <div class="mission-card animate-fadeInUp animate-delay-300">
+                    <img src="https://placehold.co/600x300/38A169/FFFFFF?text=OUR+VALUES" alt="Values image - field work team" class="object-cover">
+                    <div class="p-6 text-center">
+                        <h3 class="wcs-sub-heading text-green-700 mb-3">Our Values</h3>
+                        <p class="text-gray-700">Driven by **Integrity**, **Collaboration**, and measurable **Impact** in every ecosystem we touch.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Who We Are / Introduction/Lead Text Section -->
+        <section class="max-w-6xl mx-auto mb-20">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                <div>
+                    <h2 class="wcs-section-heading">Who We Are</h2>
+                    <p class="wcs-body-text mb-4">
+                        Wildlife World is a global conservation organization that saves wildlife and wild places worldwide through science, conservation action, education, and by inspiring people to value nature.
+                    </p>
+                    <p class="wcs-body-text">
+                        Founded in 1895, Wildlife World has been a pioneer in wildlife conservation for over a century. Our mission is to conserve the world's largest wild places in 14 priority regions, home to more than 50% of the planet's biodiversity. We work in close partnership with local communities and governments to ensure sustainable solutions that benefit both nature and people.
+                    </p>
+                </div>
+                <div>
+                    <img src="https://placehold.co/600x400/38a169/FFFFFF?text=Diverse+Ecosystem" alt="Diverse natural ecosystem" class="wcs-image-with-caption">
+                    <p class="wcs-image-caption">
+                        Our work spans across diverse ecosystems, from vast savannas to pristine coral reefs.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- What We Do Section -->
+        <section class="max-w-6xl mx-auto mb-20">
+            <h2 class="wcs-section-heading mb-12">What We Do</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="wcs-body-text">
+                    <p class="mb-4">
+                        For over 125 years, Wildlife World has been at the forefront of conservation. Our work spans across diverse ecosystems, from the vast savannas of Africa to the pristine coral reefs of the Pacific. We protect iconic species like tigers, elephants, and marine mammals, and safeguard critical habitats essential for the planet's health.
+                    </p>
+                    <p>
+                        Our scientific expertise informs our conservation strategies, ensuring that our efforts are effective and sustainable. We also focus heavily on environmental education, inspiring the next generation of conservationists and fostering a deeper connection between people and nature.
+                    </p>
+                </div>
+                <div class="wcs-quote-block">
+                    <p class="wcs-quote-text">
+                        "Conservation is not just about saving animals; it's about preserving the delicate balance of life on Earth, for all species, including our own."
+                    </p>
+                    <p class="wcs-quote-author">— Dr. Anya Sharma, Lead Conservation Biologist</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Leadership Section (Names always visible) -->
+        <section class="max-w-6xl mx-auto mb-20">
+            <h2 class="wcs-section-heading mb-12">Our Leadership</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Leadership Card 1 -->
+                <div class="leadership-card">
+                    <img src="https://placehold.co/400x500/A0AEC0/FFFFFF?text=CEO" alt="CEO Name" class="rounded-xl object-cover object-top h-64">
+                    <div class="member-info">
+                        <h3 class="member-name">Dr. Jane Goodall</h3>
+                        <p class="member-title">Chief Executive Officer</p>
+                    </div>
+                </div>
+                <!-- Leadership Card 2 -->
+                <div class="leadership-card">
+                    <img src="https://placehold.co/400x500/A0AEC0/FFFFFF?text=COO" alt="COO Name" class="rounded-xl object-cover object-top h-64">
+                    <div class="member-info">
+                        <h3 class="member-name">Dr. David Attenborough</h3>
+                        <p class="member-title">Chief Operating Officer</p>
+                    </div>
+                </div>
+                <!-- Leadership Card 3 -->
+                <div class="leadership-card">
+                    <img src="https://placehold.co/400x500/A0AEC0/FFFFFF?text=CSO" alt="CSO Name" class="rounded-xl object-cover object-top h-64">
+                    <div class="member-info">
+                        <h3 class="member-name">Dr. Sylvia Earle</h3>
+                        <p class="member-title">Chief Scientific Officer</p>
+                    </div>
+                </div>
+                <!-- Leadership Card 4 -->
+                <div class="leadership-card">
+                    <img src="https://placehold.co/400x500/A0AEC0/FFFFFF?text=CFO" alt="CFO Name" class="rounded-xl object-cover object-top h-64">
+                    <div class="member-info">
+                        <h3 class="member-name">Mr. John Smith</h3>
+                        <p class="member-title">Chief Financial Officer</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our History/Milestones Section (Restored) -->
+        <section class="mb-20 max-w-6xl mx-auto">
+            <h2 class="wcs-section-heading mb-12">Our History & Milestones</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-8">
+                    <div class="wcs-milestone-item">
+                        <h3 class="wcs-milestone-year">1895: Founding of Wildlife World</h3>
+                        <p class="wcs-milestone-description">
+                            Established by a group of visionary naturalists and philanthropists dedicated to protecting vanishing species.
+                        </p>
+                    </div>
+                    <div class="wcs-milestone-item">
+                        <h3 class="wcs-milestone-year">1950s: First International Projects</h3>
+                        <p class="wcs-milestone-description">
+                            Expanded conservation efforts to Africa and Asia, focusing on large mammal protection and anti-poaching initiatives.
+                        </p>
+                    </div>
+                </div>
+                <div class="space-y-8">
+                    <div class="wcs-milestone-item">
+                        <h3 class="wcs-milestone-year">1980s: Marine Conservation Focus</h3>
+                        <p class="wcs-milestone-description">
+                            Launched major marine programs, including coral reef protection and whale research, recognizing the importance of ocean health.
+                        </p>
+                    </div>
+                    <div class="wcs-milestone-item">
+                        <h3 class="wcs-milestone-year">2000s: Climate Change Integration</h3>
+                        <p class="wcs-milestone-description">
+                            Integrated climate change impacts into all conservation strategies, developing adaptation and mitigation projects globally.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Partners Section -->
+        <section class="mb-20 text-center max-w-6xl mx-auto">
+            <h2 class="wcs-section-heading text-center mx-auto mb-12">Our Valued Partners</h2>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+                <img src="https://placehold.co/150x80/E2E8F0/64748B?text=Partner+1" alt="Partner Logo 1" class="h-16 w-auto opacity-75 hover:opacity-100 transition-opacity duration-200">
+                <img src="https://placehold.co/150x80/E2E8F0/64748B?text=Partner+2" alt="Partner Logo 2" class="h-16 w-auto opacity-75 hover:opacity-100 transition-opacity duration-200">
+                <img src="https://placehold.co/150x80/E2E8F0/64748B?text=Partner+3" alt="Partner Logo 3" class="h-16 w-auto opacity-75 hover:opacity-100 transition-opacity duration-200">
+                <img src="https://placehold.co/150x80/E2E8F0/64748B?text=Partner+4" alt="Partner Logo 4" class="h-16 w-auto opacity-75 hover:opacity-100 transition-opacity duration-200">
+                <img src="https://placehold.co/150x80/E2E8F0/64748B?text=Partner+5" alt="Partner Logo 5" class="h-16 w-auto opacity-75 hover:opacity-100 transition-opacity duration-200">
+            </div>
+        </section>
+
+        <!-- Call to Action: Join Us (Reused from homepage) -->
+        <section class="bg-green-700 text-white py-20 px-8 rounded-xl text-center shadow-xl">
+            <h2 class="text-4xl font-extrabold mb-6 leading-tight">
+                Join Our Global Conservation Effort
+            </h2>
+            <p class="text-xl opacity-90 max-w-3xl mx-auto mb-10">
+                Your support fuels our mission to protect wildlife and wild places around the world.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <a href="#" class="cta-button bg-white text-green-700 hover:bg-gray-100">
+                    <i data-lucide="dollar-sign" class="inline-block mr-2 w-6 h-6"></i> Donate Now
+                </a>
+                <a href="#" class="cta-button bg-transparent border-2 border-white hover:bg-white hover:text-green-700">
+                    <i data-lucide="users" class="inline-block mr-2 w-6 h-6"></i> Become a Volunteer
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer (Reused for consistency) -->
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <!-- Social Media Links -->
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold text-gray-200 mb-4">Stay Connected</h3>
+                <div class="flex justify-center space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 transform hover:scale-110" aria-label="Facebook">
+                        <i class="fab fa-facebook-f text-3xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 transform hover:scale-110" aria-label="Twitter">
+                        <i class="fab fa-twitter text-3xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 transform hover:scale-110" aria-label="Instagram">
+                        <i class="fab fa-instagram text-3xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 transform hover:scale-110" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in text-3xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 transform hover:scale-110" aria-label="YouTube">
+                        <i class="fab fa-youtube text-3xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <p class="text-gray-400 text-sm">&copy; 2024 Wildlife World. All rights reserved.</p>
+            <div class="flex justify-center space-x-4 mt-4 text-sm">
+                <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Privacy Policy</a>
+                <span class="text-gray-600">|</span>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+    <script src="./assets/js/about.js"></script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Wildlife Haven</title>
+    <title>Contact Us - WCS Impact</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Inter Font - Weight 300 to 800 -->
@@ -12,7 +12,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <!-- Font Awesome for social media brand icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="../ImpactWCS-Front_end/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body class="text-gray-800">
 
@@ -20,9 +20,9 @@
     <nav id="navbar" class="fixed top-0 left-0 w-full z-50 py-4 navbar-transition bg-transparent text-white">
         <div class="container mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8">
             <!-- Logo -->
-            <a href="../ImpactWCS-Front_end/index.html" class="flex items-center space-x-2">
+            <a href="/index.html" class="flex items-center space-x-2">
                 <img src="https://placehold.co/40x40/047857/FFFFFF?text=WL" alt="Wildlife Logo" class="rounded-full">
-                <span class="text-2xl font-bold">Wildlife Haven</span>
+                <span class="text-2xl font-bold">WCS Impact</span>
             </a>
 
             <!-- Mobile Menu Button -->
@@ -36,10 +36,10 @@
             <div id="navbar-links" class="hidden lg:flex flex-col lg:flex-row lg:space-x-8 mt-4 lg:mt-0 items-center">
                 <a href="#" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Home</a>
                 <div class="relative group">
-      <button class="px-4 py-2 border border-white rounded-full text-white group-hover:bg-white group-hover:text-blue-800 transition">About</button>
+      <button  id="about-toggle" class="px-4 py-2  text-white group-hover:bg-white group-hover:text-blue-800 transition">About</button>
       <div class="absolute hidden group-hover:block bg-white text-left mt-2 py-2 rounded shadow-md min-w-[200px] z-10">
-        <a href="#" class="block px-4 py-2 text-blue-800 hover:text-green-600 transition">WCS</a>
-        <a href="../ImpactWCS-Front_end/nature's.html" class="block px-4 py-2 text-blue-800 hover:text-green-600 transition">Nature's Stronghold</a>
+        <a href="/about.html" class="block px-4 py-2 text-blue-800 hover:text-green-600 transition">WCS</a>
+        <a href="/nature's.html" class="block px-4 py-2 text-blue-800 hover:text-green-600 transition">Nature's Stronghold</a>
         <a href="#" class="block px-4 py-2 text-blue-800 hover:text-green-600 transition">Partners</a>
       </div>
     </div>
@@ -77,8 +77,8 @@
     <!-- Hero Section with Background Image -->
     <header class="relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden min-h-[450px] flex items-center justify-center text-center">
         <!-- Background Image -->
-        <div class="hero-background-image animate-fadeIn">
-            <img src="../ImpactWCS-Front_end/assets/img/pexels-pixabay-73759.jpg" alt="">
+        <div class="hero-background-image animate-fadeIn absolute inset-0 w-full h-full">
+            <img src="/assets/img/pexels-pixabay-73759.jpg" alt=" " class="object-cover object-center w-full h-full">
         </div>
         
         <!-- Image Overlay for Text Readability -->
@@ -97,30 +97,7 @@
 
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
 
-        <!-- Animated Animals Section -->
-        <section class="animal-container mb-12 relative overflow-hidden">
-            <!-- Animal 1: Horse Fish (PNG) -->
-            <img class="animal-walk" src="../ImpactWCS-Front_end/assets/img/animal_13704682.png" alt="Horse Fish" style="left: 0; top: 10px; animation-duration: 20s; animation-delay: 0s; width: 70px; height: 70px;" onerror="this.onerror=null;this.src='https://placehold.co/70x70/E2E8F0/1A202C?text=Image+Error';">
-
-            <!-- Animal 2: Dolphin (PNG) -->
-            <img class="animal-walk" src="../ImpactWCS-Front_end/assets/img/animal_13704713.png" alt="Dolphin" style="left: 0; top: 0px; animation-duration: 15s; animation-delay: -5s; width: 70px; height: 70px;" onerror="this.onerror=null;this.src='https://placehold.co/70x70/E2E8F0/1A202C?text=Image+Error';">
-
-            <!-- Animal 3: Lion (PNG) -->
-            <img class="animal-walk" src="../ImpactWCS-Front_end/assets/img/zoo_13704581.png" alt="Lion" style="left: 0; top: 15px; animation-duration: 25s; animation-delay: -8s; width: 70px; height: 70px;" onerror="this.onerror=null;this.src='https://placehold.co/70x70/E2E8F0/1A202C?text=Image+Error';">
-
-            <!-- Animal 3: Lion (PNG) -->
-            <img class="animal-walk" src="../ImpactWCS-Front_end/assets/img/animal_13704723.png" alt="octopus" style="left: 0; top: 15px; animation-duration: 25s; animation-delay: -12s; width: 70px; height: 70px;" onerror="this.onerror=null;this.src='https://placehold.co/70x70/E2E8F0/1A202C?text=Image+Error';">
-
-            <!-- Animal 3: Lion (PNG) -->
-            <img class="animal-walk" src="../ImpactWCS-Front_end/assets/img/animal_13704718.png" alt="Eagle" style="left: 0; top: 0px; animation-duration: 25s; animation-delay: -15s; width: 70px; height: 70px;" onerror="this.onerror=null;this.src='https://placehold.co/70x70/E2E8F0/1A202C?text=Image+Error';">
-
-            <!-- Animal 3: Lion (PNG) -->
-            <img class="animal-walk" src="../ImpactWCS-Front_end/assets/img/animal_13704728.png" alt="zebra" style="left: 0; top: 15px; animation-duration: 25s; animation-delay: -20s; width: 70px; height: 70px;" onerror="this.onerror=null;this.src='https://placehold.co/70x70/E2E8F0/1A202C?text=Image+Error';">
-
-
-            
-            </div>
-        </section>
+        
 
 
         <!-- Main Content Grid -->
@@ -227,7 +204,7 @@
             <p class="text-green-700 text-xl max-w-2xl mx-auto mb-8">
                 Save your life and save the planet. Be a volunteer with Wildlife Haven and contribute directly to conservation efforts.
             </p>
-            <a href="#" class="inline-flex items-center px-10 py-4 border border-transparent text-lg font-semibold rounded-full shadow-lg text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all duration-300 ease-in-out transform hover:scale-105">
+            <a href="./volunteer.html" class="inline-flex items-center px-10 py-4 border border-transparent text-lg font-semibold rounded-full shadow-lg text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all duration-300 ease-in-out transform hover:scale-105">
                 <i data-lucide="heart" class="mr-3 w-6 h-6"></i> Volunteer Now
             </a>
         </section>
@@ -282,6 +259,6 @@
         </div>
     </footer>
 
-<script src="../ImpactWCS-Front_end/assets/js/contact.js"></script>  
+<script src="/assets/js/contact.js"></script>  
 </body>
 </html>

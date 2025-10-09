@@ -8,6 +8,13 @@
   
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/locales/de_DE.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/geodata/germanyLow.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/fonts/notosans-sc.js"></script>
   
   <!-- Custom Tailwind Configuration -->
   <script>
@@ -89,6 +96,18 @@
       background-color: rgba(127, 194, 155, 0.2);
       color: #2A5D45;
     }
+
+    
+    
+    .wrap{display:grid; grid-template-columns: 1.1fr 1fr; gap:14px; padding:14px}
+    #mapdiv{height:72vh; min-height:520px; border-radius:14px; overflow:hidden; background:#111634}
+    .right{display:grid; grid-template-rows: min-content 1fr 1fr; gap:14px}
+    .toolbar{background:#111634; padding:10px; border-radius:12px; display:flex; gap:8px; align-items:center}
+    .toolbar button{all:unset; background:#1a2252; padding:8px 12px; border-radius:10px; cursor:pointer}
+    .toolbar button.active{background:#2f3aa1}
+    #barchartdiv,#linechartdiv{background:#111634; border-radius:14px; height:calc((72vh - 60px)/2); min-height:220px; overflow:hidden}
+    .legend{margin-left:auto; opacity:.75; font-size:12px}
+  
   </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
@@ -99,7 +118,7 @@
         <h1 class="text-2xl font-bold text-conservation-green-dark">WildLife Impact</h1>
       </div>
       <nav class="hidden md:flex space-x-2">
-        <a href="#" class="nav-link active">Dashboard</a>
+        <a href="../ImpactWCS-Front_end/dashboard.html" class="nav-link active">Dashboard</a>
         <a href="#" class="nav-link">Projects</a>
         <a href="#" class="nav-link">Stories</a>
         <a href="#" class="nav-link">About</a>
@@ -292,6 +311,21 @@
         </div>
       </div>
     </section>
+
+    <div class="wrap">
+    <div id="mapdiv"></div>
+
+    <div class="right">
+      <div class="toolbar">
+        <strong style="opacity:.8">Region:</strong>
+        <button id="btn-africa" class="active">Africa</button>
+        <button id="btn-asia">Asia</button>
+        <span class="legend">Demo data — replace with your dataset</span>
+      </div>
+      <div id="barchartdiv"></div>
+      <div id="linechartdiv"></div>
+    </div>
+  </div>
     
     <!-- Projects Section -->
     <section class="mb-12">
@@ -427,5 +461,204 @@
       </div>
     </div>
   </footer>
+
+
   <script src="./assets/js/dashboard.js"> </script>
+
+
+<!-- Create simple map Chart amCrahts 5 -->
+
+
+<script>
+/* ======= Demo data (replace with your real numbers) ======= */
+const conservationData = {
+  AFRICA: {
+    bar: [
+      { metric: "Protected areas (Mha)", value: 260 },
+      { metric: "Rangers employed (k)", value: 110 },
+      { metric: "Annual funding (US$B)", value: 6.8 },
+      { metric: "Community projects", value: 420 }
+    ],
+    line: [
+      { year: 2018, value: 4.5 },
+      { year: 2019, value: 4.9 },
+      { year: 2020, value: 5.4 },
+      { year: 2021, value: 5.9 },
+      { year: 2022, value: 6.1 },
+      { year: 2023, value: 6.6 },
+      { year: 2024, value: 6.8 }
+    ]
+  },
+  ASIA: {
+    bar: [
+      { metric: "Protected areas (Mha)", value: 300 },
+      { metric: "Rangers employed (k)", value: 135 },
+      { metric: "Annual funding (US$B)", value: 8.2 },
+      { metric: "Community projects", value: 510 }
+    ],
+    line: [
+      { year: 2018, value: 5.9 },
+      { year: 2019, value: 6.2 },
+      { year: 2020, value: 6.6 },
+      { year: 2021, value: 7.2 },
+      { year: 2022, value: 7.6 },
+      { year: 2023, value: 7.9 },
+      { year: 2024, value: 8.2 }
+    ]
+  }
+};
+
+/* ======= MAP ======= */
+let mapRoot = am5.Root.new("mapdiv");
+mapRoot.setThemes([ am5themes_Animated.new(mapRoot) ]);
+
+let chart = mapRoot.container.children.push(am5map.MapChart.new(mapRoot, {
+  panX: "translateX",
+  panY: "translateY",
+  projection: am5map.geoMercator()
+}));
+
+// Zoom controls
+chart.set("zoomControl", am5map.ZoomControl.new(mapRoot, {}));
+
+// Countries layer
+let countrySeries = chart.series.push(
+  am5map.MapPolygonSeries.new(mapRoot, {
+    geoJSON: am5geodata_worldLow,
+    exclude: ["AQ"] // Antarctica
+  })
+);
+
+// Style polygons
+countrySeries.mapPolygons.template.setAll({
+  interactive: true,
+  tooltipText: "{name}",
+  fill: am5.color(0x2a3a7a),
+  stroke: am5.color(0x3d4c95),
+  strokeOpacity: 0.7
+});
+countrySeries.mapPolygons.template.states.create("hover", { fill: am5.color(0x3f58c9) });
+countrySeries.mapPolygons.template.states.create("active", { fill: am5.color(0x5869ff) });
+
+// Continents layer (hidden) just to grab bounds for Africa/Asia & enable smooth zoom
+let continentSeries = chart.series.push(
+  am5map.MapPolygonSeries.new(mapRoot, {
+    geoJSON: am5geodata_continentsLow,
+    exclude: ["antarctica"],
+    visible: false
+  })
+);
+
+// Helper: zoom to continent bounds by name
+function zoomToContinent(name) {
+  const item = continentSeries.dataItems.find(di => (di.get("name") || "").toLowerCase() === name.toLowerCase());
+  if (item) {
+    const bounds = item.get("polygon")._geoBounds; // amCharts tracks bounds on the polygon
+    chart.zoomToGeoBounds(bounds, 800);
+  }
+}
+
+// Select region effect: dim non-region countries
+function highlightRegion(region) {
+  const africaCodes = new Set(["DZ","AO","BJ","BW","BF","BI","CM","CV","CF","TD","KM","CD","CG","CI","DJ","EG","GQ","ER","SZ","ET","GA","GM","GH","GN","GW","KE","LS","LR","LY","MG","MW","ML","MR","MU","MA","MZ","NA","NE","NG","RE","RW","ST","SN","SC","SL","SO","ZA","SS","SD","TZ","TG","TN","UG","EH","ZM","ZW"]);
+  const asiaCodes   = new Set(["AF","AM","AZ","BH","BD","BT","BN","KH","CN","CY","GE","IN","ID","IR","IQ","IL","JP","JO","KZ","KW","KG","LA","LB","MY","MV","MN","MM","NP","KP","OM","PK","PS","PH","QA","SA","SG","KR","LK","SY","TW","TJ","TH","TL","TR","TM","AE","UZ","VN","YE","RU"]); // includes Asian part of RU/TR/KZ
+
+  const activeSet = region === "AFRICA" ? africaCodes : asiaCodes;
+
+  countrySeries.mapPolygons.each(polygon => {
+    const id = polygon.dataItem.get("id");
+    const inRegion = activeSet.has(id);
+    polygon.set("fillOpacity", inRegion ? 1 : 0.15);
+    polygon.set("strokeOpacity", inRegion ? 0.7 : 0.1);
+    polygon.set("interactive", inRegion);
+  });
+
+  zoomToContinent(region === "AFRICA" ? "Africa" : "Asia");
+}
+
+/* ======= BAR CHART ======= */
+let barRoot = am5.Root.new("barchartdiv");
+barRoot.setThemes([ am5themes_Animated.new(barRoot) ]);
+
+let barChart = barRoot.container.children.push(am5xy.XYChart.new(barRoot, {
+  panX: false, panY: false, wheelX: "none", wheelY: "none",
+  paddingLeft: 10, paddingRight: 10
+}));
+
+let catAxis = barChart.xAxes.push(am5xy.CategoryAxis.new(barRoot, {
+  categoryField: "metric",
+  renderer: am5xy.AxisRendererX.new(barRoot, { minGridDistance: 20, grid: { visible: false }, labels: { centerY: am5.p50, rotation: -15 } })
+}));
+
+let valAxis = barChart.yAxes.push(am5xy.ValueAxis.new(barRoot, {
+  renderer: am5xy.AxisRendererY.new(barRoot, {})
+}));
+
+let colSeries = barChart.series.push(am5xy.ColumnSeries.new(barRoot, {
+  name: "Metrics",
+  xAxis: catAxis,
+  yAxis: valAxis,
+  categoryXField: "metric",
+  valueYField: "value",
+  tooltip: am5.Tooltip.new(barRoot, { labelText: "{categoryX}: {valueY}" })
+}));
+colSeries.columns.template.setAll({ cornerRadiusTL: 6, cornerRadiusTR: 6 });
+
+/* ======= LINE CHART ======= */
+let lineRoot = am5.Root.new("linechartdiv");
+lineRoot.setThemes([ am5themes_Animated.new(lineRoot) ]);
+
+let lineChart = lineRoot.container.children.push(am5xy.XYChart.new(lineRoot, {
+  panX: true, panY: false, wheelX: "panX", wheelY: "zoomX",
+  paddingLeft: 10, paddingRight: 10
+}));
+
+let dateAxis = lineChart.xAxes.push(am5xy.DateAxis.new(lineRoot, {
+  baseInterval: { timeUnit: "year", count: 1 },
+  renderer: am5xy.AxisRendererX.new(lineRoot, {})
+}));
+let valueAxis = lineChart.yAxes.push(am5xy.ValueAxis.new(lineRoot, {
+  renderer: am5xy.AxisRendererY.new(lineRoot, {})
+}));
+
+let lineSeries = lineChart.series.push(am5xy.LineSeries.new(lineRoot, {
+  name: "Annual funding (US$B)",
+  xAxis: dateAxis,
+  yAxis: valueAxis,
+  valueYField: "value",
+  valueXField: "date",
+  tooltip: am5.Tooltip.new(lineRoot, { labelText: "{valueY}" }),
+  connect: true
+}));
+
+/* ======= Data wiring ======= */
+function setRegion(regionCode) {
+  // Toggle buttons
+  document.querySelectorAll(".toolbar button").forEach(b => b.classList.remove("active"));
+  document.getElementById(regionCode === "AFRICA" ? "btn-africa" : "btn-asia").classList.add("active");
+
+  // Map highlight + zoom
+  highlightRegion(regionCode);
+
+  // Bar chart
+  const barData = conservationData[regionCode].bar;
+  catAxis.data.setAll(barData);
+  colSeries.data.setAll(barData);
+
+  // Line chart — convert years to JS Date
+  const lineData = conservationData[regionCode].line.map(d => ({ date: new Date(d.year, 0, 1).getTime(), value: d.value }));
+  lineSeries.data.setAll(lineData);
+}
+
+// Buttons
+document.getElementById("btn-africa").addEventListener("click", () => setRegion("AFRICA"));
+document.getElementById("btn-asia").addEventListener("click", () => setRegion("ASIA"));
+
+// Initial view
+setRegion("AFRICA");
+chart.appear(800, 200);
+barChart.appear(800, 200);
+lineChart.appear(800, 200);
+</script>
+
 </body>

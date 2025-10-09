@@ -11,18 +11,55 @@
       .carousel-slide {
         transition: opacity 500ms ease;
       }
+      .volunteer-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .volunteer-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+      .impact-stats {
+        background: linear-gradient(rgba(4, 120, 87, 0.9), rgba(4, 120, 87, 0.8)), url('/assets/img/pexels-timmossholder-1618424.jpg');
+        background-size: cover;
+        background-position: center;
+      }
+      
+      /* Custom styles for search bar visibility */
+      .search-container {
+        transition: all 0.3s ease;
+      }
+      
+      .scrolled-nav {
+        background-color: white;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+      
+      .scrolled-nav .search-container input {
+        background-color: white;
+        color: #1a1f2c;
+        border-color: #1a1f2c;
+      }
+      
+      .scrolled-nav .search-container input::placeholder {
+        color: #6b7280;
+      }
+      
+      .scrolled-nav .search-container button {
+        background-color: #047857;
+        color: white;
+      }
+      
     </style>
 </head>
 <body>
-   <!-- Navbar -->
+    <!-- Navbar -->
   <header id="navbar" class="fixed top-0 w-full z-50 bg-transparent text-white transition-all duration-300 ease-in-out">
-    <div class="max-w-7xl mx-20 px-6 py-4 flex justify-between items-center">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
        <!-- Logo -->
-            <a href="../ImpactWCS-Front_end/index.html" class="flex items-center space-x-2">
+            <a href="/index.html" class="flex items-center space-x-2">
                 <img src="https://placehold.co/40x40/047857/FFFFFF?text=WL" alt="Wildlife Logo" class="rounded-full">
                 <span class="text-2xl font-bold">WCS Impact</span>
             </a>
-      <!-- <div class="font-bold text-xl">WCS</div> -->
       <nav class="flex items-center space-x-6 relative">
         <!-- About with dropdown -->
         <div class="relative group">
@@ -31,39 +68,44 @@
           </a>
           <!-- Dropdown -->
           <div class="absolute top-full left-0 mt-2 hidden group-hover:block bg-white text-black rounded shadow-md z-50">
-            <a href="../ImpactWCS-Front_end/about.html" class="block px-4 py-2 hover:bg-gray-100">WCS</a>
-            <a href="../ImpactWCS-Front_end/nature's.html" class="block px-4 py-2 hover:bg-gray-100">Nature's Strongholds</a>
+            <a href="/about.html" class="block px-4 py-2 hover:bg-gray-100">WCS</a>
+            <a href="/nature's.html" class="block px-4 py-2 hover:bg-gray-100">Nature's Strongholds</a>
             <a href="#" class="block px-4 py-2 hover:bg-gray-100">Partners</a>
           </div>
         </div>
   
         <!-- Dashboard -->
-        <a href="../ImpactWCS-Front_end/dashboard.html" class="hover:underline">Dashboard</a>
+        <a href="/dashboard.html" class="hover:underline">Dashboard</a>
+        
+        <!-- Volunteer -->
+        <a href="/volunteer.html" class="hover:underline font-semibold">Volunteer</a>
   
         <!-- Contact -->
-        <a href="../ImpactWCS-Front_end/contact.html" class="hover:underline">Contact</a>
+        <a href="/contact.html" class="hover:underline">Contact</a>
 
-        <!-- Search bar -->
-        <div>
-          <input type="text" placeholder="Search..." class="px-3 py-1 rounded border border-white bg-transparent placeholder-white text-white focus:outline-none focus:ring-2 focus:ring-white focus:border-white transition-all duration-200" />
+        <!-- Search bar with button - always visible -->
+        <div class="search-container flex items-center">
+          <input type="text" placeholder="Search..." class="px-3 py-1 rounded-l border border-r-0 border-white bg-transparent placeholder-white text-white focus:outline-none focus:ring-2 focus:ring-white focus:border-white transition-all duration-200 w-40 md:w-48" />
+          <button class="px-3 py-1 bg-white text-green-800 rounded-r hover:bg-gray-100 transition">
+            <i class="fas fa-search"></i>
+          </button>
         </div>
       </nav>
     </div>
   </header>
   
-  
 
   <!-- Hero Section with Background Video -->
   <section class="relative h-screen w-full overflow-hidden">
     <video autoplay muted loop class="absolute top-0 left-0 w-full h-full object-cover z-0">
-      <source src="../ImpactWCS-Front_end/assets/img/12541934_640_360_30fps.mp4" type="video/mp4" />
+      <source src="/assets/img/12541934_640_360_30fps.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
     <div class="relative z-10 h-full flex items-center justify-center text-center text-white px-4 bg-black bg-opacity-40">
       <div>
         <h1 class="text-4xl md:text-6xl font-bold">WCS Impact Platform:</h1>
         <p class="mt-4 text-xl md:text-2xl">The Global Recovery of Nature Starts Here</p>
-        <a href="#" class="mt-6 inline-block px-6 py-3 border border-white rounded-full hover:bg-white hover:text-black transition">Explore our Impact</a>
+        <a href="/about.html" class="mt-6 inline-block px-6 py-3 border border-white rounded-full hover:bg-white hover:text-black transition">Explore our Impact</a>
       </div>
     </div>
   </section>
@@ -86,17 +128,17 @@
       <!-- Image slides -->
       <div class="relative h-full w-full">
         <div class="carousel-slide absolute top-0 left-0 w-full h-full opacity-100" data-slide="0">
-          <img src="./assets/img/pexels-adi-k-182036-582590.jpg" alt="Conservation work slide 1" class="w-full h-full object-cover"/> 
+          <img src="/assets/img/pexels-adi-k-182036-582590.jpg" alt="Conservation work slide 1" class="w-full h-full object-cover"/> 
         </div>
         <div class="carousel-slide absolute top-0 left-0 w-full h-full opacity-0" data-slide="1">
-          <img src="./assets/img/pexels-tomfisk-2739666.jpg" alt="Conservation work slide 2" class="w-full h-full object-cover"/>
+          <img src="/assets/img/pexels-tomfisk-2739666.jpg" alt="Conservation work slide 2" class="w-full h-full object-cover"/>
         </div>
         <div class="carousel-slide absolute top-0 left-0 w-full h-full opacity-0" data-slide="2">
-          <img src="./assets/img/pexels-jeremy-bishop-1260133-2765872.jpg" alt="Conservation work slide 3" class="w-full h-full object-cover"/>
+          <img src="/assets/img/pexels-jeremy-bishop-1260133-2765872.jpg" alt="Conservation work slide 3" class="w-full h-full object-cover"/>
           
         </div>
         <div class="carousel-slide absolute top-0 left-0 w-full h-full opacity-0" data-slide="3">
-          <img src="./assets/img/pexels-timmossholder-1618424.jpg" alt="Conservation work slide 4" class="w-full h-full object-cover"/>
+          <img src="/assets/img/pexels-timmossholder-1618424.jpg" alt="Conservation work slide 4" class="w-full h-full object-cover"/>
         </div>
         <div class="absolute bottom-0 left-0 bg-white/80 py-1 px-3">
           <p class="text-sm text-gray-700">2022</p>
@@ -186,7 +228,7 @@
     <div class="grid md:grid-cols-3 gap-14 max-w-6xl mx-auto text-center">
       <!-- Global Scale -->
       <div class="space-y-4">
-        <img src="./assets/img/30592996_7706152-removebg-preview.png" alt="Global Scale Icon" class="mx-auto h-41">
+        <img src="/assets/img/30592996_7706152-removebg-preview.png" alt="Global Scale Icon" class="mx-auto h-41">
         <div class="font-bold text-lg text-gray-900">Global Scale</div>
         <p class="text-gray-600 text-sm max-w-xs mx-auto">
           Working in over 50 countries, supporting 27 million square kilometres of the highest ecological integrity areas.
@@ -195,7 +237,7 @@
   
       <!-- Data-driven -->
       <div class="space-y-4">
-        <img src="./assets/img/29765879_7590700-removebg-preview.png" alt="Data-driven Icon" class="mx-auto h-41">
+        <img src="/assets/img/29765879_7590700-removebg-preview.png" alt="Data-driven Icon" class="mx-auto h-41">
         <div class="font-bold text-lg text-gray-900">Data-driven</div>
         <p class="text-gray-600 text-sm max-w-xs mx-auto">
           Our fieldwork is driven by data, as we thoughtfully push the boundaries of science and innovation.
@@ -204,7 +246,7 @@
   
       <!-- Partners -->
       <div class="space-y-4">
-        <img src="./assets/img/13795570_5363957-removebg-preview.png" alt="Partners Icon" class="mx-auto h-41">
+        <img src="/assets/img/13795570_5363957-removebg-preview.png" alt="Partners Icon" class="mx-auto h-41">
         <div class="font-bold text-lg text-gray-900">Partners</div>
         <p class="text-gray-600 text-sm max-w-xs mx-auto">
           Working with governments, local partners and Indigenous Peoples and Local Communities to ensure equitable, just, and durable conservation.
@@ -235,7 +277,7 @@
           <!-- 13 News Cards -->
           <div class="swiper-slide w-72">
             <div class="bg-gray-50 rounded-lg shadow p-4 h-[22rem] transition transform hover:scale-105 duration-300">
-              <img src="./assets/img/pexels-adi-k-182036-582590.jpg" alt="News Image 1" class="rounded-md mb-4 w-full h-40 object-cover">
+              <img src="/assets/img/pexels-adi-k-182036-582590.jpg" alt="News Image 1" class="rounded-md mb-4 w-full h-40 object-cover">
               <p class="text-sm text-gray-500 mb-1">20 April 2023</p>
               <p class="text-gray-800 text-sm mb-2">'Extinct' lion spotted in Chad national park</p>
               <a href="#" class="text-teal-600 text-sm font-medium">BBC</a>
@@ -243,7 +285,7 @@
           </div>
           <div class="swiper-slide w-72">
             <div class="bg-gray-50 rounded-lg shadow p-4 h-[22rem] transition transform hover:scale-105 duration-300">
-              <img src="./assets/img/pexels-jeremy-bishop-1260133-2765872.jpg" alt="News Image 2" class="rounded-md mb-4 w-full h-40 object-cover">
+              <img src="/assets/img/pexels-jeremy-bishop-1260133-2765872.jpg" alt="News Image 2" class="rounded-md mb-4 w-full h-40 object-cover">
               <p class="text-sm text-gray-500 mb-1">24 January 2023</p>
               <p class="text-gray-800 text-sm mb-2">Watch: Drone video captures the world’s largest hatching of baby turtles</p>
               <a href="#" class="text-teal-600 text-sm font-medium">Fox News Weather</a>
@@ -251,7 +293,7 @@
           </div>
           <div class="swiper-slide w-72">
             <div class="bg-gray-50 rounded-lg shadow p-4 h-[22rem] transition transform hover:scale-105 duration-300">
-              <img src="./assets/img/pexels-belle-co-99483-847393.jpg" alt="News Image 3" class="rounded-md mb-4 w-full h-40 object-cover">
+              <img src="/assets/img/pexels-belle-co-99483-847393.jpg" alt="News Image 3" class="rounded-md mb-4 w-full h-40 object-cover">
               <p class="text-sm text-gray-500 mb-1">2 February 2023</p>
               <p class="text-gray-800 text-sm mb-2">The illegal jaguar trade is thriving online. Why aren’t governments stopping it?</p>
               <a href="#" class="text-teal-600 text-sm font-medium">Mongabay</a>
@@ -260,7 +302,7 @@
 
           <div class="swiper-slide w-72">
             <div class="bg-gray-50 rounded-lg shadow p-4 h-[22rem] transition transform hover:scale-105 duration-300">
-              <img src="./assets/img/pexels-belle-co-99483-847393.jpg" alt="News Image 3" class="rounded-md mb-4 w-full h-40 object-cover">
+              <img src="/assets/img/pexels-belle-co-99483-847393.jpg" alt="News Image 3" class="rounded-md mb-4 w-full h-40 object-cover">
               <p class="text-sm text-gray-500 mb-1">2 February 2023</p>
               <p class="text-gray-800 text-sm mb-2">The illegal jaguar trade is thriving online. Why aren’t governments stopping it?</p>
               <a href="#" class="text-teal-600 text-sm font-medium">Mongabay</a>
@@ -268,7 +310,7 @@
           </div>
           <div class="swiper-slide w-72">
             <div class="bg-gray-50 rounded-lg shadow p-4 h-[22rem] transition transform hover:scale-105 duration-300">
-              <img src="./assets/img/pexels-belle-co-99483-847393.jpg" alt="News Image 3" class="rounded-md mb-4 w-full h-40 object-cover">
+              <img src="/assets/img/pexels-belle-co-99483-847393.jpg" alt="News Image 3" class="rounded-md mb-4 w-full h-40 object-cover">
               <p class="text-sm text-gray-500 mb-1">2 February 2023</p>
               <p class="text-gray-800 text-sm mb-2">The illegal jaguar trade is thriving online. Why aren’t governments stopping it?</p>
               <a href="#" class="text-teal-600 text-sm font-medium">Mongabay</a>
@@ -278,7 +320,7 @@
         </div>
   
         <!-- Bottom Navigation Arrows -->
-        <div class="flex justify-center gap-4 mt-8">
+        <div class="flex items-centerjustify-center gap-4 mt-8">
           <button class="swiper-button-prev w-10 h-10 rounded-full border border-blue-900 text-blue-900 bg-white flex items-center justify-center hover:bg-blue-900 hover:text-white transition">
             <svg class="w-2 h-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
           </button>
@@ -296,9 +338,9 @@
     This platform was built with the generous support of a number of donors.
   </h2>
   <div class="flex justify-center items-center gap-10 flex-wrap">
-    <img src="./assets/img/Logo-TotalEnergies-2021-1-removebg-preview.png" alt="DocuSign" class="h-12">
-    <img src="./assets/img/netflix-removebg-preview.png" alt="Acacia Foundation" class="h-16">
-    <img src="./assets/img/nfl-removebg-preview (1).png" alt="RBC" class="h-16">
+    <img src="/assets/img/Logo-TotalEnergies-2021-1-removebg-preview.png" alt="DocuSign" class="h-12">
+    <img src="/assets/img/netflix-removebg-preview.png" alt="Acacia Foundation" class="h-16">
+    <img src="/assets/img/nfl-removebg-preview (1).png" alt="RBC" class="h-16">
   </div>
 </section>
 
@@ -336,8 +378,8 @@
     <div class="relative group">
       <button class="px-4 py-2 border border-white rounded-full text-white group-hover:bg-white group-hover:text-blue-800 transition">About</button>
       <div class="absolute hidden group-hover:block bg-white text-left mt-2 py-2 rounded shadow-md min-w-[200px] z-10">
-        <a href="../ImpactWCS-Front_end/about.html" class="block px-4 py-2 text-blue-800 hover:text-green-600 transition">WCS</a>
-        <a href="../ImpactWCS-Front_end/nature's.html" class="block px-4 py-2 text-blue-800 hover:text-green-600 transition">Nature's Stronghold</a>
+        <a href="/about.html" class="block px-4 py-2 text-blue-800 hover:text-green-600 transition">WCS</a>
+        <a href="/nature's.html" class="block px-4 py-2 text-blue-800 hover:text-green-600 transition">Nature's Stronghold</a>
         <a href="#" class="block px-4 py-2 text-blue-800 hover:text-green-600 transition">Partners</a>
       </div>
     </div>
@@ -346,7 +388,7 @@
     <a href="#" class="relative after:content-[''] after:block after:h-0.5 after:bg-blue-500 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left">Dashboard</a>
 
     <!-- Contact Link -->
-    <a href="../ImpactWCS-Front_end/contact.html" class="relative after:content-[''] after:block after:h-0.5 after:bg-blue-500 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left">Contact</a>
+    <a href="/contact.html" class="relative after:content-[''] after:block after:h-0.5 after:bg-blue-500 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left">Contact</a>
   </nav>
   <p class="text-sm text-gray-400">Copyright 2025 by Wildlife Conservation Society &nbsp; | &nbsp; <a href="#" class="hover:underline">Privacy Policy</a> &nbsp; | &nbsp; <a href="#" class="hover:underline">User Agreement</a></p>
 </footer>
@@ -356,6 +398,6 @@
   
 
 
-<script src="../ImpactWCS-Front_end/assets/js/index.js"></script>
+<script src="assets/js/index.js"></script>
 </body>
 </html>
