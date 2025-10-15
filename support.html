@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | WCS Impact</title>
+    <title>Support Wildlife Conservation | WCS Impact</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Inter Font - Weight 300 to 800 -->
@@ -110,49 +110,38 @@
             outline-offset: 2px;
         }
         
-        /* Custom styles for contact page */
+        /* Custom styles for support page */
         .hero-gradient {
             background: linear-gradient(135deg, #047857 0%, #065f46 50%, #064e3b 100%);
         }
         
-        .contact-card {
+        .impact-card {
             transition: all 0.3s ease;
             border: 1px solid #e5e7eb;
         }
         
-        .contact-card:hover {
+        .impact-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
         
-        .form-input {
+        .donation-option {
             transition: all 0.3s ease;
+            border: 2px solid #e5e7eb;
         }
         
-        .form-input:focus {
+        .donation-option:hover {
             border-color: #047857;
-            box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.1);
+            transform: scale(1.02);
         }
         
-        .hero-background {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
-            background-size: cover;
-            background-position: center;
+        .donation-option.selected {
+            border-color: #047857;
+            background-color: #f0fdf4;
         }
         
-        .animate-fadeInUp {
-            animation: fadeInUp 0.6s ease-out;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .impact-counter {
+            background: linear-gradient(135deg, #047857 0%, #065f46 100%);
         }
     </style>
 </head>
@@ -187,7 +176,7 @@
                     <a href="#" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Our Work</a>
                     <a href="#" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Projects</a>
                     <a href="#" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Support Us</a>
-                    <a href="#" class="text-base xl:text-lg font-bold text-green-300 py-2 lg:py-0 transition-colors duration-200 border-b-2 border-green-300">Contact</a>
+                    <a href="#" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Contact</a>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -260,7 +249,7 @@
                     <i class="fas fa-hand-holding-heart mr-3 text-green-300 w-5 text-center"></i>
                     Support Us
                 </a>
-                <a href="#" class="menu-item mobile-menu-item text-base font-bold text-green-300 hover:bg-green-700/50 rounded-lg px-3 py-3 transition-all duration-200 flex items-center">
+                <a href="#" class="menu-item mobile-menu-item text-base font-medium text-white hover:bg-green-700/50 rounded-lg px-3 py-3 transition-all duration-200 flex items-center">
                     <i class="fas fa-envelope mr-3 text-green-300 w-5 text-center"></i>
                     Contact
                 </a>
@@ -295,212 +284,261 @@
         <section class="hero-gradient text-white py-16 lg:py-24">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-3xl mx-auto text-center">
-                    <h1 class="text-4xl lg:text-5xl font-bold mb-6">Contact WCS Impact</h1>
-                    <p class="text-xl lg:text-2xl mb-8 text-green-100">Get in touch with our team for inquiries, collaborations, or to support our conservation efforts</p>
+                    <h1 class="text-4xl lg:text-5xl font-bold mb-6">Support Wildlife Conservation</h1>
+                    <p class="text-xl lg:text-2xl mb-8 text-green-100">Your contribution helps protect endangered species and preserve natural habitats worldwide</p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="#contact-form" class="bg-white text-green-800 font-semibold px-8 py-4 rounded-lg hover:bg-green-50 transition duration-300 shadow-lg">
-                            Send Message
+                        <a href="#donate" class="bg-white text-green-800 font-semibold px-8 py-4 rounded-lg hover:bg-green-50 transition duration-300 shadow-lg">
+                            Donate Now
                         </a>
-                        <a href="#contact-info" class="bg-transparent border-2 border-white text-white font-semibold px-8 py-4 rounded-lg hover:bg-white/10 transition duration-300">
-                            Contact Info
+                        <a href="#impact" class="bg-transparent border-2 border-white text-white font-semibold px-8 py-4 rounded-lg hover:bg-white/10 transition duration-300">
+                            See Our Impact
                         </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Information Section -->
-        <section id="contact-info" class="py-16 bg-white">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">Get In Touch</h2>
-                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">We're here to answer your questions and discuss how you can support wildlife conservation</p>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="contact-card bg-white rounded-xl p-6 text-center">
-                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-map-marker-alt text-green-600 text-2xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-3">Visit Our Office</h3>
-                        <p class="text-gray-600 mb-4">2300 Southern Boulevard<br>Bronx, NY 10460<br>United States</p>
-                        <a href="#map" class="text-green-600 font-semibold inline-flex items-center">
-                            View on Map <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                    
-                    <div class="contact-card bg-white rounded-xl p-6 text-center">
-                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-phone text-green-600 text-2xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-3">Call Us</h3>
-                        <p class="text-gray-600 mb-2">General Inquiries</p>
-                        <p class="text-lg font-semibold text-gray-800 mb-4">+1 (718) 220-5100</p>
-                        <p class="text-gray-600 text-sm">Mon-Fri: 9am-6pm EST</p>
-                    </div>
-                    
-                    <div class="contact-card bg-white rounded-xl p-6 text-center">
-                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-envelope text-green-600 text-2xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-3">Email Us</h3>
-                        <p class="text-gray-600 mb-2">General Inquiries</p>
-                        <a href="mailto:info@wcsimpact.org" class="text-green-600 font-semibold block mb-2">info@wcsimpact.org</a>
-                        <p class="text-gray-600 mb-2">Partnerships</p>
-                        <a href="mailto:partnerships@wcsimpact.org" class="text-green-600 font-semibold block">partnerships@wcsimpact.org</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Form Section -->
-        <section id="contact-form" class="py-16 bg-gray-50">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="max-w-4xl mx-auto">
-                    <div class="text-center mb-12">
-                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">Send Us a Message</h2>
-                        <p class="text-lg text-gray-600">Fill out the form below and our team will get back to you as soon as possible</p>
-                    </div>
-                    
-                    <div class="bg-white rounded-2xl p-6 lg:p-8 shadow-lg">
-                        <form class="space-y-6">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
-                                    <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg form-input focus:ring-2 focus:ring-green-500 focus:border-green-500" placeholder="Your name" required>
-                                </div>
-                                
-                                <div>
-                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
-                                    <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg form-input focus:ring-2 focus:ring-green-500 focus:border-green-500" placeholder="your.email@example.com" required>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Subject *</label>
-                                <select id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg form-input focus:ring-2 focus:ring-green-500 focus:border-green-500" required>
-                                    <option value="">Select a subject</option>
-                                    <option value="general">General Inquiry</option>
-                                    <option value="partnership">Partnership Opportunity</option>
-                                    <option value="donation">Donation Information</option>
-                                    <option value="volunteer">Volunteer Opportunities</option>
-                                    <option value="media">Media Inquiry</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                            
-                            <div>
-                                <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Your Message *</label>
-                                <textarea id="message" rows="6" class="w-full px-4 py-3 border border-gray-300 rounded-lg form-input focus:ring-2 focus:ring-green-500 focus:border-green-500 resize-vertical" placeholder="Please provide details about your inquiry..." required></textarea>
-                            </div>
-                            
-                            <div class="flex items-center">
-                                <input type="checkbox" id="newsletter" class="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500">
-                                <label for="newsletter" class="ml-2 text-sm text-gray-600">Subscribe to our newsletter for updates on conservation efforts</label>
-                            </div>
-                            
-                            <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-6 rounded-lg transition duration-300 shadow-lg flex items-center justify-center">
-                                <i class="fas fa-paper-plane mr-2"></i> Send Message
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Department Contacts Section -->
+        <!-- Impact Stats Section -->
         <section class="py-16 bg-white">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">Department Contacts</h2>
-                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">Connect directly with our specialized teams for specific inquiries</p>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">Our Conservation Impact</h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">With your support, we've achieved remarkable results in wildlife protection and habitat conservation</p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="bg-gray-50 rounded-xl p-6 text-center">
-                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-hand-holding-heart text-blue-600 text-xl"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-800 mb-2">Donations</h3>
-                        <p class="text-gray-600 text-sm mb-3">Support our conservation work</p>
-                        <a href="mailto:donate@wcsimpact.org" class="text-green-600 text-sm font-medium">donate@wcsimpact.org</a>
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+                    <div class="impact-counter text-center p-6 rounded-xl text-white">
+                        <div class="text-3xl lg:text-4xl font-bold mb-2">120+</div>
+                        <div class="text-green-100">Protected Species</div>
                     </div>
-                    
-                    <div class="bg-gray-50 rounded-xl p-6 text-center">
-                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-users text-purple-600 text-xl"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-800 mb-2">Volunteering</h3>
-                        <p class="text-gray-600 text-sm mb-3">Join our conservation team</p>
-                        <a href="mailto:volunteer@wcsimpact.org" class="text-green-600 text-sm font-medium">volunteer@wcsimpact.org</a>
+                    <div class="impact-counter text-center p-6 rounded-xl text-white">
+                        <div class="text-3xl lg:text-4xl font-bold mb-2">3.2M</div>
+                        <div class="text-green-100">Acres Protected</div>
                     </div>
-                    
-                    <div class="bg-gray-50 rounded-xl p-6 text-center">
-                        <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-handshake text-yellow-600 text-xl"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-800 mb-2">Partnerships</h3>
-                        <p class="text-gray-600 text-sm mb-3">Collaborate with us</p>
-                        <a href="mailto:partnerships@wcsimpact.org" class="text-green-600 text-sm font-medium">partnerships@wcsimpact.org</a>
+                    <div class="impact-counter text-center p-6 rounded-xl text-white">
+                        <div class="text-3xl lg:text-4xl font-bold mb-2">65+</div>
+                        <div class="text-green-100">Countries</div>
                     </div>
-                    
-                    <div class="bg-gray-50 rounded-xl p-6 text-center">
-                        <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-newspaper text-red-600 text-xl"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-800 mb-2">Media</h3>
-                        <p class="text-gray-600 text-sm mb-3">Press and media inquiries</p>
-                        <a href="mailto:media@wcsimpact.org" class="text-green-600 text-sm font-medium">media@wcsimpact.org</a>
+                    <div class="impact-counter text-center p-6 rounded-xl text-white">
+                        <div class="text-3xl lg:text-4xl font-bold mb-2">40+</div>
+                        <div class="text-green-100">Years of Service</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Volunteer CTA Section -->
+        <!-- Ways to Support Section -->
+        <section id="impact" class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">Ways You Can Help</h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">Choose how you'd like to make a difference for wildlife and ecosystems</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="impact-card bg-white rounded-xl p-6">
+                        <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-donate text-green-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">One-Time Donation</h3>
+                        <p class="text-gray-600 mb-4">Make an immediate impact with a single contribution to our conservation efforts.</p>
+                        <a href="#donate" class="text-green-600 font-semibold inline-flex items-center">
+                            Donate Now <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="impact-card bg-white rounded-xl p-6">
+                        <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-calendar-check text-green-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Monthly Support</h3>
+                        <p class="text-gray-600 mb-4">Provide sustained funding for long-term conservation projects with recurring donations.</p>
+                        <a href="#donate" class="text-green-600 font-semibold inline-flex items-center">
+                            Become a Sustainer <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="impact-card bg-white rounded-xl p-6">
+                        <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-hands-helping text-green-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Corporate Partnership</h3>
+                        <p class="text-gray-600 mb-4">Align your business with conservation goals through strategic partnerships.</p>
+                        <a href="#contact" class="text-green-600 font-semibold inline-flex items-center">
+                            Partner With Us <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="impact-card bg-white rounded-xl p-6">
+                        <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-user-friends text-green-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Volunteer</h3>
+                        <p class="text-gray-600 mb-4">Donate your time and skills to support our conservation initiatives.</p>
+                        <a href="#contact" class="text-green-600 font-semibold inline-flex items-center">
+                            Get Involved <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="impact-card bg-white rounded-xl p-6">
+                        <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-gift text-green-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Legacy Giving</h3>
+                        <p class="text-gray-600 mb-4">Include WCS Impact in your estate planning to create a lasting conservation legacy.</p>
+                        <a href="#contact" class="text-green-600 font-semibold inline-flex items-center">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="impact-card bg-white rounded-xl p-6">
+                        <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-share-alt text-green-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Spread the Word</h3>
+                        <p class="text-gray-600 mb-4">Help raise awareness by sharing our mission with your network and community.</p>
+                        <a href="#" class="text-green-600 font-semibold inline-flex items-center">
+                            Share Our Work <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donation Section -->
+        <section id="donate" class="py-16 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-4xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">Make a Donation</h2>
+                        <p class="text-lg text-gray-600">Your generous contribution directly supports our conservation programs</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 rounded-2xl p-6 lg:p-8">
+                        <div class="mb-8">
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Select Donation Type</h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <button class="donation-option p-4 rounded-lg text-left" data-type="one-time">
+                                    <div class="flex items-center">
+                                        <div class="w-6 h-6 rounded-full border-2 border-gray-300 mr-3 flex-shrink-0"></div>
+                                        <div>
+                                            <div class="font-semibold text-gray-800">One-Time Donation</div>
+                                            <div class="text-sm text-gray-600">Single contribution</div>
+                                        </div>
+                                    </div>
+                                </button>
+                                <button class="donation-option p-4 rounded-lg text-left" data-type="monthly">
+                                    <div class="flex items-center">
+                                        <div class="w-6 h-6 rounded-full border-2 border-gray-300 mr-3 flex-shrink-0"></div>
+                                        <div>
+                                            <div class="font-semibold text-gray-800">Monthly Donation</div>
+                                            <div class="text-sm text-gray-600">Ongoing support</div>
+                                        </div>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-8">
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Select Amount</h3>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                                <button class="donation-amount bg-white border-2 border-gray-200 py-3 rounded-lg font-semibold text-gray-800 hover:border-green-500 transition duration-200" data-amount="25">
+                                    $25
+                                </button>
+                                <button class="donation-amount bg-white border-2 border-gray-200 py-3 rounded-lg font-semibold text-gray-800 hover:border-green-500 transition duration-200" data-amount="50">
+                                    $50
+                                </button>
+                                <button class="donation-amount bg-white border-2 border-gray-200 py-3 rounded-lg font-semibold text-gray-800 hover:border-green-500 transition duration-200" data-amount="100">
+                                    $100
+                                </button>
+                                <button class="donation-amount bg-white border-2 border-gray-200 py-3 rounded-lg font-semibold text-gray-800 hover:border-green-500 transition duration-200" data-amount="250">
+                                    $250
+                                </button>
+                            </div>
+                            <div class="mt-4">
+                                <label for="custom-amount" class="block text-sm font-medium text-gray-700 mb-2">Or enter custom amount</label>
+                                <div class="relative">
+                                    <span class="absolute left-3 top-3 text-gray-500">$</span>
+                                    <input type="number" id="custom-amount" placeholder="Other amount" class="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-8">
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Where would you like to direct your donation?</h3>
+                            <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                                <option>Where most needed</option>
+                                <option>Species Protection</option>
+                                <option>Habitat Conservation</option>
+                                <option>Climate Change Initiatives</option>
+                                <option>Community Engagement</option>
+                                <option>Research & Science</option>
+                            </select>
+                        </div>
+                        
+                        <button class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-6 rounded-lg transition duration-300 shadow-lg">
+                            Continue to Payment
+                        </button>
+                        
+                        <div class="mt-6 text-center text-sm text-gray-500">
+                            <p>Your donation is secure and tax-deductible. WCS Impact is a 501(c)(3) organization.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Success Stories Section -->
+        <section class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">Success Stories</h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">See how your support has made a tangible difference in conservation efforts worldwide</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg">
+                        <div class="h-48 bg-green-600 flex items-center justify-center">
+                            <i class="fas fa-paw text-white text-6xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">Tiger Population Recovery</h3>
+                            <p class="text-gray-600 mb-4">Thanks to donor support, we've helped increase tiger populations by 40% in protected areas through anti-poaching efforts and habitat restoration.</p>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fas fa-map-marker-alt mr-2"></i>
+                                <span>India & Southeast Asia</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg">
+                        <div class="h-48 bg-blue-600 flex items-center justify-center">
+                            <i class="fas fa-water text-white text-6xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">Marine Protected Areas</h3>
+                            <p class="text-gray-600 mb-4">With your contributions, we've established 5 new marine protected areas, safeguarding critical habitats for endangered marine species.</p>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fas fa-map-marker-alt mr-2"></i>
+                                <span>Global Oceans</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
         <section class="py-16 hero-gradient text-white">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-3xl mx-auto text-center">
-                    <h2 class="text-3xl lg:text-4xl font-bold mb-6">Join Our Conservation Team</h2>
-                    <p class="text-xl mb-8 text-green-100">Become a volunteer and make a direct impact on wildlife conservation efforts worldwide</p>
-                    <a href="/volunteer.html" class="bg-white text-green-800 font-semibold px-8 py-4 rounded-lg hover:bg-green-50 transition duration-300 shadow-lg inline-flex items-center">
-                        <i class="fas fa-hands-helping mr-2"></i> Volunteer Now
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Map Section -->
-        <section id="map" class="py-16 bg-white">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">Find Our Office</h2>
-                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">Visit our headquarters to learn more about our conservation work</p>
-                </div>
-                
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg">
-                    <div class="h-96 w-full">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.9503398796587!2d-73.87554568459416!3d40.72881797933007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25eaf6cbfc5c7%3A0x8f1e3b9e3a8e5b9d!2s2300%20Southern%20Blvd%2C%20The%20Bronx%2C%20NY%2010460%2C%20USA!5e0!3m2!1sen!2s!4v1640000000000!5m2!1sen!2s" 
-                            width="100%" 
-                            height="100%" 
-                            style="border:0;" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade"
-                            class="rounded-lg"
-                            title="WCS Impact Office Location">
-                        </iframe>
-                    </div>
-                    <div class="p-6 border-t border-gray-200">
-                        <div class="flex flex-col md:flex-row justify-between items-center">
-                            <div class="mb-4 md:mb-0">
-                                <h3 class="text-xl font-bold text-gray-800">WCS Impact Headquarters</h3>
-                                <p class="text-gray-600">2300 Southern Boulevard, Bronx, NY 10460</p>
-                            </div>
-                            <a href="https://goo.gl/maps/example" target="_blank" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-lg transition duration-300 flex items-center">
-                                <i class="fas fa-directions mr-2"></i> Get Directions
-                            </a>
-                        </div>
+                    <h2 class="text-3xl lg:text-4xl font-bold mb-6">Join Our Conservation Community</h2>
+                    <p class="text-xl mb-8 text-green-100">Subscribe to our newsletter to stay updated on our projects, success stories, and upcoming initiatives.</p>
+                    <div class="max-w-md mx-auto flex">
+                        <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 rounded-l-lg border-0 focus:ring-2 focus:ring-green-300 text-gray-800">
+                        <button class="bg-green-800 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-r-lg transition duration-300">
+                            Subscribe
+                        </button>
                     </div>
                 </div>
             </div>
@@ -552,7 +590,7 @@
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-envelope mr-2 w-5"></i>
-                            <span>info@wcsimpact.org</span>
+                            <span>contact@wcsimpact.org</span>
                         </li>
                     </ul>
                 </div>
@@ -677,30 +715,57 @@
             }
         });
 
-        // Form submission handling
+        // Donation form functionality
         document.addEventListener('DOMContentLoaded', function() {
-            const contactForm = document.querySelector('form');
-            
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
+            // Donation type selection
+            const donationOptions = document.querySelectorAll('.donation-option');
+            donationOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove selected class from all options
+                    donationOptions.forEach(opt => {
+                        opt.classList.remove('selected');
+                        const radio = opt.querySelector('.w-6');
+                        radio.classList.remove('bg-green-500', 'border-green-500');
+                        radio.classList.add('border-gray-300');
+                    });
                     
-                    // Simple form validation
-                    const name = document.getElementById('name').value;
-                    const email = document.getElementById('email').value;
-                    const subject = document.getElementById('subject').value;
-                    const message = document.getElementById('message').value;
-                    
-                    if (name && email && subject && message) {
-                        // In a real application, you would send the form data to a server
-                        // For now, we'll just show a success message
-                        alert('Thank you for your message! We will get back to you soon.');
-                        contactForm.reset();
-                    } else {
-                        alert('Please fill in all required fields.');
-                    }
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+                    const radio = this.querySelector('.w-6');
+                    radio.classList.add('bg-green-500', 'border-green-500');
+                    radio.classList.remove('border-gray-300');
                 });
-            }
+            });
+            
+            // Donation amount selection
+            const donationAmounts = document.querySelectorAll('.donation-amount');
+            donationAmounts.forEach(amount => {
+                amount.addEventListener('click', function() {
+                    // Remove selected style from all amounts
+                    donationAmounts.forEach(amt => {
+                        amt.classList.remove('border-green-500', 'bg-green-50');
+                        amt.classList.add('border-gray-200', 'bg-white');
+                    });
+                    
+                    // Add selected style to clicked amount
+                    this.classList.add('border-green-500', 'bg-green-50');
+                    this.classList.remove('border-gray-200', 'bg-white');
+                    
+                    // Set custom amount field to empty when preset amount is selected
+                    document.getElementById('custom-amount').value = '';
+                });
+            });
+            
+            // Clear preset amount when custom amount is entered
+            const customAmount = document.getElementById('custom-amount');
+            customAmount.addEventListener('input', function() {
+                if (this.value) {
+                    donationAmounts.forEach(amt => {
+                        amt.classList.remove('border-green-500', 'bg-green-50');
+                        amt.classList.add('border-gray-200', 'bg-white');
+                    });
+                }
+            });
         });
     </script>
 </body>

@@ -16,6 +16,59 @@
         .navbar-transition {
             transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, padding 0.3s ease-in-out;
         }
+        
+        /* Smooth transitions for mobile menu */
+        .mobile-menu-transition {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Backdrop blur effect */
+        .backdrop-blur-custom {
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        
+        /* Slide in animation */
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 0.3s ease-out;
+        }
+        
+        /* Fade in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.2s ease-out;
+        }
+        
+        /* Staggered animation for menu items */
+        .menu-item {
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.3s ease;
+        }
+        
+        .menu-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
     </style>
 </head>
 <body>
@@ -31,7 +84,7 @@
             </a>
 
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-button" class="lg:hidden focus:outline-none p-2 rounded-md hover:bg-gray-700/30 transition-colors duration-200">
+            <button id="mobile-menu-button" class="lg:hidden focus:outline-none p-2 rounded-md hover:bg-gray-700/30 transition-all duration-200 transform hover:scale-105">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
@@ -41,14 +94,13 @@
             <div id="navbar-links" class="hidden lg:flex flex-col lg:flex-row lg:space-x-8 mt-4 lg:mt-0 items-center">
                 <a href="#" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Home</a>
                 <div class="relative group">
-      <button  id="about-toggle" class="px-4 py-2  text-white group-hover:bg-white group-hover:text-blue-800 transition">About</button>
-      <div class="absolute hidden group-hover:block bg-white text-left mt-2 py-2 rounded shadow-md min-w-[200px] z-10">
-        <a href="/about.html" class="block px-4 py-2 text-blue-800 hover:text-green-600 transition">WCS</a>
-        <a href="/nature's.html" class="block px-4 py-2 text-blue-800 hover:text-green-600 transition">Nature's Stronghold</a>
-        <a href="#" class="block px-4 py-2 text-blue-800 hover:text-green-600 transition">Partners</a>
-      </div>
-    </div>
-               
+                    <button id="about-toggle" class="px-4 py-2 text-white group-hover:bg-white group-hover:text-blue-800 transition">About</button>
+                    <div class="absolute hidden group-hover:block bg-white text-left mt-2 py-2 rounded shadow-md min-w-[200px] z-10">
+                        <a href="/about.html" class="block px-4 py-2 text-blue-800 hover:text-green-600 transition">WCS</a>
+                        <a href="/nature's.html" class="block px-4 py-2 text-blue-800 hover:text-green-600 transition">Nature's Stronghold</a>
+                        <a href="#" class="block px-4 py-2 text-blue-800 hover:text-green-600 transition">Partners</a>
+                    </div>
+                </div>
                 <a href="#" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Our Work</a>
                 <a href="#" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Projects</a>
                 <a href="#" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Support Us</a>
@@ -58,51 +110,150 @@
     </nav>
 
     <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-70 z-40 hidden"></div>
+    <div id="mobile-menu-overlay" class="fixed inset-0 z-40 hidden backdrop-blur-custom bg-black/50 mobile-menu-transition"></div>
 
     <!-- Mobile Menu Sidebar -->
-    <div id="mobile-menu-sidebar" class="fixed top-0 right-0 w-64 h-full bg-white z-50 transform translate-x-full transition-transform duration-300 ease-in-out p-6 shadow-xl">
-        <div class="flex justify-end mb-8">
-            <button id="close-mobile-menu" class="text-gray-700 focus:outline-none p-2 rounded-md hover:bg-gray-100">
-                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <div id="mobile-menu-sidebar" class="fixed top-0 right-0 w-80 h-full bg-gradient-to-b from-green-900 to-green-800 z-50 transform translate-x-full mobile-menu-transition shadow-2xl overflow-y-auto">
+        <!-- Header with logo and close button -->
+        <div class="flex items-center justify-between p-6 border-b border-green-700/50">
+            <div class="flex items-center space-x-3">
+                <img src="https://placehold.co/40x40/047857/FFFFFF?text=WL" alt="Wildlife Logo" class="rounded-full">
+                <span class="text-xl font-bold text-white">WCS Impact</span>
+            </div>
+            <button id="close-mobile-menu" class="text-white focus:outline-none p-2 rounded-full hover:bg-green-700/50 transition-all duration-200 transform hover:rotate-90">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
         </div>
-        <nav class="flex flex-col space-y-4">
-            <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">Home</a>
-            <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">About Us</a>
-            <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">Our Work</a>
-            <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">Projects</a>
-            <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">Support Us</a>
-            <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">Contact</a>
-        </nav>
-    </div>
-  </header>
-  
- 
 
-  
+        <!-- Navigation Menu -->
+        <nav class="flex flex-col p-6 space-y-1">
+            <a href="#" class="menu-item text-lg font-medium text-white hover:bg-green-700/50 rounded-lg px-4 py-3 transition-all duration-200 transform hover:translate-x-2 flex items-center">
+                <i class="fas fa-home mr-3 text-green-300 w-5 text-center"></i>
+                Home
+            </a>
+            
+            <!-- About Dropdown in Mobile -->
+            <div class="menu-item">
+                <button id="mobile-about-toggle" class="w-full text-left text-lg font-medium text-white hover:bg-green-700/50 rounded-lg px-4 py-3 transition-all duration-200 flex items-center justify-between">
+                    <div class="flex items-center">
+                        <i class="fas fa-info-circle mr-3 text-green-300 w-5 text-center"></i>
+                        About
+                    </div>
+                    <svg class="w-4 h-4 transition-transform duration-200" id="mobile-about-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div id="mobile-about-menu" class="mt-1 ml-8 hidden space-y-1">
+                    <a href="/about.html" class="block text-white hover:bg-green-700/30 rounded-lg px-4 py-2 transition-all duration-200 transform hover:translate-x-2 text-sm">
+                        WCS
+                    </a>
+                    <a href="/nature's.html" class="block text-white hover:bg-green-700/30 rounded-lg px-4 py-2 transition-all duration-200 transform hover:translate-x-2 text-sm">
+                        Nature's Stronghold
+                    </a>
+                    <a href="#" class="block text-white hover:bg-green-700/30 rounded-lg px-4 py-2 transition-all duration-200 transform hover:translate-x-2 text-sm">
+                        Partners
+                    </a>
+                </div>
+            </div>
+            
+            <a href="#" class="menu-item text-lg font-medium text-white hover:bg-green-700/50 rounded-lg px-4 py-3 transition-all duration-200 transform hover:translate-x-2 flex items-center">
+                <i class="fas fa-hands-helping mr-3 text-green-300 w-5 text-center"></i>
+                Our Work
+            </a>
+            <a href="#" class="menu-item text-lg font-medium text-white hover:bg-green-700/50 rounded-lg px-4 py-3 transition-all duration-200 transform hover:translate-x-2 flex items-center">
+                <i class="fas fa-project-diagram mr-3 text-green-300 w-5 text-center"></i>
+                Projects
+            </a>
+            <a href="#" class="menu-item text-lg font-medium text-white hover:bg-green-700/50 rounded-lg px-4 py-3 transition-all duration-200 transform hover:translate-x-2 flex items-center">
+                <i class="fas fa-hand-holding-heart mr-3 text-green-300 w-5 text-center"></i>
+                Support Us
+            </a>
+            <a href="#" class="menu-item text-lg font-medium text-white hover:bg-green-700/50 rounded-lg px-4 py-3 transition-all duration-200 transform hover:translate-x-2 flex items-center">
+                <i class="fas fa-envelope mr-3 text-green-300 w-5 text-center"></i>
+                Contact
+            </a>
+        </nav>
+
+        <!-- Footer Section in Mobile Menu -->
+        <div class="absolute bottom-0 left-0 right-0 p-6 border-t border-green-700/50 bg-green-900/50">
+            <div class="text-center text-green-200 text-sm mb-4">
+                Follow us on social media
+            </div>
+            <div class="flex justify-center space-x-4">
+                <a href="#" class="text-white hover:text-green-300 transition-colors duration-200 transform hover:scale-110">
+                    <i class="fab fa-facebook-f text-lg"></i>
+                </a>
+                <a href="#" class="text-white hover:text-green-300 transition-colors duration-200 transform hover:scale-110">
+                    <i class="fab fa-twitter text-lg"></i>
+                </a>
+                <a href="#" class="text-white hover:text-green-300 transition-colors duration-200 transform hover:scale-110">
+                    <i class="fab fa-instagram text-lg"></i>
+                </a>
+                <a href="#" class="text-white hover:text-green-300 transition-colors duration-200 transform hover:scale-110">
+                    <i class="fab fa-linkedin-in text-lg"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
 <script>
     // Mobile Menu Toggle
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
     const mobileMenuSidebar = document.getElementById('mobile-menu-sidebar');
     const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+    const menuItems = document.querySelectorAll('.menu-item');
 
-    mobileMenuButton.addEventListener('click', () => {
+    function openMobileMenu() {
         mobileMenuOverlay.classList.remove('hidden');
         mobileMenuSidebar.classList.remove('translate-x-full');
-    });
+        mobileMenuOverlay.classList.add('fade-in');
+        mobileMenuSidebar.classList.add('slide-in-right');
+        
+        // Animate menu items with staggered delay
+        menuItems.forEach((item, index) => {
+            setTimeout(() => {
+                item.classList.add('visible');
+            }, 100 + (index * 50));
+        });
+        
+        // Prevent body scroll
+        document.body.style.overflow = 'hidden';
+    }
 
-    closeMobileMenuButton.addEventListener('click', () => {
+    function closeMobileMenu() {
         mobileMenuOverlay.classList.add('hidden');
         mobileMenuSidebar.classList.add('translate-x-full');
-    });
+        
+        // Reset menu items animation
+        menuItems.forEach(item => {
+            item.classList.remove('visible');
+        });
+        
+        // Close any open dropdowns
+        document.getElementById('mobile-about-menu').classList.add('hidden');
+        document.getElementById('mobile-about-arrow').classList.remove('rotate-180');
+        
+        // Restore body scroll
+        document.body.style.overflow = 'auto';
+    }
 
-    mobileMenuOverlay.addEventListener('click', () => {
-        mobileMenuOverlay.classList.add('hidden');
-        mobileMenuSidebar.classList.add('translate-x-full');
+    mobileMenuButton.addEventListener('click', openMobileMenu);
+    closeMobileMenuButton.addEventListener('click', closeMobileMenu);
+    mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+    // Mobile About Dropdown Toggle
+    const mobileAboutToggle = document.getElementById('mobile-about-toggle');
+    const mobileAboutMenu = document.getElementById('mobile-about-menu');
+    const mobileAboutArrow = document.getElementById('mobile-about-arrow');
+
+    mobileAboutToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        mobileAboutMenu.classList.toggle('hidden');
+        mobileAboutArrow.classList.toggle('rotate-180');
     });
 
     // Navbar Scroll Effect
@@ -114,6 +265,18 @@
         } else {
             navbar.classList.remove('bg-white', 'text-gray-800', 'shadow-md', 'py-2');
             navbar.classList.add('bg-transparent', 'text-white', 'py-4');
+        }
+    });
+
+    // Close mobile menu when clicking on a link (optional)
+    document.querySelectorAll('#mobile-menu-sidebar a').forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+    });
+
+    // Close menu with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeMobileMenu();
         }
     });
 </script>

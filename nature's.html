@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nature's Strongholds - WCS Impact</title>
+    <title>Nature's Strongholds | WCS Impact</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Inter Font - Weight 300 to 800 -->
@@ -12,232 +12,664 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <!-- Font Awesome for social media brand icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="../ImpactWCS-Front_end/assets/css/nature.css">
-      
-
-       
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .navbar-transition {
+            transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, padding 0.3s ease-in-out;
+        }
+        
+        /* Smooth transitions for mobile menu */
+        .mobile-menu-transition {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Backdrop blur effect */
+        .backdrop-blur-custom {
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        
+        /* Slide in animation */
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 0.3s ease-out;
+        }
+        
+        /* Fade in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.2s ease-out;
+        }
+        
+        /* Staggered animation for menu items */
+        .menu-item {
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.3s ease;
+        }
+        
+        .menu-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* Improved mobile sidebar */
+        .mobile-sidebar {
+            width: 85vw;
+            max-width: 320px;
+        }
+        
+        /* Better touch targets for mobile */
+        .mobile-menu-item {
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+        }
+        
+        /* Prevent horizontal scroll */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+        
+        /* Improved dropdown arrows */
+        .rotate-180 {
+            transform: rotate(180deg);
+        }
+        
+        /* Better focus states for accessibility */
+        button:focus, a:focus {
+            outline: 2px solid #10B981;
+            outline-offset: 2px;
+        }
+        
+        /* Custom styles for nature page */
+        .hero-gradient {
+            background: linear-gradient(135deg, #047857 0%, #065f46 50%, #064e3b 100%);
+        }
+        
+        .hero-bg-natures-stronghold {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .content-card {
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .pillar-card {
+            transition: all 0.3s ease;
+        }
+        
+        .pillar-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .quote-block {
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+            border-left: 4px solid #047857;
+        }
+        
+        .section-heading {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1f2937;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .section-heading {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
-<body class="text-gray-800">
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header>
+        <!-- Navbar -->
+        <nav id="navbar" class="fixed top-0 left-0 w-full z-50 py-3 lg:py-4 navbar-transition bg-transparent text-white">
+            <div class="container mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8">
+                <!-- Logo -->
+                <a href="/index.html" class="flex items-center space-x-2 z-50">
+                    <img src="https://placehold.co/40x40/047857/FFFFFF?text=WL" alt="Wildlife Logo" class="rounded-full w-8 h-8 lg:w-10 lg:h-10">
+                    <span class="text-xl lg:text-2xl font-bold">WCS Impact</span>
+                </a>
 
-    <!-- Navbar -->
-    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 py-4 navbar-transition bg-transparent text-white">
-        <div class="container mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8">
-            <!-- Logo -->
-            <a href="../ImpactWCS-Front_end/index.html" class="flex items-center space-x-2">
-                <img src="https://placehold.co/40x40/047857/FFFFFF?text=WC" alt="WCS Impact Logo" class="rounded-full">
-                <span class="text-2xl font-bold">WCS Impact</span>
-            </a>
+                <!-- Desktop Navigation Links -->
+                <div id="navbar-links" class="hidden lg:flex flex-col lg:flex-row lg:space-x-6 xl:space-x-8 mt-4 lg:mt-0 items-center">
+                    <a href="#" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Home</a>
+                    <a href="#" class="text-base xl:text-lg font-bold text-green-300 py-2 lg:py-0 transition-colors duration-200 border-b-2 border-green-300">About Us</a>
+                    <a href="#" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Our Work</a>
+                    <a href="#" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Projects</a>
+                    <a href="#" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Support Us</a>
+                    <a href="/contact.html" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Contact</a>
+                </div>
 
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-button" class="lg:hidden focus:outline-none p-2 rounded-md hover:bg-gray-700/30 transition-colors duration-200">
-                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
-
-            <!-- Navigation Links (Hidden on small screens) -->
-            <div id="navbar-links" class="hidden lg:flex flex-col lg:flex-row lg:space-x-8 mt-4 lg:mt-0 items-center">
-                <a href="#" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Home</a>
-                <a href="#" class="block lg:inline-block text-lg font-medium text-green-300 hover:text-green-200 py-2 lg:py-0 transition-colors duration-200 border-b-2 border-green-300">About Us</a>
-                <a href="#" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Our Work</a>
-                <a href="#" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Projects</a>
-                <a href="#" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Support Us</a>
-                <a href="../ImpactWCS-Front_end/contact.html" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Contact</a>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="lg:hidden focus:outline-none p-2 rounded-md hover:bg-gray-700/30 transition-all duration-200 transform hover:scale-105 z-50">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
             </div>
-        </div>
-    </nav>
-
-    
-
-    <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-70 z-40 hidden"></div>
-
-    <!-- Mobile Menu Sidebar -->
-    <div id="mobile-menu-sidebar" class="fixed top-0 right-0 w-64 h-full bg-white z-50 transform translate-x-full transition-transform duration-300 ease-in-out p-6 shadow-xl">
-        <div class="flex justify-end mb-8">
-            <button id="close-mobile-menu" class="text-gray-700 focus:outline-none p-2 rounded-md hover:bg-gray-100">
-                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-            </button>
-        </div>
-        <nav class="flex flex-col space-y-4">
-            <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">Home</a>
-            <a href="#" class="block text-xl font-medium text-green-600 hover:text-green-700 transition-colors duration-200 py-2">About Us</a>
-            <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">Our Work</a>
-            <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">Projects</a>
-            <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">Support Us</a>
-            <a href="#contact-section" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">Contact</a>
         </nav>
-    </div>
 
-    <!-- Hero Section -->
-    <header class="relative h-[500px] flex items-center justify-center text-center text-white overflow-hidden hero-bg-natures-stronghold">
-        <!-- Overlay -->
-        <div class="absolute inset-0 hero-overlay"></div>
-        <div class="relative z-10 container mx-auto px-4">
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight animate-fadeInUp">
-                Nature's Strongholds
-            </h1>
-            <p class="mt-4 text-lg sm:text-xl opacity-90 animate-fadeInUp animate-delay-200 max-w-2xl mx-auto">
-                Protecting Earth's most irreplaceable places for wildlife and people.
-            </p>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu-overlay" class="fixed inset-0 z-40 hidden backdrop-blur-custom bg-black/50 mobile-menu-transition"></div>
+
+        <!-- Mobile Menu Sidebar -->
+        <div id="mobile-menu-sidebar" class="mobile-sidebar fixed top-0 right-0 h-full bg-gradient-to-b from-green-900 to-green-800 z-50 transform translate-x-full mobile-menu-transition shadow-2xl overflow-y-auto">
+            <!-- Header with logo and close button -->
+            <div class="flex items-center justify-between p-4 border-b border-green-700/50 sticky top-0 bg-green-900">
+                <div class="flex items-center space-x-3">
+                    <img src="https://placehold.co/40x40/047857/FFFFFF?text=WL" alt="Wildlife Logo" class="rounded-full w-8 h-8">
+                    <span class="text-lg font-bold text-white">WCS Impact</span>
+                </div>
+                <button id="close-mobile-menu" class="text-white focus:outline-none p-2 rounded-full hover:bg-green-700/50 transition-all duration-200">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav class="flex flex-col p-4 space-y-1 pb-24">
+                <a href="#" class="menu-item mobile-menu-item text-base font-medium text-white hover:bg-green-700/50 rounded-lg px-3 py-3 transition-all duration-200 flex items-center">
+                    <i class="fas fa-home mr-3 text-green-300 w-5 text-center"></i>
+                    Home
+                </a>
+                <a href="#" class="menu-item mobile-menu-item text-base font-bold text-green-300 hover:bg-green-700/50 rounded-lg px-3 py-3 transition-all duration-200 flex items-center">
+                    <i class="fas fa-info-circle mr-3 text-green-300 w-5 text-center"></i>
+                    About Us
+                </a>
+                <a href="#" class="menu-item mobile-menu-item text-base font-medium text-white hover:bg-green-700/50 rounded-lg px-3 py-3 transition-all duration-200 flex items-center">
+                    <i class="fas fa-hands-helping mr-3 text-green-300 w-5 text-center"></i>
+                    Our Work
+                </a>
+                <a href="#" class="menu-item mobile-menu-item text-base font-medium text-white hover:bg-green-700/50 rounded-lg px-3 py-3 transition-all duration-200 flex items-center">
+                    <i class="fas fa-project-diagram mr-3 text-green-300 w-5 text-center"></i>
+                    Projects
+                </a>
+                <a href="#" class="menu-item mobile-menu-item text-base font-medium text-white hover:bg-green-700/50 rounded-lg px-3 py-3 transition-all duration-200 flex items-center">
+                    <i class="fas fa-hand-holding-heart mr-3 text-green-300 w-5 text-center"></i>
+                    Support Us
+                </a>
+                <a href="/contact.html" class="menu-item mobile-menu-item text-base font-medium text-white hover:bg-green-700/50 rounded-lg px-3 py-3 transition-all duration-200 flex items-center">
+                    <i class="fas fa-envelope mr-3 text-green-300 w-5 text-center"></i>
+                    Contact
+                </a>
+            </nav>
+
+            <!-- Footer Section in Mobile Menu -->
+            <div class="fixed bottom-0 left-0 right-0 p-4 border-t border-green-700/50 bg-green-900/95 backdrop-blur-sm">
+                <div class="text-center text-green-200 text-xs mb-3">
+                    Follow us on social media
+                </div>
+                <div class="flex justify-center space-x-5">
+                    <a href="#" class="text-white hover:text-green-300 transition-colors duration-200 transform hover:scale-110 p-2">
+                        <i class="fab fa-facebook-f text-base"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-green-300 transition-colors duration-200 transform hover:scale-110 p-2">
+                        <i class="fab fa-twitter text-base"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-green-300 transition-colors duration-200 transform hover:scale-110 p-2">
+                        <i class="fab fa-instagram text-base"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-green-300 transition-colors duration-200 transform hover:scale-110 p-2">
+                        <i class="fab fa-linkedin-in text-base"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </header>
 
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <!-- Main Content -->
+    <main class="pt-16">
+        <!-- Hero Section -->
+        <section class="hero-bg-natures-stronghold text-white py-16 lg:py-24 flex items-center justify-center text-center min-h-[500px]">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <h1 class="text-4xl lg:text-5xl font-bold mb-6 animate-fadeInUp">Nature's Strongholds</h1>
+                <p class="text-xl lg:text-2xl mb-8 text-green-100 max-w-3xl mx-auto animate-fadeInUp">
+                    Protecting Earth's most irreplaceable places for wildlife and people.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fadeInUp">
+                    <a href="#our-approach" class="bg-white text-green-800 font-semibold px-8 py-4 rounded-lg hover:bg-green-50 transition duration-300 shadow-lg">
+                        Our Approach
+                    </a>
+                    <a href="#initiatives" class="bg-transparent border-2 border-white text-white font-semibold px-8 py-4 rounded-lg hover:bg-white/10 transition duration-300">
+                        Our Initiatives
+                    </a>
+                </div>
+            </div>
+        </section>
 
         <!-- Lead Text Section -->
-        <section class="max-w-4xl mx-auto mb-16 text-lg leading-relaxed animate-fadeInUp">
-            <p class="text-2xl font-light text-gray-700 mb-6">
-                **WCS Impact's vision for Nature's Strongholds** is to safeguard the planet's most biologically important landscapes, those areas so critical that their conservation is essential for the survival of countless species and for maintaining the health of our global ecosystems.
-            </p>
-            <p class="mb-4">
-                These are places of exceptional biodiversity, where nature's processes still largely function intact, and where human communities live in harmony with the wild. We focus our efforts on these strongholds because they offer the greatest return on conservation investment, providing havens for species on the brink and vital services for humanity.
-            </p>
-            <p>
-                From the dense rainforests of the Amazon to the vast plains of the Serengeti, and from the coral reefs of the Pacific to the frigid poles, our strongholds represent the last great wild places on Earth.
-            </p>
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-4xl mx-auto">
+                    <p class="text-2xl font-light text-gray-700 mb-6 text-center animate-fadeInUp">
+                        <strong>WCS Impact's vision for Nature's Strongholds</strong> is to safeguard the planet's most biologically important landscapes, those areas so critical that their conservation is essential for the survival of countless species and for maintaining the health of our global ecosystems.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-6 animate-fadeInUp">
+                        These are places of exceptional biodiversity, where nature's processes still largely function intact, and where human communities live in harmony with the wild. We focus our efforts on these strongholds because they offer the greatest return on conservation investment, providing havens for species on the brink and vital services for humanity.
+                    </p>
+                    <p class="text-lg text-gray-600 animate-fadeInUp">
+                        From the dense rainforests of the Amazon to the vast plains of the Serengeti, and from the coral reefs of the Pacific to the frigid poles, our strongholds represent the last great wild places on Earth.
+                    </p>
+                </div>
+            </div>
         </section>
 
         <!-- Image with Text Overlay/Caption Section -->
-        <section class="relative mb-16 rounded-lg overflow-hidden shadow-lg animate-fadeIn">
-            <img src="./assets/img/EXT_Bjorn_Svensson_Solomon_Islands_Vona_Vona_2021_22_1 (1).jpg" alt="Vast, lush landscape representing a natural stronghold" class="w-full h-auto object-cover">
-            <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 text-white p-6 md:p-8">
-                <h3 class="text-xl md:text-2xl font-bold mb-2">Strongholds for Wildlife and Humanity</h3>
-                <p class="text-sm md:text-base opacity-90">
-                    Our conservation efforts are concentrated in areas vital for species survival and ecosystem health. These strongholds represent the best chance for nature's long-term resilience.
-                </p>
-            </div>
-        </section>
-
-        <!-- Main Content Body -->
-        <section class="max-w-4xl mx-auto mb-16">
-            <h2 class="section-heading mb-8 animate-fadeInUp animate-delay-100">Our Approach</h2>
-            <p class="mb-4 animate-fadeInUp animate-delay-200">
-                At WCS Impact, our approach to protecting Nature's Strongholds is multifaceted, combining scientific research, community engagement, policy advocacy, and on-the-ground action. We work hand-in-hand with local communities, indigenous peoples, and governments to develop and implement sustainable conservation strategies that benefit both wildlife and people.
-            </p>
-            <p class="mb-6 animate-fadeInUp animate-delay-300">
-                We believe that effective conservation must be locally led and globally supported. Our teams on the ground monitor biodiversity, combat illegal wildlife trade, restore degraded habitats, and promote sustainable livelihoods. Through these integrated efforts, we aim to ensure the long-term viability of these critical ecosystems.
-            </p>
-
-            <h3 class="text-2xl font-bold text-gray-800 mb-6 mt-10 animate-fadeInUp animate-delay-400">Key Pillars of Our Work:</h3>
-            <ul class="list-disc list-inside space-y-3 text-lg text-gray-700 animate-fadeInUp animate-delay-500">
-                <li>
-                    **Protecting Species:** Focusing on endangered and endemic species within these strongholds, ensuring their populations are stable and thriving.
-                </li>
-                <li>
-                    **Safeguarding Habitats:** Implementing strategies to prevent habitat loss and degradation, from deforestation to ocean pollution.
-                </li>
-                <li>
-                    **Empowering Communities:** Working with local communities to develop sustainable practices that reduce reliance on unsustainable resource extraction.
-                </li>
-                <li>
-                    **Combating Illicit Trade:** Disrupting wildlife trafficking networks and strengthening law enforcement.
-                </li>
-                <li>
-                    **Influencing Policy:** Advocating for stronger environmental policies and protected area designations at national and international levels.
-                </li>
-            </ul>
-        </section>
-
-        <!-- Quote Section with Photo -->
-        <section class="max-w-3xl mx-auto my-16 bg-gray-50 p-8 rounded-lg shadow-md quote-block animate-fadeInUp animate-delay-300 flex items-center space-x-6">
-            <div class="flex-grow">
-                <p class="text-2xl italic font-medium text-gray-700">
-                    "The future of wildlife, and indeed humanity, hinges on our ability to protect these irreplaceable natural fortresses. They are our planet's last lines of defense against extinction."
-                </p>
-                <p class="text-right mt-4 text-lg font-semibold text-gray-600 flex items-center justify-end space-x-3">
-                    <span>— Dr. Evelyn Reed, Chief Conservation Scientist</span>
-                    <img src="../ImpactWCS-Front_end/assets/img/pexels-korede-adenola-2888552-20742108.jpg" alt="Photo of Dr. Evelyn Reed" class="rounded-full w-12 h-12 object-cover border-2 border-gray-300">
-                </p>
-            </div>
-        </section>
-
-        <!-- Related Content Blocks -->
-        <section class="mb-16">
-            <h2 class="section-heading mx-auto mb-10 animate-fadeInUp animate-delay-100">Related Initiatives</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Related Content Card 1 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover-effect animate-fadeInUp animate-delay-200">
-                    <img src="https://placehold.co/400x250/2563eb/FFFFFF?text=Marine+Stronghold" alt="Underwater coral reef" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-3">Ocean Sanctuaries</h3>
-                        <p class="text-gray-700 text-sm mb-4">
-                            Exploring our efforts to establish and expand marine protected areas in critical ocean ecosystems.
+        <section class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="relative rounded-2xl overflow-hidden shadow-xl animate-fadeInUp">
+                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Vast, lush landscape representing a natural stronghold" class="w-full h-96 object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent text-white p-6 md:p-8">
+                        <h3 class="text-xl md:text-2xl font-bold mb-2">Strongholds for Wildlife and Humanity</h3>
+                        <p class="text-sm md:text-base opacity-90 max-w-2xl">
+                            Our conservation efforts are concentrated in areas vital for species survival and ecosystem health. These strongholds represent the best chance for nature's long-term resilience.
                         </p>
-                        <a href="#" class="inline-flex items-center text-green-600 hover:text-green-700 font-semibold transition-colors duration-200">
-                            Read More <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Related Content Card 2 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover-effect animate-fadeInUp animate-delay-300">
-                    <img src="https://placehold.co/400x250/ef4444/FFFFFF?text=Forest+Conservation" alt="Dense forest canopy" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-3">Forest Protection</h3>
-                        <p class="text-gray-700 text-sm mb-4">
-                            Learn about our projects safeguarding ancient forests and combating deforestation globally.
-                        </p>
-                        <a href="#" class="inline-flex items-center text-green-600 hover:text-green-700 font-semibold transition-colors duration-200">
-                            Read More <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Related Content Card 3 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover-effect animate-fadeInUp animate-delay-400">
-                    <img src="https://placehold.co/400x250/f97316/FFFFFF?text=Species+Recovery" alt="Endangered animal in its natural habitat" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-3">Species Recovery Programs</h3>
-                        <p class="text-gray-700 text-sm mb-4">
-                            Discover how we're bringing iconic and lesser-known species back from the brink of extinction.
-                        </p>
-                        <a href="#" class="inline-flex items-center text-green-600 hover:text-green-700 font-semibold transition-colors duration-200">
-                            Read More <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
-                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Our Approach Section -->
+        <section id="our-approach" class="py-16 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-heading animate-fadeInUp">Our Approach</h2>
+                <div class="max-w-4xl mx-auto">
+                    <p class="text-lg text-gray-600 mb-6 animate-fadeInUp">
+                        At WCS Impact, our approach to protecting Nature's Strongholds is multifaceted, combining scientific research, community engagement, policy advocacy, and on-the-ground action. We work hand-in-hand with local communities, indigenous peoples, and governments to develop and implement sustainable conservation strategies that benefit both wildlife and people.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-10 animate-fadeInUp">
+                        We believe that effective conservation must be locally led and globally supported. Our teams on the ground monitor biodiversity, combat illegal wildlife trade, restore degraded habitats, and promote sustainable livelihoods. Through these integrated efforts, we aim to ensure the long-term viability of these critical ecosystems.
+                    </p>
+
+                    <h3 class="text-2xl lg:text-3xl font-bold text-gray-800 mb-8 text-center animate-fadeInUp">Key Pillars of Our Work</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="pillar-card bg-green-50 rounded-xl p-6 animate-fadeInUp">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                                <i class="fas fa-paw text-green-600 text-xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-3">Protecting Species</h4>
+                            <p class="text-gray-600">Focusing on endangered and endemic species within these strongholds, ensuring their populations are stable and thriving.</p>
+                        </div>
+                        
+                        <div class="pillar-card bg-green-50 rounded-xl p-6 animate-fadeInUp">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                                <i class="fas fa-tree text-green-600 text-xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-3">Safeguarding Habitats</h4>
+                            <p class="text-gray-600">Implementing strategies to prevent habitat loss and degradation, from deforestation to ocean pollution.</p>
+                        </div>
+                        
+                        <div class="pillar-card bg-green-50 rounded-xl p-6 animate-fadeInUp">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                                <i class="fas fa-users text-green-600 text-xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-3">Empowering Communities</h4>
+                            <p class="text-gray-600">Working with local communities to develop sustainable practices that reduce reliance on unsustainable resource extraction.</p>
+                        </div>
+                        
+                        <div class="pillar-card bg-green-50 rounded-xl p-6 animate-fadeInUp">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                                <i class="fas fa-shield-alt text-green-600 text-xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-3">Combating Illicit Trade</h4>
+                            <p class="text-gray-600">Disrupting wildlife trafficking networks and strengthening law enforcement.</p>
+                        </div>
+                        
+                        <div class="pillar-card bg-green-50 rounded-xl p-6 animate-fadeInUp">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                                <i class="fas fa-gavel text-green-600 text-xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-3">Influencing Policy</h4>
+                            <p class="text-gray-600">Advocating for stronger environmental policies and protected area designations at national and international levels.</p>
+                        </div>
+                        
+                        <div class="pillar-card bg-green-50 rounded-xl p-6 animate-fadeInUp">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                                <i class="fas fa-seedling text-green-600 text-xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-3">Restoration & Recovery</h4>
+                            <p class="text-gray-600">Rehabilitating degraded ecosystems and supporting the recovery of threatened species populations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quote Section -->
+        <section class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto bg-white rounded-2xl p-8 shadow-lg quote-block animate-fadeInUp">
+                    <div class="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-6">
+                        <div class="flex-shrink-0">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="Photo of Dr. Evelyn Reed" class="rounded-full w-24 h-24 object-cover border-4 border-green-200">
+                        </div>
+                        <div class="flex-grow text-center md:text-left">
+                            <p class="text-xl lg:text-2xl italic font-medium text-gray-700 mb-4">
+                                "The future of wildlife, and indeed humanity, hinges on our ability to protect these irreplaceable natural fortresses. They are our planet's last lines of defense against extinction."
+                            </p>
+                            <p class="text-lg font-semibold text-gray-600">
+                                — Dr. Evelyn Reed, Chief Conservation Scientist
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Initiatives Section -->
+        <section id="initiatives" class="py-16 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-heading animate-fadeInUp">Related Initiatives</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Initiative 1 -->
+                    <div class="content-card bg-white rounded-xl overflow-hidden animate-fadeInUp">
+                        <div class="h-48 bg-blue-500 flex items-center justify-center">
+                            <i class="fas fa-water text-white text-6xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">Ocean Sanctuaries</h3>
+                            <p class="text-gray-600 mb-4">
+                                Exploring our efforts to establish and expand marine protected areas in critical ocean ecosystems.
+                            </p>
+                            <a href="#" class="text-green-600 font-semibold inline-flex items-center">
+                                Learn More <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Initiative 2 -->
+                    <div class="content-card bg-white rounded-xl overflow-hidden animate-fadeInUp">
+                        <div class="h-48 bg-green-500 flex items-center justify-center">
+                            <i class="fas fa-tree text-white text-6xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">Forest Protection</h3>
+                            <p class="text-gray-600 mb-4">
+                                Learn about our projects safeguarding ancient forests and combating deforestation globally.
+                            </p>
+                            <a href="#" class="text-green-600 font-semibold inline-flex items-center">
+                                Learn More <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Initiative 3 -->
+                    <div class="content-card bg-white rounded-xl overflow-hidden animate-fadeInUp">
+                        <div class="h-48 bg-yellow-500 flex items-center justify-center">
+                            <i class="fas fa-paw text-white text-6xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">Species Recovery Programs</h3>
+                            <p class="text-gray-600 mb-4">
+                                Discover how we're bringing iconic and lesser-known species back from the brink of extinction.
+                            </p>
+                            <a href="#" class="text-green-600 font-semibold inline-flex items-center">
+                                Learn More <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Stats Section -->
+        <section class="py-16 hero-gradient text-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl lg:text-4xl font-bold mb-4">Our Conservation Impact</h2>
+                    <p class="text-xl text-green-100 max-w-2xl mx-auto">Through our Nature's Strongholds initiative, we've achieved significant conservation milestones</p>
+                </div>
+                
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+                    <div class="text-center p-6">
+                        <div class="text-3xl lg:text-4xl font-bold mb-2">15M+</div>
+                        <div class="text-green-100">Acres Protected</div>
+                    </div>
+                    <div class="text-center p-6">
+                        <div class="text-3xl lg:text-4xl font-bold mb-2">200+</div>
+                        <div class="text-green-100">Species Protected</div>
+                    </div>
+                    <div class="text-center p-6">
+                        <div class="text-3xl lg:text-4xl font-bold mb-2">50+</div>
+                        <div class="text-green-100">Strongholds Worldwide</div>
+                    </div>
+                    <div class="text-center p-6">
+                        <div class="text-3xl lg:text-4xl font-bold mb-2">75%</div>
+                        <div class="text-green-100">Success Rate</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">Support Our Strongholds</h2>
+                    <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">Your contribution helps protect these critical ecosystems and the species that depend on them</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="/support.html" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-4 rounded-lg transition duration-300 shadow-lg">
+                            Donate Now
+                        </a>
+                        <a href="/contact.html" class="bg-transparent border-2 border-green-600 text-green-600 font-semibold px-8 py-4 rounded-lg hover:bg-green-50 transition duration-300">
+                            Get Involved
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- Footer (Reused from contact page for consistency) -->
-    <footer class="bg-gray-900 text-white py-12 mt-16">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <!-- Social Media Links -->
-            <div class="mb-8">
-                <h3 class="text-xl font-semibold text-gray-200 mb-4">Stay Connected</h3>
-                <div class="flex justify-center space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 transform hover:scale-110" aria-label="Facebook">
-                        <i class="fab fa-facebook-f text-3xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 transform hover:scale-110" aria-label="Twitter">
-                        <i class="fab fa-twitter text-3xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 transform hover:scale-110" aria-label="Instagram">
-                        <i class="fab fa-instagram text-3xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 transform hover:scale-110" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin-in text-3xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 transform hover:scale-110" aria-label="YouTube">
-                        <i class="fab fa-youtube text-3xl"></i>
-                    </a>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <img src="https://placehold.co/40x40/047857/FFFFFF?text=WL" alt="Wildlife Logo" class="rounded-full">
+                        <span class="text-xl font-bold">WCS Impact</span>
+                    </div>
+                    <p class="text-gray-400">Protecting wildlife and wild places worldwide through science, conservation action, education, and inspiring people to value nature.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Our Work</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Projects</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Get Involved</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Donate</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Volunteer</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Partnerships</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 w-5"></i>
+                            <span>2300 Southern Boulevard, Bronx, NY 10460</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2 w-5"></i>
+                            <span>+1 (718) 220-5100</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 w-5"></i>
+                            <span>info@wcsimpact.org</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
             
-            <p class="text-gray-400 text-sm">&copy; 2024 WCS Impact. All rights reserved.</p>
-            <div class="flex justify-center space-x-4 mt-4 text-sm">
-                <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Privacy Policy</a>
-                <span class="text-gray-600">|</span>
-                <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Terms of Service</a>
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <div class="text-gray-400 text-sm mb-4 md:mb-0">
+                    &copy; 2025 WCS Impact. All rights reserved.
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
 
-<script src="../ImpactWCS-Front_end/assets/js/nature.js"></script>
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const mobileMenuSidebar = document.getElementById('mobile-menu-sidebar');
+        const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        function openMobileMenu() {
+            mobileMenuOverlay.classList.remove('hidden');
+            mobileMenuSidebar.classList.remove('translate-x-full');
+            mobileMenuOverlay.classList.add('fade-in');
+            mobileMenuSidebar.classList.add('slide-in-right');
+            
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = 'hidden';
+            
+            // Animate menu items with staggered delay
+            menuItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.add('visible');
+                }, 100 + (index * 50));
+            });
+        }
+
+        function closeMobileMenu() {
+            mobileMenuOverlay.classList.add('hidden');
+            mobileMenuSidebar.classList.add('translate-x-full');
+            
+            // Reset menu items animation
+            menuItems.forEach(item => {
+                item.classList.remove('visible');
+            });
+            
+            // Restore body scroll
+            document.body.style.overflow = 'auto';
+            document.documentElement.style.overflow = 'auto';
+        }
+
+        mobileMenuButton.addEventListener('click', openMobileMenu);
+        closeMobileMenuButton.addEventListener('click', closeMobileMenu);
+        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        if (navbar) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.remove('bg-transparent', 'text-white', 'py-3', 'lg:py-4');
+                    navbar.classList.add('bg-white', 'text-gray-800', 'shadow-md', 'py-2', 'lg:py-3');
+                } else {
+                    navbar.classList.remove('bg-white', 'text-gray-800', 'shadow-md', 'py-2', 'lg:py-3');
+                    navbar.classList.add('bg-transparent', 'text-white', 'py-3', 'lg:py-4');
+                }
+            });
+        }
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu-sidebar a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Close menu with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeMobileMenu();
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024) {
+                closeMobileMenu();
+            }
+        });
+    </script>
 </body>
 </html>

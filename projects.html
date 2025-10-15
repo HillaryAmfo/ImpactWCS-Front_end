@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conservation Projects | WCS Impact</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font - Weight 300 to 800 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons (instead of Font Awesome for general icons, keep FA for brands) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Font Awesome for social media brand icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .navbar-transition {
+            transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, padding 0.3s ease-in-out;
+        }
+        
+        /* Smooth transitions for mobile menu */
+        .mobile-menu-transition {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Backdrop blur effect */
+        .backdrop-blur-custom {
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        
+        /* Slide in animation */
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 0.3s ease-out;
+        }
+        
+        /* Fade in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.2s ease-out;
+        }
+        
+        /* Staggered animation for menu items */
+        .menu-item {
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.3s ease;
+        }
+        
+        .menu-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* Improved mobile sidebar */
+        .mobile-sidebar {
+            width: 85vw;
+            max-width: 320px;
+        }
+        
+        /* Better touch targets for mobile */
+        .mobile-menu-item {
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+        }
+        
+        /* Prevent horizontal scroll */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+        
+        /* Improved dropdown arrows */
+        .rotate-180 {
+            transform: rotate(180deg);
+        }
+        
+        /* Better focus states for accessibility */
+        button:focus, a:focus {
+            outline: 2px solid #10B981;
+            outline-offset: 2px;
+        }
+        
+        /* Custom styles for projects page */
+        .hero-gradient {
+            background: linear-gradient(135deg, #047857 0%, #065f46 50%, #064e3b 100%);
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+            overflow: hidden;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .project-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+        
+        .status-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .filter-btn {
+            transition: all 0.3s ease;
+            border: 2px solid #e5e7eb;
+        }
+        
+        .filter-btn.active {
+            background-color: #047857;
+            color: white;
+            border-color: #047857;
+        }
+        
+        .progress-bar {
+            height: 6px;
+            background-color: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #047857, #10B981);
+            transition: width 0.5s ease;
+        }
+        
+        .impact-counter {
+            background: linear-gradient(135deg, #047857 0%, #065f46 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header>
+        <!-- Navbar -->
+        <nav id="navbar" class="fixed top-0 left-0 w-full z-50 py-3 lg:py-4 navbar-transition bg-transparent text-white">
+            <div class="container mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8">
+                <!-- Logo -->
+                <a href="/index.html" class="flex items-center space-x-2 z-50">
+                    <img src="https://placehold.co/40x40/047857/FFFFFF?text=WL" alt="Wildlife Logo" class="rounded-full w-8 h-8 lg:w-10 lg:h-10">
+                    <span class="text-xl lg:text-2xl font-bold">WCS Impact</span>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <div id="navbar-links" class="hidden lg:flex flex-col lg:flex-row lg:space-x-6 xl:space-x-8 mt-4 lg:mt-0 items-center">
+                    <a href="#" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Home</a>
+                    <div class="relative group">
+                        <button id="about-toggle" class="px-3 xl:px-4 py-2 text-white hover:text-green-300 group-hover:bg-white group-hover:text-blue-800 transition flex items-center text-base xl:text-lg">
+                            About
+                            <svg class="w-4 h-4 ml-1 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white text-left mt-2 py-2 rounded-lg shadow-xl min-w-[200px] z-10 border border-gray-100">
+                            <a href="/about.html" class="block px-4 py-3 text-blue-800 hover:text-green-600 transition hover:bg-gray-50">WCS</a>
+                            <a href="/nature's.html" class="block px-4 py-3 text-blue-800 hover:text-green-600 transition hover:bg-gray-50">Nature's Stronghold</a>
+                            <a href="#" class="block px-4 py-3 text-blue-800 hover:text-green-600 transition hover:bg-gray-50">Partners</a>
+                        </div>
+                    </div>
+                    <a href="#" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Our Work</a>
+                    <a href="#" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Projects</a>
+                    <a href="#" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Support Us</a>
+                    <a href="#" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Contact</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="lg:hidden focus:outline-none p-2 rounded-md hover:bg-gray-700/30 transition-all duration-200 transform hover:scale-105 z-50">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu-overlay" class="fixed inset-0 z-40 hidden backdrop-blur-custom bg-black/50 mobile-menu-transition"></div>
+
+        <!-- Mobile Menu Sidebar -->
+        <div id="mobile-menu-sidebar" class="mobile-sidebar fixed top-0 right-0 h-full bg-gradient-to-b from-green-900 to-green-800 z-50 transform translate-x-full mobile-menu-transition shadow-2xl overflow-y-auto">
+            <!-- Header with logo and close button -->
+            <div class="flex items-center justify-between p-4 border-b border-green-700/50 sticky top-0 bg-green-900">
+                <div class="flex items-center space-x-3">
+                    <img src="https://placehold.co/40x40/047857/FFFFFF?text=WL" alt="Wildlife Logo" class="rounded-full w-8 h-8">
+                    <span class="text-lg font-bold text-white">WCS Impact</span>
+                </div>
+                <button id="close-mobile-menu" class="text-white focus:outline-none p-2 rounded-full hover:bg-green-700/50 transition-all duration-200">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav class="flex flex-col p-4 space-y-1 pb-24">
+                <a href="/index.html" class="menu-item mobile-menu-item text-base font-medium text-white hover:bg-green-700/50 rounded-lg px-3 py-3 transition-all duration-200 flex items-center">
+                    <i class="fas fa-home mr-3 text-green-300 w-5 text-center"></i>
+                    Home
+                </a>
+                
+                <!-- About Dropdown in Mobile -->
+                <div class="menu-item">
+                    <button id="mobile-about-toggle" class="w-full text-left mobile-menu-item text-base font-medium text-white hover:bg-green-700/50 rounded-lg px-3 py-3 transition-all duration-200 flex items-center justify-between">
+                        <div class="flex items-center">
+                            <i class="fas fa-info-circle mr-3 text-green-300 w-5 text-center"></i>
+                            About
+                        </div>
+                        <svg class="w-4 h-4 transition-transform duration-200" id="mobile-about-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="mobile-about-menu" class="mt-1 ml-4 hidden space-y-1 border-l-2 border-green-600/50">
+                        <a href="/about.html" class="block text-white hover:bg-green-700/30 rounded-lg px-4 py-2 transition-all duration-200 transform hover:translate-x-1 text-sm mobile-menu-item">
+                            WCS
+                        </a>
+                        <a href="/nature's.html" class="block text-white hover:bg-green-700/30 rounded-lg px-4 py-2 transition-all duration-200 transform hover:translate-x-1 text-sm mobile-menu-item">
+                            Nature's Stronghold
+                        </a>
+                        <a href="#" class="block text-white hover:bg-green-700/30 rounded-lg px-4 py-2 transition-all duration-200 transform hover:translate-x-1 text-sm mobile-menu-item">
+                            Partners
+                        </a>
+                    </div>
+                </div>
+                
+                <a href="#" class="menu-item mobile-menu-item text-base font-medium text-white hover:bg-green-700/50 rounded-lg px-3 py-3 transition-all duration-200 flex items-center">
+                    <i class="fas fa-hands-helping mr-3 text-green-300 w-5 text-center"></i>
+                    Our Work
+                </a>
+                <a href="#" class="menu-item mobile-menu-item text-base font-medium text-white hover:bg-green-700/50 rounded-lg px-3 py-3 transition-all duration-200 flex items-center">
+                    <i class="fas fa-project-diagram mr-3 text-green-300 w-5 text-center"></i>
+                    Projects
+                </a>
+                <a href="#" class="menu-item mobile-menu-item text-base font-medium text-white hover:bg-green-700/50 rounded-lg px-3 py-3 transition-all duration-200 flex items-center">
+                    <i class="fas fa-hand-holding-heart mr-3 text-green-300 w-5 text-center"></i>
+                    Support Us
+                </a>
+                <a href="#" class="menu-item mobile-menu-item text-base font-medium text-white hover:bg-green-700/50 rounded-lg px-3 py-3 transition-all duration-200 flex items-center">
+                    <i class="fas fa-envelope mr-3 text-green-300 w-5 text-center"></i>
+                    Contact
+                </a>
+            </nav>
+
+            <!-- Footer Section in Mobile Menu -->
+            <div class="fixed bottom-0 left-0 right-0 p-4 border-t border-green-700/50 bg-green-900/95 backdrop-blur-sm">
+                <div class="text-center text-green-200 text-xs mb-3">
+                    Follow us on social media
+                </div>
+                <div class="flex justify-center space-x-5">
+                    <a href="#" class="text-white hover:text-green-300 transition-colors duration-200 transform hover:scale-110 p-2">
+                        <i class="fab fa-facebook-f text-base"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-green-300 transition-colors duration-200 transform hover:scale-110 p-2">
+                        <i class="fab fa-twitter text-base"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-green-300 transition-colors duration-200 transform hover:scale-110 p-2">
+                        <i class="fab fa-instagram text-base"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-green-300 transition-colors duration-200 transform hover:scale-110 p-2">
+                        <i class="fab fa-linkedin-in text-base"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-16">
+        <!-- Hero Section -->
+        <section class="hero-gradient text-white py-16 lg:py-24">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h1 class="text-4xl lg:text-5xl font-bold mb-6">Our Conservation Projects</h1>
+                    <p class="text-xl lg:text-2xl mb-8 text-green-100">Discover how we're protecting wildlife and habitats through science-based conservation initiatives worldwide</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="#featured-projects" class="bg-white text-green-800 font-semibold px-8 py-4 rounded-lg hover:bg-green-50 transition duration-300 shadow-lg">
+                            Explore Projects
+                        </a>
+                        <a href="#get-involved" class="bg-transparent border-2 border-white text-white font-semibold px-8 py-4 rounded-lg hover:bg-white/10 transition duration-300">
+                            Get Involved
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Overview Section -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">Global Conservation Impact</h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">We work across continents and ecosystems to protect biodiversity and promote sustainable coexistence</p>
+                </div>
+                
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+                    <div class="impact-counter text-center p-6 rounded-xl text-white">
+                        <div class="text-3xl lg:text-4xl font-bold mb-2">45+</div>
+                        <div class="text-green-100">Active Projects</div>
+                    </div>
+                    <div class="impact-counter text-center p-6 rounded-xl text-white">
+                        <div class="text-3xl lg:text-4xl font-bold mb-2">16</div>
+                        <div class="text-green-100">Countries</div>
+                    </div>
+                    <div class="impact-counter text-center p-6 rounded-xl text-white">
+                        <div class="text-3xl lg:text-4xl font-bold mb-2">120+</div>
+                        <div class="text-green-100">Scientists</div>
+                    </div>
+                    <div class="impact-counter text-center p-6 rounded-xl text-white">
+                        <div class="text-3xl lg:text-4xl font-bold mb-2">85%</div>
+                        <div class="text-green-100">Success Rate</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Filters -->
+        <section class="py-8 bg-gray-100">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-wrap gap-3 justify-center">
+                    <button class="filter-btn active px-4 py-2 rounded-lg font-medium" data-filter="all">
+                        All Projects
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-lg font-medium" data-filter="species">
+                        Species Protection
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-lg font-medium" data-filter="habitat">
+                        Habitat Conservation
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-lg font-medium" data-filter="marine">
+                        Marine Conservation
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-lg font-medium" data-filter="climate">
+                        Climate Resilience
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-lg font-medium" data-filter="community">
+                        Community Engagement
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects Section -->
+        <section id="featured-projects" class="py-16 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">Featured Projects</h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">Explore our flagship conservation initiatives making significant impact worldwide</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project 1 -->
+                    <div class="project-card bg-white rounded-xl overflow-hidden" data-category="species">
+                        <div class="relative overflow-hidden">
+                            <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1546182990-dffeafbe841d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1159&q=80')"></div>
+                            <div class="status-badge bg-green-500 text-white">Active</div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">Tiger Protection Initiative</h3>
+                            <p class="text-gray-600 mb-4">Comprehensive anti-poaching and habitat conservation program across Southeast Asia to protect endangered tiger populations.</p>
+                            <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+                                <div class="flex items-center">
+                                    <i class="fas fa-map-marker-alt mr-2"></i>
+                                    <span>India, Nepal, Thailand</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-calendar mr-2"></i>
+                                    <span>2018 - Present</span>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="flex justify-between text-sm text-gray-600 mb-1">
+                                    <span>Project Progress</span>
+                                    <span>78%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 78%"></div>
+                                </div>
+                            </div>
+                            <a href="#" class="text-green-600 font-semibold inline-flex items-center">
+                                Learn More <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2 -->
+                    <div class="project-card bg-white rounded-xl overflow-hidden" data-category="marine">
+                        <div class="relative overflow-hidden">
+                            <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80')"></div>
+                            <div class="status-badge bg-blue-500 text-white">Active</div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">Coral Reef Restoration</h3>
+                            <p class="text-gray-600 mb-4">Large-scale coral planting and monitoring program to restore damaged reef ecosystems in the Coral Triangle.</p>
+                            <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+                                <div class="flex items-center">
+                                    <i class="fas fa-map-marker-alt mr-2"></i>
+                                    <span>Indonesia, Philippines</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-calendar mr-2"></i>
+                                    <span>2020 - Present</span>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="flex justify-between text-sm text-gray-600 mb-1">
+                                    <span>Project Progress</span>
+                                    <span>65%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 65%"></div>
+                                </div>
+                            </div>
+                            <a href="#" class="text-green-600 font-semibold inline-flex items-center">
+                                Learn More <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 3 -->
+                    <div class="project-card bg-white rounded-xl overflow-hidden" data-category="habitat">
+                        <div class="relative overflow-hidden">
+                            <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')"></div>
+                            <div class="status-badge bg-green-500 text-white">Active</div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">Amazon Rainforest Protection</h3>
+                            <p class="text-gray-600 mb-4">Community-based forest conservation and sustainable livelihood programs in critical Amazonian ecosystems.</p>
+                            <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+                                <div class="flex items-center">
+                                    <i class="fas fa-map-marker-alt mr-2"></i>
+                                    <span>Brazil, Peru, Colombia</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-calendar mr-2"></i>
+                                    <span>2015 - Present</span>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="flex justify-between text-sm text-gray-600 mb-1">
+                                    <span>Project Progress</span>
+                                    <span>82%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 82%"></div>
+                                </div>
+                            </div>
+                            <a href="#" class="text-green-600 font-semibold inline-flex items-center">
+                                Learn More <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 4 -->
+                    <div class="project-card bg-white rounded-xl overflow-hidden" data-category="climate">
+                        <div class="relative overflow-hidden">
+                            <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1615873968403-89e068629265?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1130&q=80')"></div>
+                            <div class="status-badge bg-yellow-500 text-white">Planning Phase</div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">Arctic Wildlife Adaptation</h3>
+                            <p class="text-gray-600 mb-4">Research and conservation program to help polar species adapt to rapidly changing Arctic conditions.</p>
+                            <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+                                <div class="flex items-center">
+                                    <i class="fas fa-map-marker-alt mr-2"></i>
+                                    <span>Arctic Region</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-calendar mr-2"></i>
+                                    <span>2024 - 2028</span>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="flex justify-between text-sm text-gray-600 mb-1">
+                                    <span>Project Progress</span>
+                                    <span>25%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 25%"></div>
+                                </div>
+                            </div>
+                            <a href="#" class="text-green-600 font-semibold inline-flex items-center">
+                                Learn More <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 5 -->
+                    <div class="project-card bg-white rounded-xl overflow-hidden" data-category="community">
+                        <div class="relative overflow-hidden">
+                            <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1559825481-12a05cc00344?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1065&q=80')"></div>
+                            <div class="status-badge bg-green-500 text-white">Active</div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">Human-Wildlife Coexistence</h3>
+                            <p class="text-gray-600 mb-4">Programs to reduce human-wildlife conflict through community education and sustainable practices.</p>
+                            <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+                                <div class="flex items-center">
+                                    <i class="fas fa-map-marker-alt mr-2"></i>
+                                    <span>Kenya, Tanzania</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-calendar mr-2"></i>
+                                    <span>2019 - Present</span>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="flex justify-between text-sm text-gray-600 mb-1">
+                                    <span>Project Progress</span>
+                                    <span>71%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 71%"></div>
+                                </div>
+                            </div>
+                            <a href="#" class="text-green-600 font-semibold inline-flex items-center">
+                                Learn More <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 6 -->
+                    <div class="project-card bg-white rounded-xl overflow-hidden" data-category="species">
+                        <div class="relative overflow-hidden">
+                            <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80')"></div>
+                            <div class="status-badge bg-purple-500 text-white">Completed</div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">Elephant Corridor Protection</h3>
+                            <p class="text-gray-600 mb-4">Establishment and protection of wildlife corridors to ensure safe elephant migration across fragmented habitats.</p>
+                            <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+                                <div class="flex items-center">
+                                    <i class="fas fa-map-marker-alt mr-2"></i>
+                                    <span>Botswana, Zambia</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-calendar mr-2"></i>
+                                    <span>2016 - 2023</span>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="flex justify-between text-sm text-gray-600 mb-1">
+                                    <span>Project Progress</span>
+                                    <span>100%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 100%"></div>
+                                </div>
+                            </div>
+                            <a href="#" class="text-green-600 font-semibold inline-flex items-center">
+                                View Results <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-12">
+                    <a href="#" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-3 rounded-lg transition duration-300 inline-flex items-center">
+                        View All Projects <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Impact Section -->
+        <section class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">Measuring Our Impact</h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">We track and report on key metrics to ensure our conservation efforts deliver tangible results</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                                    <i class="fas fa-paw text-green-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-800 mb-2">Species Recovery</h3>
+                                    <p class="text-gray-600">15 endangered species showing population growth through targeted conservation programs.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                                    <i class="fas fa-tree text-green-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-800 mb-2">Habitat Protection</h3>
+                                    <p class="text-gray-600">Over 2 million acres of critical habitat secured and protected from deforestation and degradation.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                                    <i class="fas fa-users text-green-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-800 mb-2">Community Engagement</h3>
+                                    <p class="text-gray-600">250+ local communities actively participating in conservation and sustainable livelihood programs.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                                    <i class="fas fa-graduation-cap text-green-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-800 mb-2">Capacity Building</h3>
+                                    <p class="text-gray-600">500+ local conservation professionals trained in wildlife monitoring and protection techniques.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Annual Impact Report</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between text-sm text-gray-600 mb-1">
+                                    <span>Species Protection</span>
+                                    <span>92%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 92%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm text-gray-600 mb-1">
+                                    <span>Habitat Conservation</span>
+                                    <span>87%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 87%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm text-gray-600 mb-1">
+                                    <span>Community Impact</span>
+                                    <span>78%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 78%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm text-gray-600 mb-1">
+                                    <span>Research & Science</span>
+                                    <span>95%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 95%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="inline-flex items-center text-green-600 font-semibold mt-6">
+                            Download Full Report <i class="fas fa-download ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Get Involved Section -->
+        <section id="get-involved" class="py-16 hero-gradient text-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="text-3xl lg:text-4xl font-bold mb-6">Support Our Projects</h2>
+                    <p class="text-xl mb-8 text-green-100">Your contribution helps fund critical conservation work and expand our impact worldwide</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="/support.html" class="bg-white text-green-800 font-semibold px-8 py-4 rounded-lg hover:bg-green-50 transition duration-300 shadow-lg">
+                            Donate to Projects
+                        </a>
+                        <a href="#" class="bg-transparent border-2 border-white text-white font-semibold px-8 py-4 rounded-lg hover:bg-white/10 transition duration-300">
+                            Volunteer Opportunities
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <img src="https://placehold.co/40x40/047857/FFFFFF?text=WL" alt="Wildlife Logo" class="rounded-full">
+                        <span class="text-xl font-bold">WCS Impact</span>
+                    </div>
+                    <p class="text-gray-400">Protecting wildlife and wild places worldwide through science, conservation action, education, and inspiring people to value nature.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Our Work</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Projects</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Get Involved</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Donate</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Volunteer</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Partnerships</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 w-5"></i>
+                            <span>2300 Southern Boulevard, Bronx, NY 10460</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2 w-5"></i>
+                            <span>+1 (718) 220-5100</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 w-5"></i>
+                            <span>contact@wcsimpact.org</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <div class="text-gray-400 text-sm mb-4 md:mb-0">
+                    &copy; 2025 WCS Impact. All rights reserved.
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const mobileMenuSidebar = document.getElementById('mobile-menu-sidebar');
+        const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        function openMobileMenu() {
+            mobileMenuOverlay.classList.remove('hidden');
+            mobileMenuSidebar.classList.remove('translate-x-full');
+            mobileMenuOverlay.classList.add('fade-in');
+            mobileMenuSidebar.classList.add('slide-in-right');
+            
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = 'hidden';
+            
+            // Animate menu items with staggered delay
+            menuItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.add('visible');
+                }, 100 + (index * 50));
+            });
+        }
+
+        function closeMobileMenu() {
+            mobileMenuOverlay.classList.add('hidden');
+            mobileMenuSidebar.classList.add('translate-x-full');
+            
+            // Reset menu items animation
+            menuItems.forEach(item => {
+                item.classList.remove('visible');
+            });
+            
+            // Close any open dropdowns
+            document.getElementById('mobile-about-menu').classList.add('hidden');
+            document.getElementById('mobile-about-arrow').classList.remove('rotate-180');
+            
+            // Restore body scroll
+            document.body.style.overflow = 'auto';
+            document.documentElement.style.overflow = 'auto';
+        }
+
+        mobileMenuButton.addEventListener('click', openMobileMenu);
+        closeMobileMenuButton.addEventListener('click', closeMobileMenu);
+        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+        // Mobile About Dropdown Toggle
+        const mobileAboutToggle = document.getElementById('mobile-about-toggle');
+        const mobileAboutMenu = document.getElementById('mobile-about-menu');
+        const mobileAboutArrow = document.getElementById('mobile-about-arrow');
+
+        if (mobileAboutToggle) {
+            mobileAboutToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                mobileAboutMenu.classList.toggle('hidden');
+                mobileAboutArrow.classList.toggle('rotate-180');
+            });
+        }
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        if (navbar) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.remove('bg-transparent', 'text-white', 'py-3', 'lg:py-4');
+                    navbar.classList.add('bg-white', 'text-gray-800', 'shadow-md', 'py-2', 'lg:py-3');
+                } else {
+                    navbar.classList.remove('bg-white', 'text-gray-800', 'shadow-md', 'py-2', 'lg:py-3');
+                    navbar.classList.add('bg-transparent', 'text-white', 'py-3', 'lg:py-4');
+                }
+            });
+        }
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu-sidebar a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Close menu with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeMobileMenu();
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024) {
+                closeMobileMenu();
+            }
+        });
+
+        // Project Filtering
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    // Show/hide projects based on filter
+                    projectCards.forEach(card => {
+                        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 10);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

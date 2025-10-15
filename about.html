@@ -3,70 +3,438 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Wildlife World</title>
+    <title>About Us - WCS Impact</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Poppins for headings, Lato for body -->
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Inter Font - Weight 300 to 800 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <!-- Font Awesome for social media brand icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="./assets/css/about.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            line-height: 1.6;
+            color: #334155;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+        }
+        
+        .navbar-transition {
+            transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, padding 0.3s ease-in-out;
+        }
+        
+        /* Smooth transitions for mobile menu */
+        .mobile-menu-transition {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Backdrop blur effect */
+        .backdrop-blur-custom {
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        
+        /* Slide in animation */
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 0.3s ease-out;
+        }
+        
+        /* Fade in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.2s ease-out;
+        }
+        
+        /* Staggered animation for menu items */
+        .menu-item {
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.3s ease;
+        }
+        
+        .menu-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* Improved mobile sidebar */
+        .mobile-sidebar {
+            width: 85vw;
+            max-width: 320px;
+        }
+        
+        /* Better touch targets for mobile */
+        .mobile-menu-item {
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+        }
+        
+        /* Prevent horizontal scroll */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+        
+        /* Improved dropdown arrows */
+        .rotate-180 {
+            transform: rotate(180deg);
+        }
+        
+        /* Better focus states for accessibility */
+        button:focus, a:focus {
+            outline: 2px solid #10B981;
+            outline-offset: 2px;
+        }
+        
+        /* Custom styles for about page */
+        .hero-gradient {
+            background: linear-gradient(135deg, #047857 0%, #065f46 50%, #064e3b 100%);
+        }
+        
+        /* --- HERO SECTION STYLES --- */
+        /* Image Slide and Zoom Animation */
+        @keyframes slideZoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); } /* Subtle 5% zoom */
+        }
+        
+        .slideshow-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out; /* Smooth cross-fade transition */
+        }
+        .slideshow-img.active-slide {
+            opacity: 1;
+            z-index: 1; 
+            animation: slideZoom 10s linear forwards; /* Apply 10s zoom to active slide */
+        }
+
+        /* Text Entrance Animation */
+        @keyframes slideTextIn {
+            from { 
+                opacity: 0; 
+                transform: translate3d(-25%, 30px, 0); /* Start 25% to the left, 30px below */
+            }
+            to { 
+                opacity: 1; 
+                transform: translate3d(0, 0, 0); 
+            }
+        }
+
+        .slide-text-content {
+            /* Reset/Default state for text */
+            opacity: 0;
+            transform: translate3d(-25%, 30px, 0); 
+            transition: none; /* Disable Tailwind transitions during CSS animation phase */
+        }
+        
+        .slide-text-content.animate-in {
+            /* Trigger animation */
+            animation: slideTextIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        .hero-overlay {
+            background-color: rgba(0, 0, 0, 0.45); 
+            z-index: 2; 
+        }
+        
+        /* Typing cursor style for hero text */
+        #typing-text {
+            border-right: 2px solid rgba(255, 255, 255, 0.75);
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        /* --- MISSION/VISION/VALUES CARD STYLES --- */
+        .mission-card {
+            transition: all 0.3s ease;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e5e7eb;
+        }
+        .mission-card:hover {
+            transform: scale(1.05); /* Zoom in 5% on hover */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .mission-card img {
+            height: 10rem; /* Fixed height for consistent image size */
+            width: 100%;
+            object-fit: cover;
+        }
+
+        /* Partners Carousel */
+        .partners-carousel {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+        
+        .partners-track {
+            display: flex;
+            animation: scrollPartners 30s linear infinite;
+        }
+        
+        .partner-logo {
+            flex-shrink: 0;
+            margin: 0 2rem;
+            opacity: 0.75;
+            transition: opacity 0.3s ease;
+        }
+        
+        .partner-logo:hover {
+            opacity: 1;
+        }
+        
+        @keyframes scrollPartners {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        
+        /* Pause animation on hover */
+        .partners-carousel:hover .partners-track {
+            animation-play-state: paused;
+        }
+
+        /* Section Headings */
+        .section-heading {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1f2937;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #047857, #10B981);
+            border-radius: 2px;
+        }
+        
+        /* Leadership Cards */
+        .leadership-card {
+            transition: all 0.3s ease;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .leadership-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .leadership-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            object-position: top;
+        }
+        
+        /* Animations */
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Quote Block */
+        .quote-block {
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+            border-left: 4px solid #047857;
+        }
+        
+        /* CTA Button */
+        .cta-button {
+            transition: all 0.3s ease;
+            border-radius: 9999px;
+            font-weight: 600;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .section-heading {
+                font-size: 2rem;
+            }
+            
+            .leadership-card img {
+                height: 250px;
+            }
+            
+            .partner-logo {
+                margin: 0 1rem;
+                height: 60px;
+            }
+        }
+    </style>
 </head>
-<body class="text-gray-800">
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header>
+        <!-- Navbar -->
+        <nav id="navbar" class="fixed top-0 left-0 w-full z-50 py-3 lg:py-4 navbar-transition bg-transparent text-white">
+            <div class="container mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8">
+                <!-- Logo -->
+                <a href="/index.html" class="flex items-center space-x-2 z-50">
+                    <img src="https://placehold.co/40x40/047857/FFFFFF?text=WL" alt="WCS Impact Logo" class="rounded-full w-8 h-8 lg:w-10 lg:h-10">
+                    <span class="text-xl lg:text-2xl font-bold">WCS Impact</span>
+                </a>
 
-    <!-- Navbar -->
-    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 py-4 navbar-transition bg-transparent text-white">
-        <div class="container mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8">
-            <!-- Logo -->
-            <a href="./index.html" class="flex items-center space-x-2">
-                <img src="https://placehold.co/40x40/166534/FFFFFF?text=WW" alt="Wildlife World Logo" class="rounded-full">
-                <span class="text-2xl font-extrabold">Wildlife Impact</span>
-            </a>
+                <!-- Desktop Navigation Links -->
+                <div id="navbar-links" class="hidden lg:flex flex-col lg:flex-row lg:space-x-6 xl:space-x-8 mt-4 lg:mt-0 items-center">
+                    <a href="#" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Home</a>
+                    <a href="#" class="text-base xl:text-lg font-bold text-green-300 py-2 lg:py-0 transition-colors duration-200 border-b-2 border-green-300">About Us</a>
+                    <a href="#" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Our Work</a>
+                    <a href="#" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Projects</a>
+                    <a href="#" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Support Us</a>
+                    <a href="/contact.html" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Contact</a>
+                </div>
 
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-button" class="lg:hidden focus:outline-none p-2 rounded-md hover:bg-gray-700/30 transition-colors duration-200">
-                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="lg:hidden focus:outline-none p-2 rounded-md hover:bg-gray-700/30 transition-all duration-200 transform hover:scale-105 z-50">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
 
-            <!-- Navigation Links (Hidden on small screens) -->
-            <div id="navbar-links" class="hidden lg:flex flex-col lg:flex-row lg:space-x-8 mt-4 lg:mt-0 items-center">
-                <a href="#" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Home</a>
-                <a href="#" class="block lg:inline-block text-lg font-bold py-2 lg:py-0 transition-colors duration-200 border-b-2 border-green-300">About Us</a>
-                <a href="#" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Conservation</a>
-                <a href="#" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Research</a>
-                <a href="#" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Dashboard</a>
-                <a href="./contact.html" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Contact</a>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu-overlay" class="fixed inset-0 z-40 hidden backdrop-blur-custom bg-black/50 mobile-menu-transition"></div>
+
+        <!-- Mobile Menu Sidebar -->
+        <div id="mobile-menu-sidebar" class="mobile-sidebar fixed top-0 right-0 h-full bg-gradient-to-b from-green-900 to-green-800 z-50 transform translate-x-full mobile-menu-transition shadow-2xl overflow-y-auto">
+            <!-- Header with logo and close button -->
+            <div class="flex items-center justify-between p-4 border-b border-green-700/50 sticky top-0 bg-green-900">
+                <div class="flex items-center space-x-3">
+                    <img src="https://placehold.co/40x40/047857/FFFFFF?text=WL" alt="WCS Impact Logo" class="rounded-full w-8 h-8">
+                    <span class="text-lg font-bold text-white">WCS Impact</span>
+                </div>
+                <button id="close-mobile-menu" class="text-white focus:outline-none p-2 rounded-full hover:bg-green-700/50 transition-all duration-200">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav class="flex flex-col p-4 space-y-1 pb-24">
+                <a href="#" class="menu-item mobile-menu-item text-base font-medium text-white hover:bg-green-700/50 rounded-lg px-3 py-3 transition-all duration-200 flex items-center">
+                    <i class="fas fa-home mr-3 text-green-300 w-5 text-center"></i>
+                    Home
+                </a>
+                <a href="#" class="menu-item mobile-menu-item text-base font-bold text-green-300 hover:bg-green-700/50 rounded-lg px-3 py-3 transition-all duration-200 flex items-center">
+                    <i class="fas fa-info-circle mr-3 text-green-300 w-5 text-center"></i>
+                    About Us
+                </a>
+                <a href="#" class="menu-item mobile-menu-item text-base font-medium text-white hover:bg-green-700/50 rounded-lg px-3 py-3 transition-all duration-200 flex items-center">
+                    <i class="fas fa-hands-helping mr-3 text-green-300 w-5 text-center"></i>
+                    Our Work
+                </a>
+                <a href="#" class="menu-item mobile-menu-item text-base font-medium text-white hover:bg-green-700/50 rounded-lg px-3 py-3 transition-all duration-200 flex items-center">
+                    <i class="fas fa-project-diagram mr-3 text-green-300 w-5 text-center"></i>
+                    Projects
+                </a>
+                <a href="#" class="menu-item mobile-menu-item text-base font-medium text-white hover:bg-green-700/50 rounded-lg px-3 py-3 transition-all duration-200 flex items-center">
+                    <i class="fas fa-hand-holding-heart mr-3 text-green-300 w-5 text-center"></i>
+                    Support Us
+                </a>
+                <a href="/contact.html" class="menu-item mobile-menu-item text-base font-medium text-white hover:bg-green-700/50 rounded-lg px-3 py-3 transition-all duration-200 flex items-center">
+                    <i class="fas fa-envelope mr-3 text-green-300 w-5 text-center"></i>
+                    Contact
+                </a>
+            </nav>
+
+            <!-- Footer Section in Mobile Menu -->
+            <div class="fixed bottom-0 left-0 right-0 p-4 border-t border-green-700/50 bg-green-900/95 backdrop-blur-sm">
+                <div class="text-center text-green-200 text-xs mb-3">
+                    Follow us on social media
+                </div>
+                <div class="flex justify-center space-x-5">
+                    <a href="#" class="text-white hover:text-green-300 transition-colors duration-200 transform hover:scale-110 p-2">
+                        <i class="fab fa-facebook-f text-base"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-green-300 transition-colors duration-200 transform hover:scale-110 p-2">
+                        <i class="fab fa-twitter text-base"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-green-300 transition-colors duration-200 transform hover:scale-110 p-2">
+                        <i class="fab fa-instagram text-base"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-green-300 transition-colors duration-200 transform hover:scale-110 p-2">
+                        <i class="fab fa-linkedin-in text-base"></i>
+                    </a>
+                </div>
             </div>
         </div>
-    </nav>
+    </header>
 
-    <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-70 z-40 hidden"></div>
-
-    <!-- Mobile Menu Sidebar -->
-    <div id="mobile-menu-sidebar" class="fixed top-0 right-0 w-64 h-full bg-white z-50 transform translate-x-full transition-transform duration-300 ease-in-out p-6 shadow-xl">
-        <div class="flex justify-end mb-8">
-            <button id="close-mobile-menu" class="text-gray-700 focus:outline-none p-2 rounded-md hover:bg-gray-100">
-                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-            </button>
-        </div>
-        <nav class="flex flex-col space-y-4">
-            <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">Home</a>
-            <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">About Us</a>
-            <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">Conservation</a>
-            <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">Research</a>
-            <a href="#" class="block text-xl font-bold text-green-600 hover:text-green-700 transition-colors duration-200 py-2">Dashboard</a>
-            <a href="#" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">Contact</a>
-        </nav>
-    </div>
-
-    <!-- Hero Section (Cinematic Slideshow) -->
+    <!-- Hero Section (Cinematic Slideshow) - UNCHANGED -->
     <header class="relative h-[650px] flex items-center justify-center text-center text-white overflow-hidden">
         <!-- Slideshow Container -->
         <div id="slideshow" class="absolute inset-0">
@@ -99,56 +467,56 @@
 
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
 
-        <!-- NEW: Mission, Vision, Values Section with Cards and Hover Zoom -->
+        <!-- Mission, Vision, Values Section -->
         <section class="max-w-6xl mx-auto mb-20">
-            <h2 class="wcs-section-heading mx-auto text-center mb-16">Our Core Purpose</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <h2 class="section-heading">Our Core Purpose</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 
                 <!-- Mission Card -->
-                <div class="mission-card animate-fadeInUp animate-delay-100">
-                    <img src="./assets/img/pexels-jay-brand-1763356224-32181432.jpg" alt="Mission image - tropical forest" class="object-cover">
+                <div class="mission-card animate-fadeInUp">
+                    <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Mission image - tropical forest" class="object-cover">
                     <div class="p-6 text-center">
-                        <h3 class="wcs-sub-heading text-green-700 mb-3">Our Mission</h3>
+                        <h3 class="text-xl font-bold text-green-700 mb-3">Our Mission</h3>
                         <p class="text-gray-700">To protect wildlife and wild places worldwide through science, conservation action, and sustainable partnerships.</p>
                     </div>
                 </div>
                 
                 <!-- Vision Card -->
-                <div class="mission-card animate-fadeInUp animate-delay-200">
-                    <img src="./assets/img/pexels-monkeytactics-750540 (1).jpg" alt="Vision image - clear ocean" class="object-cover">
+                <div class="mission-card animate-fadeInUp">
+                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Vision image - clear ocean" class="object-cover">
                     <div class="p-6 text-center">
-                        <h3 class="wcs-sub-heading text-green-700 mb-3">Our Vision</h3>
+                        <h3 class="text-xl font-bold text-green-700 mb-3">Our Vision</h3>
                         <p class="text-gray-700">A future where wildlife thrives in a just and sustainable world, valued by all people.</p>
                     </div>
                 </div>
 
                 <!-- Values Card -->
-                <div class="mission-card animate-fadeInUp animate-delay-300">
-                    <img src="https://placehold.co/600x300/38A169/FFFFFF?text=OUR+VALUES" alt="Values image - field work team" class="object-cover">
+                <div class="mission-card animate-fadeInUp">
+                    <img src="https://images.unsplash.com/photo-1559825481-12a05cc00344?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1065&q=80" alt="Values image - field work team" class="object-cover">
                     <div class="p-6 text-center">
-                        <h3 class="wcs-sub-heading text-green-700 mb-3">Our Values</h3>
-                        <p class="text-gray-700">Driven by **Integrity**, **Collaboration**, and measurable **Impact** in every ecosystem we touch.</p>
+                        <h3 class="text-xl font-bold text-green-700 mb-3">Our Values</h3>
+                        <p class="text-gray-700">Driven by <strong>Integrity</strong>, <strong>Collaboration</strong>, and measurable <strong>Impact</strong> in every ecosystem we touch.</p>
                     </div>
                 </div>
 
             </div>
         </section>
 
-        <!-- Who We Are / Introduction/Lead Text Section -->
+        <!-- Who We Are Section -->
         <section class="max-w-6xl mx-auto mb-20">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                 <div>
-                    <h2 class="wcs-section-heading">Who We Are</h2>
-                    <p class="wcs-body-text mb-4">
-                        Wildlife World is a global conservation organization that saves wildlife and wild places worldwide through science, conservation action, education, and by inspiring people to value nature.
+                    <h2 class="section-heading text-left">Who We Are</h2>
+                    <p class="text-lg text-gray-600 mb-4">
+                        WCS Impact is a global conservation organization that saves wildlife and wild places worldwide through science, conservation action, education, and by inspiring people to value nature.
                     </p>
-                    <p class="wcs-body-text">
-                        Founded in 1895, Wildlife World has been a pioneer in wildlife conservation for over a century. Our mission is to conserve the world's largest wild places in 14 priority regions, home to more than 50% of the planet's biodiversity. We work in close partnership with local communities and governments to ensure sustainable solutions that benefit both nature and people.
+                    <p class="text-lg text-gray-600">
+                        Founded in 1895, WCS Impact has been a pioneer in wildlife conservation for over a century. Our mission is to conserve the world's largest wild places in 14 priority regions, home to more than 50% of the planet's biodiversity. We work in close partnership with local communities and governments to ensure sustainable solutions that benefit both nature and people.
                     </p>
                 </div>
                 <div>
-                    <img src="https://placehold.co/600x400/38a169/FFFFFF?text=Diverse+Ecosystem" alt="Diverse natural ecosystem" class="wcs-image-with-caption">
-                    <p class="wcs-image-caption">
+                    <img src="https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80" alt="Diverse natural ecosystem" class="w-full rounded-xl shadow-lg">
+                    <p class="text-sm text-gray-500 mt-2 text-center">
                         Our work spans across diverse ecosystems, from vast savannas to pristine coral reefs.
                     </p>
                 </div>
@@ -157,92 +525,92 @@
 
         <!-- What We Do Section -->
         <section class="max-w-6xl mx-auto mb-20">
-            <h2 class="wcs-section-heading mb-12">What We Do</h2>
+            <h2 class="section-heading">What We Do</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                <div class="wcs-body-text">
+                <div class="text-lg text-gray-600">
                     <p class="mb-4">
-                        For over 125 years, Wildlife World has been at the forefront of conservation. Our work spans across diverse ecosystems, from the vast savannas of Africa to the pristine coral reefs of the Pacific. We protect iconic species like tigers, elephants, and marine mammals, and safeguard critical habitats essential for the planet's health.
+                        For over 125 years, WCS Impact has been at the forefront of conservation. Our work spans across diverse ecosystems, from the vast savannas of Africa to the pristine coral reefs of the Pacific. We protect iconic species like tigers, elephants, and marine mammals, and safeguard critical habitats essential for the planet's health.
                     </p>
                     <p>
                         Our scientific expertise informs our conservation strategies, ensuring that our efforts are effective and sustainable. We also focus heavily on environmental education, inspiring the next generation of conservationists and fostering a deeper connection between people and nature.
                     </p>
                 </div>
-                <div class="wcs-quote-block">
-                    <p class="wcs-quote-text">
+                <div class="quote-block p-6 rounded-xl">
+                    <p class="text-xl italic font-medium text-gray-700 mb-4">
                         "Conservation is not just about saving animals; it's about preserving the delicate balance of life on Earth, for all species, including our own."
                     </p>
-                    <p class="wcs-quote-author">— Dr. Anya Sharma, Lead Conservation Biologist</p>
+                    <p class="text-lg font-semibold text-gray-600">— Dr. Anya Sharma, Lead Conservation Biologist</p>
                 </div>
             </div>
         </section>
 
-        <!-- Our Leadership Section (Names always visible) -->
+        <!-- Our Leadership Section -->
         <section class="max-w-6xl mx-auto mb-20">
-            <h2 class="wcs-section-heading mb-12">Our Leadership</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <h2 class="section-heading">Our Leadership</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Leadership Card 1 -->
                 <div class="leadership-card">
-                    <img src="https://placehold.co/400x500/A0AEC0/FFFFFF?text=CEO" alt="CEO Name" class="rounded-xl object-cover object-top h-64">
-                    <div class="member-info">
-                        <h3 class="member-name">Dr. Jane Goodall</h3>
-                        <p class="member-title">Chief Executive Officer</p>
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="CEO Name">
+                    <div class="p-4 text-center">
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">Dr. Jane Goodall</h3>
+                        <p class="text-sm text-green-700 font-semibold">Chief Executive Officer</p>
                     </div>
                 </div>
                 <!-- Leadership Card 2 -->
                 <div class="leadership-card">
-                    <img src="https://placehold.co/400x500/A0AEC0/FFFFFF?text=COO" alt="COO Name" class="rounded-xl object-cover object-top h-64">
-                    <div class="member-info">
-                        <h3 class="member-name">Dr. David Attenborough</h3>
-                        <p class="member-title">Chief Operating Officer</p>
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80" alt="COO Name">
+                    <div class="p-4 text-center">
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">Dr. David Attenborough</h3>
+                        <p class="text-sm text-green-700 font-semibold">Chief Operating Officer</p>
                     </div>
                 </div>
                 <!-- Leadership Card 3 -->
                 <div class="leadership-card">
-                    <img src="https://placehold.co/400x500/A0AEC0/FFFFFF?text=CSO" alt="CSO Name" class="rounded-xl object-cover object-top h-64">
-                    <div class="member-info">
-                        <h3 class="member-name">Dr. Sylvia Earle</h3>
-                        <p class="member-title">Chief Scientific Officer</p>
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="CSO Name">
+                    <div class="p-4 text-center">
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">Dr. Sylvia Earle</h3>
+                        <p class="text-sm text-green-700 font-semibold">Chief Scientific Officer</p>
                     </div>
                 </div>
                 <!-- Leadership Card 4 -->
                 <div class="leadership-card">
-                    <img src="https://placehold.co/400x500/A0AEC0/FFFFFF?text=CFO" alt="CFO Name" class="rounded-xl object-cover object-top h-64">
-                    <div class="member-info">
-                        <h3 class="member-name">Mr. John Smith</h3>
-                        <p class="member-title">Chief Financial Officer</p>
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=761&q=80" alt="CFO Name">
+                    <div class="p-4 text-center">
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">Mr. John Smith</h3>
+                        <p class="text-sm text-green-700 font-semibold">Chief Financial Officer</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Our History/Milestones Section (Restored) -->
+        <!-- Our History/Milestones Section -->
         <section class="mb-20 max-w-6xl mx-auto">
-            <h2 class="wcs-section-heading mb-12">Our History & Milestones</h2>
+            <h2 class="section-heading">Our History & Milestones</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="space-y-8">
-                    <div class="wcs-milestone-item">
-                        <h3 class="wcs-milestone-year">1895: Founding of Wildlife World</h3>
-                        <p class="wcs-milestone-description">
+                <div class="space-y-6">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-bold text-green-700 mb-2">1895: Founding of WCS Impact</h3>
+                        <p class="text-gray-600">
                             Established by a group of visionary naturalists and philanthropists dedicated to protecting vanishing species.
                         </p>
                     </div>
-                    <div class="wcs-milestone-item">
-                        <h3 class="wcs-milestone-year">1950s: First International Projects</h3>
-                        <p class="wcs-milestone-description">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-bold text-green-700 mb-2">1950s: First International Projects</h3>
+                        <p class="text-gray-600">
                             Expanded conservation efforts to Africa and Asia, focusing on large mammal protection and anti-poaching initiatives.
                         </p>
                     </div>
                 </div>
-                <div class="space-y-8">
-                    <div class="wcs-milestone-item">
-                        <h3 class="wcs-milestone-year">1980s: Marine Conservation Focus</h3>
-                        <p class="wcs-milestone-description">
+                <div class="space-y-6">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-bold text-green-700 mb-2">1980s: Marine Conservation Focus</h3>
+                        <p class="text-gray-600">
                             Launched major marine programs, including coral reef protection and whale research, recognizing the importance of ocean health.
                         </p>
                     </div>
-                    <div class="wcs-milestone-item">
-                        <h3 class="wcs-milestone-year">2000s: Climate Change Integration</h3>
-                        <p class="wcs-milestone-description">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-bold text-green-700 mb-2">2000s: Climate Change Integration</h3>
+                        <p class="text-gray-600">
                             Integrated climate change impacts into all conservation strategies, developing adaptation and mitigation projects globally.
                         </p>
                     </div>
@@ -250,71 +618,322 @@
             </div>
         </section>
 
-        <!-- Our Partners Section -->
-        <section class="mb-20 text-center max-w-6xl mx-auto">
-            <h2 class="wcs-section-heading text-center mx-auto mb-12">Our Valued Partners</h2>
-            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-                <img src="https://placehold.co/150x80/E2E8F0/64748B?text=Partner+1" alt="Partner Logo 1" class="h-16 w-auto opacity-75 hover:opacity-100 transition-opacity duration-200">
-                <img src="https://placehold.co/150x80/E2E8F0/64748B?text=Partner+2" alt="Partner Logo 2" class="h-16 w-auto opacity-75 hover:opacity-100 transition-opacity duration-200">
-                <img src="https://placehold.co/150x80/E2E8F0/64748B?text=Partner+3" alt="Partner Logo 3" class="h-16 w-auto opacity-75 hover:opacity-100 transition-opacity duration-200">
-                <img src="https://placehold.co/150x80/E2E8F0/64748B?text=Partner+4" alt="Partner Logo 4" class="h-16 w-auto opacity-75 hover:opacity-100 transition-opacity duration-200">
-                <img src="https://placehold.co/150x80/E2E8F0/64748B?text=Partner+5" alt="Partner Logo 5" class="h-16 w-auto opacity-75 hover:opacity-100 transition-opacity duration-200">
+        <!-- Our Partners Section with Self-Moving Carousel -->
+        <section class="mb-20 max-w-6xl mx-auto">
+            <h2 class="section-heading">Our Valued Partners</h2>
+            <div class="partners-carousel">
+                <div class="partners-track">
+                    <!-- Duplicate set for seamless loop -->
+                    <img src="https://placehold.co/150x80/E2E8F0/64748B?text=Partner+1" alt="Partner Logo 1" class="partner-logo h-16 w-auto">
+                    <img src="https://placehold.co/150x80/E2E8F0/64748B?text=Partner+2" alt="Partner Logo 2" class="partner-logo h-16 w-auto">
+                    <img src="https://placehold.co/150x80/E2E8F0/64748B?text=Partner+3" alt="Partner Logo 3" class="partner-logo h-16 w-auto">
+                    <img src="https://placehold.co/150x80/E2E8F0/64748B?text=Partner+4" alt="Partner Logo 4" class="partner-logo h-16 w-auto">
+                    <img src="https://placehold.co/150x80/E2E8F0/64748B?text=Partner+5" alt="Partner Logo 5" class="partner-logo h-16 w-auto">
+                    <img src="https://placehold.co/150x80/E2E8F0/64748B?text=Partner+6" alt="Partner Logo 6" class="partner-logo h-16 w-auto">
+                    <img src="https://placehold.co/150x80/E2E8F0/64748B?text=Partner+7" alt="Partner Logo 7" class="partner-logo h-16 w-auto">
+                    <img src="https://placehold.co/150x80/E2E8F0/64748B?text=Partner+8" alt="Partner Logo 8" class="partner-logo h-16 w-auto">
+                    
+                    <!-- Duplicate set for seamless loop -->
+                    <img src="https://placehold.co/150x80/E2E8F0/64748B?text=Partner+1" alt="Partner Logo 1" class="partner-logo h-16 w-auto">
+                    <img src="https://placehold.co/150x80/E2E8F0/64748B?text=Partner+2" alt="Partner Logo 2" class="partner-logo h-16 w-auto">
+                    <img src="https://placehold.co/150x80/E2E8F0/64748B?text=Partner+3" alt="Partner Logo 3" class="partner-logo h-16 w-auto">
+                    <img src="https://placehold.co/150x80/E2E8F0/64748B?text=Partner+4" alt="Partner Logo 4" class="partner-logo h-16 w-auto">
+                    <img src="https://placehold.co/150x80/E2E8F0/64748B?text=Partner+5" alt="Partner Logo 5" class="partner-logo h-16 w-auto">
+                    <img src="https://placehold.co/150x80/E2E8F0/64748B?text=Partner+6" alt="Partner Logo 6" class="partner-logo h-16 w-auto">
+                    <img src="https://placehold.co/150x80/E2E8F0/64748B?text=Partner+7" alt="Partner Logo 7" class="partner-logo h-16 w-auto">
+                    <img src="https://placehold.co/150x80/E2E8F0/64748B?text=Partner+8" alt="Partner Logo 8" class="partner-logo h-16 w-auto">
+                </div>
             </div>
         </section>
 
-        <!-- Call to Action: Join Us (Reused from homepage) -->
-        <section class="bg-green-700 text-white py-20 px-8 rounded-xl text-center shadow-xl">
-            <h2 class="text-4xl font-extrabold mb-6 leading-tight">
+        <!-- Call to Action Section -->
+        <section class="bg-green-700 text-white py-16 px-8 rounded-2xl text-center shadow-xl">
+            <h2 class="text-3xl lg:text-4xl font-extrabold mb-6 leading-tight">
                 Join Our Global Conservation Effort
             </h2>
             <p class="text-xl opacity-90 max-w-3xl mx-auto mb-10">
                 Your support fuels our mission to protect wildlife and wild places around the world.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-                <a href="#" class="cta-button bg-white text-green-700 hover:bg-gray-100">
-                    <i data-lucide="dollar-sign" class="inline-block mr-2 w-6 h-6"></i> Donate Now
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#" class="cta-button bg-white text-green-700 hover:bg-gray-100 px-8 py-4">
+                    <i class="fas fa-donate mr-2"></i> Donate Now
                 </a>
-                <a href="#" class="cta-button bg-transparent border-2 border-white hover:bg-white hover:text-green-700">
-                    <i data-lucide="users" class="inline-block mr-2 w-6 h-6"></i> Become a Volunteer
+                <a href="#" class="cta-button bg-transparent border-2 border-white text-white hover:bg-white hover:text-green-700 px-8 py-4">
+                    <i class="fas fa-users mr-2"></i> Become a Volunteer
                 </a>
             </div>
         </section>
 
     </main>
 
-    <!-- Footer (Reused for consistency) -->
-    <footer class="bg-gray-900 text-white py-12 mt-16">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <!-- Social Media Links -->
-            <div class="mb-8">
-                <h3 class="text-xl font-semibold text-gray-200 mb-4">Stay Connected</h3>
-                <div class="flex justify-center space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 transform hover:scale-110" aria-label="Facebook">
-                        <i class="fab fa-facebook-f text-3xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 transform hover:scale-110" aria-label="Twitter">
-                        <i class="fab fa-twitter text-3xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 transform hover:scale-110" aria-label="Instagram">
-                        <i class="fab fa-instagram text-3xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 transform hover:scale-110" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin-in text-3xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 transform hover:scale-110" aria-label="YouTube">
-                        <i class="fab fa-youtube text-3xl"></i>
-                    </a>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 mt-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <img src="https://placehold.co/40x40/047857/FFFFFF?text=WL" alt="WCS Impact Logo" class="rounded-full">
+                        <span class="text-xl font-bold">WCS Impact</span>
+                    </div>
+                    <p class="text-gray-400">Protecting wildlife and wild places worldwide through science, conservation action, education, and inspiring people to value nature.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Our Work</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Projects</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Get Involved</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Donate</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Volunteer</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Partnerships</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 w-5"></i>
+                            <span>2300 Southern Boulevard, Bronx, NY 10460</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2 w-5"></i>
+                            <span>+1 (718) 220-5100</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 w-5"></i>
+                            <span>info@wcsimpact.org</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
             
-            <p class="text-gray-400 text-sm">&copy; 2024 Wildlife World. All rights reserved.</p>
-            <div class="flex justify-center space-x-4 mt-4 text-sm">
-                <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Privacy Policy</a>
-                <span class="text-gray-600">|</span>
-                <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Terms of Service</a>
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <div class="text-gray-400 text-sm mb-4 md:mb-0">
+                    &copy; 2025 WCS Impact. All rights reserved.
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
-    <script src="./assets/js/about.js"></script>
+
+    <script>
+        // --- Slideshow Configuration Data ---
+        const slideContent = [
+            {
+                img: "https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+                typingText: "Protect vital tropical forests and their endangered inhabitants."
+            },
+            {
+                img: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+                typingText: "Be a guardian of the blue frontier and fragile coral reefs."
+            },
+            {
+                img: "https://images.unsplash.com/photo-1559825481-12a05cc00344?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1065&q=80",
+                typingText: "Protect wildlife and wild places worldwide through science, conservation action, and sustainable partnerships."
+            },
+            {
+                img: "https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80",
+                typingText: "Join us in creating a future where wildlife thrives in a just and sustainable world."
+            }
+        ];
+        
+        // Mobile Menu Elements
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const mobileMenuSidebar = document.getElementById('mobile-menu-sidebar');
+        const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+        const menuItems = document.querySelectorAll('.menu-item');
+        
+        const slideshowContainer = document.getElementById('slideshow');
+        
+        let currentSlideIndex = 0;
+        let typingInterval;
+
+        // --- SLIDESHOW and TEXT SYNC LOGIC ---
+
+        function updateSlideContent(index) {
+            const content = slideContent[index];
+            
+            // 1. Reset Text Animation State
+            const oldTextContainer = document.getElementById('hero-text-container');
+            const newTextContainer = oldTextContainer.cloneNode(true);
+            
+            newTextContainer.classList.remove('animate-in');
+            newTextContainer.querySelector('#typing-text').textContent = '';
+            
+            oldTextContainer.parentNode.replaceChild(newTextContainer, oldTextContainer);
+            
+            // Re-select the new element
+            const newTypingTextElement = document.getElementById('hero-text-container').querySelector('#typing-text');
+            
+            // 2. Trigger Text Entrance Animation
+            setTimeout(() => {
+                document.getElementById('hero-text-container').classList.add('animate-in');
+            }, 50);
+
+            // 3. Start Typing Effect (Delayed until AFTER the 1s slideTextIn animation)
+            setTimeout(() => {
+                startTypingEffect(content.typingText, newTypingTextElement);
+            }, 1050); // 1000ms (animation) + 50ms buffer
+        }
+
+        function startTypingEffect(text, element) {
+            if (typingInterval) clearInterval(typingInterval);
+            element.textContent = '';
+            element.style.borderRight = '2px solid rgba(255, 255, 255, 0.75)'; // Show cursor
+            
+            let charIndex = 0;
+            
+            typingInterval = setInterval(() => {
+                if (charIndex < text.length) {
+                    element.textContent += text.charAt(charIndex);
+                    charIndex++;
+                } else {
+                    clearInterval(typingInterval);
+                    element.style.borderRight = 'none'; // Remove cursor
+                }
+            }, 40); // Typing speed
+        }
+        
+        function nextSlide() {
+            const slides = document.querySelectorAll('#slideshow .slideshow-img');
+            if (slides.length === 0) return;
+
+            // 1. Remove zoom and active state from old slide
+            slides[currentSlideIndex].classList.remove('active-slide');
+
+            // 2. Calculate next slide index
+            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+
+            // 3. Add active state (triggers fade-in and zoom animation)
+            slides[currentSlideIndex].classList.add('active-slide');
+            
+            // 4. Update dynamic text content
+            updateSlideContent(currentSlideIndex);
+        }
+        
+        function initializeSlideshow() {
+            // Dynamically create <img> elements from slideContent array
+            slideContent.forEach((content, index) => {
+                const img = document.createElement('img');
+                img.classList.add('slideshow-img');
+                img.src = content.img;
+                img.alt = content.h1;
+                slideshowContainer.appendChild(img);
+            });
+            
+            // Start the first slide's content and animation
+            if (slideContent.length > 0) {
+                document.querySelectorAll('#slideshow .slideshow-img')[0].classList.add('active-slide');
+                updateSlideContent(0);
+                
+                // Start the automatic cycle: 10000 milliseconds = 10 seconds
+                setInterval(nextSlide, 10000); 
+            }
+        }
+
+        // Mobile menu functionality
+        function openMobileMenu() {
+            mobileMenuOverlay.classList.remove('hidden');
+            mobileMenuSidebar.classList.remove('translate-x-full');
+            mobileMenuOverlay.classList.add('fade-in');
+            mobileMenuSidebar.classList.add('slide-in-right');
+            
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = 'hidden';
+            
+            // Animate menu items with staggered delay
+            menuItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.add('visible');
+                }, 100 + (index * 50));
+            });
+        }
+
+        function closeMobileMenu() {
+            mobileMenuOverlay.classList.add('hidden');
+            mobileMenuSidebar.classList.add('translate-x-full');
+            
+            // Reset menu items animation
+            menuItems.forEach(item => {
+                item.classList.remove('visible');
+            });
+            
+            // Restore body scroll
+            document.body.style.overflow = 'auto';
+            document.documentElement.style.overflow = 'auto';
+        }
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        function handleNavbarScroll() {
+            if (window.scrollY > 50) {
+                navbar.classList.remove('bg-transparent', 'text-white', 'py-3', 'lg:py-4');
+                navbar.classList.add('bg-white', 'text-gray-800', 'shadow-md', 'py-2', 'lg:py-3');
+            } else {
+                navbar.classList.remove('bg-white', 'text-gray-800', 'shadow-md', 'py-2', 'lg:py-3');
+                navbar.classList.add('bg-transparent', 'text-white', 'py-3', 'lg:py-4');
+            }
+        }
+
+        // Event Listeners
+        mobileMenuButton.addEventListener('click', openMobileMenu);
+        closeMobileMenuButton.addEventListener('click', closeMobileMenu);
+        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu-sidebar a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Close menu with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeMobileMenu();
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024) {
+                closeMobileMenu();
+            }
+        });
+
+        // Initialize Everything
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            handleNavbarScroll(); // Initial call to set correct navbar state
+            initializeSlideshow();
+            window.addEventListener('scroll', handleNavbarScroll);
+        });
+    </script>
 </body>
 </html>
