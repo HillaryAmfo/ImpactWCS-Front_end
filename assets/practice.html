@@ -51,6 +51,142 @@
         color: white;
       }
       
+      /* Enhanced Swiper Carousel Styles */
+      .swiper-carousel {
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+      
+      .swiper-slide {
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .swiper-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 8s ease;
+      }
+      
+      .swiper-slide-active img {
+        transform: scale(1.05);
+      }
+      
+      .slide-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+        color: white;
+        padding: 30px 20px 20px;
+        transform: translateY(100%);
+        transition: transform 0.5s ease;
+      }
+      
+      .swiper-slide-active .slide-caption {
+        transform: translateY(0);
+      }
+      
+      .year-indicator {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #1a1f2c;
+        z-index: 20;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      
+      /* Custom navigation buttons */
+      .swiper-button-custom {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      
+      .swiper-button-custom:hover {
+        background-color: white;
+        transform: scale(1.1);
+      }
+      
+      .swiper-button-custom svg {
+        width: 18px;
+        height: 18px;
+        color: #1a1f2c;
+      }
+      
+      /* Custom pagination */
+      .swiper-pagination-custom {
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        z-index: 20;
+      }
+      
+      .swiper-pagination-bullet-custom {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      
+      .swiper-pagination-bullet-custom-active {
+        background-color: white;
+        transform: scale(1.2);
+      }
+      
+      /* Progress bar */
+      .swiper-progress {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 4px;
+        background-color: rgba(255, 255, 255, 0.5);
+        width: 100%;
+        z-index: 20;
+      }
+      
+      .swiper-progress-bar {
+        height: 100%;
+        background-color: white;
+        width: 0%;
+        transition: width 5s linear;
+      }
+      
+      .swiper-slide-active .swiper-progress-bar {
+        width: 100%;
+      }
+      
+      /* Fade effect */
+      .swiper-fade .swiper-slide {
+        opacity: 0 !important;
+        transition: opacity 0.8s ease;
+      }
+      
+      .swiper-fade .swiper-slide-active {
+        opacity: 1 !important;
+      }
     </style>
 </head>
 <body>
@@ -104,7 +240,7 @@
   <!-- Hero Section with Background Video -->
   <section class="relative h-screen w-full overflow-hidden">
     <video autoplay muted loop class="absolute top-0 left-0 w-full h-full object-cover z-0">
-      <source src="./assets/img/12541934_640_360_30fps.mp4" type="video/mp4" />
+      <source src="/assets/img/12541934_640_360_30fps.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
     <div class="relative z-10 h-full flex items-center justify-center text-center text-white px-4 bg-black bg-opacity-40">
@@ -120,7 +256,7 @@
     <!-- Text content -->
     <div class="container mx-auto px-4 md:px-8 lg:px-16 max-w-6xl text-center pt-16">
       <div class="text-4xl md:text-3xl font-bold text-[#1A1F2C] mb-10">WCS GLOBAL</div>
-      <p class=" mt-10  mb-10 text-base md:text-lg max-w-4xl mx-auto text-[#403E43] line-height-6 ">
+      <p class=" mt-10  mb-10 text-base md:text-lg max-w-4xl mx-auto text-[#403E43] leading-relaxed">
         With the largest and longest-standing field conservation program in the
         world, WCS works with governments, Indigenous Peoples, and local
         communities in more than 56 countries to support the conservation of
@@ -129,48 +265,72 @@
       </p>
     </div>
 
-    <!-- Carousel container - centered with max-width -->
-    <div class="relative max-w-5xl mx-auto h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px] overflow-hidden mb-10">
-      <!-- Image slides -->
-      <div class="relative h-full w-full">
-        <div class="carousel-slide absolute top-0 left-0 w-full h-full opacity-100" data-slide="0">
-          <img src="/assets/img/pexels-adi-k-182036-582590.jpg" alt="Conservation work slide 1" class="w-full h-full object-cover"/> 
-        </div>
-        <div class="carousel-slide absolute top-0 left-0 w-full h-full opacity-0" data-slide="1">
-          <img src="/assets/img/pexels-tomfisk-2739666.jpg" alt="Conservation work slide 2" class="w-full h-full object-cover"/>
-        </div>
-        <div class="carousel-slide absolute top-0 left-0 w-full h-full opacity-0" data-slide="2">
-          <img src="/assets/img/pexels-jeremy-bishop-1260133-2765872.jpg" alt="Conservation work slide 3" class="w-full h-full object-cover"/>
-          
-        </div>
-        <div class="carousel-slide absolute top-0 left-0 w-full h-full opacity-0" data-slide="3">
-          <img src="/assets/img/pexels-timmossholder-1618424.jpg" alt="Conservation work slide 4" class="w-full h-full object-cover"/>
-        </div>
-        <div class="absolute bottom-0 left-0 bg-white/80 py-1 px-3">
-          <p class="text-sm text-gray-700">2022</p>
-        </div>
+    <!-- Swiper Carousel container -->
+    <div class="relative max-w-5xl mx-auto h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px] mb-10 swiper-carousel">
+      <!-- Progress bar -->
+      <div class="swiper-progress">
+        <div class="swiper-progress-bar"></div>
       </div>
-
-      <!-- Navigation arrows - in circles with rounded borders -->
-      <div class="absolute bottom-0 right-0 flex space-x-5">
-        <button
-          id="prevSlide"
-          class="bg-white/80 hover:bg-white rounded-full p-2.5 w-10 h-10 flex items-center justify-center border border-gray-200 shadow-sm transition-colors"
-          aria-label="Previous slide"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-800">
-            <path d="m15 18-6-6 6-6"/>
-          </svg>
-        </button>
-        <button
-          id="nextSlide"
-          class="bg-white/80 hover:bg-white rounded-full p-2.5 w-10 h-10 flex items-center justify-center border border-gray-200 shadow-sm transition-colors"
-          aria-label="Next slide"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-800">
-            <path d="m9 18 6-6-6-6"/>
-          </svg>
-        </button>
+      
+      <!-- Year indicator -->
+      <div class="year-indicator">2022</div>
+      
+      <!-- Swiper container -->
+      <div class="swiper mySwiper swiper-fade h-full w-full">
+        <div class="swiper-wrapper">
+          <!-- Slide 1 -->
+          <div class="swiper-slide">
+            <img src="/assets/img/pexel 4.jpg" alt="Conservation work slide 1" />
+            <div class="slide-caption">
+              <h3 class="text-lg font-bold mb-1">Wildlife Protection</h3>
+              <p class="text-sm">Conservation efforts in action across global ecosystems</p>
+            </div>
+          </div>
+          
+          <!-- Slide 2 -->
+          <div class="swiper-slide">
+            <img src="/assets/img/pexels-shvetsa-5029853.jpg" alt="Conservation work slide 2" />
+            <div class="slide-caption">
+              <h3 class="text-lg font-bold mb-1">Community Engagement</h3>
+              <p class="text-sm">Working with local communities for sustainable conservation</p>
+            </div>
+          </div>
+          
+          <!-- Slide 3 -->
+          <div class="swiper-slide">
+            <img src="/assets/img/pexels-pixabay-73759.jpg" alt="Conservation work slide 3" />
+            <div class="slide-caption">
+              <h3 class="text-lg font-bold mb-1">Research Initiatives</h3>
+              <p class="text-sm">Scientific research driving conservation strategies</p>
+            </div>
+          </div>
+          
+          <!-- Slide 4 -->
+          <div class="swiper-slide">
+            <img src="/assets/img/Eli_Miller_Belize__1_ (1).jpg" alt="Conservation work slide 4" />
+            <div class="slide-caption">
+              <h3 class="text-lg font-bold mb-1">Global Partnerships</h3>
+              <p class="text-sm">Collaborating with organizations worldwide for conservation impact</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Custom pagination -->
+        <div class="swiper-pagination-custom"></div>
+        
+        <!-- Custom navigation buttons -->
+        <div class="swiper-nav-buttons absolute bottom-4 right-4 flex gap-2 z-20">
+          <button class="swiper-button-custom swiper-button-prev-custom">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m15 18-6-6 6-6"/>
+            </svg>
+          </button>
+          <button class="swiper-button-custom swiper-button-next-custom">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m9 18 6-6-6-6"/>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -214,14 +374,6 @@
     </div>
   </section>
   
-  <!-- <section class="bg-slate-100 py-16 px-6 md:px-20 text-center">
-    <p class="text-sm font-semibold text-blue-900 uppercase mb-2">Our Global Impact</p>
-    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">WCS Impact Platform</h2>
-    <p class="text-gray-700 max-w-2xl mx-auto">
-      Discover WCS's global impact within our portfolio of Nature's Strongholds using our interactive Impact Platform
-    </p>
-  </section> -->
-
   <section class="bg-slate-100 py-20 px-6 md:px-20 text-center">
     <!-- Heading -->
     <p class="text-md font-semibold text-blue-900 uppercase mb-6">Our Global Impact</p>
@@ -278,60 +430,58 @@
     </div>
   
     <div class="relative">
-      <div class="swiper mySwiper">
-        <div class="swiper-wrapper gap-12">
-          <!-- 13 News Cards -->
-          <div class="swiper-slide w-72">
-            <div class="bg-gray-50 rounded-lg shadow p-4 h-[22rem] transition transform hover:scale-105 duration-300">
-              <img src="/assets/img/pexels-adi-k-182036-582590.jpg" alt="News Image 1" class="rounded-md mb-4 w-full h-40 object-cover">
+      <div class="swiper newsSwiper">
+        <div class="swiper-wrapper">
+          <!-- News Cards -->
+          <div class="swiper-slide">
+            <div class="bg-gray-50 rounded-lg shadow p-4 h-[22rem] transition transform hover:scale-105 duration-300 mx-2">
+              <img src="https://placehold.co/300x200/1e3a8a/ffffff?text=Wildlife" alt="News Image 1" class="rounded-md mb-4 w-full h-40 object-cover">
               <p class="text-sm text-gray-500 mb-1">20 April 2023</p>
               <p class="text-gray-800 text-sm mb-2">'Extinct' lion spotted in Chad national park</p>
               <a href="#" class="text-teal-600 text-sm font-medium">BBC</a>
             </div>
           </div>
-          <div class="swiper-slide w-72">
-            <div class="bg-gray-50 rounded-lg shadow p-4 h-[22rem] transition transform hover:scale-105 duration-300">
-              <img src="/assets/img/pexel 4.jpg" alt="News Image 2" class="rounded-md mb-4 w-full h-40 object-cover">
+          <div class="swiper-slide">
+            <div class="bg-gray-50 rounded-lg shadow p-4 h-[22rem] transition transform hover:scale-105 duration-300 mx-2">
+              <img src="https://placehold.co/300x200/065f46/ffffff?text=Turtles" alt="News Image 2" class="rounded-md mb-4 w-full h-40 object-cover">
               <p class="text-sm text-gray-500 mb-1">24 January 2023</p>
-              <p class="text-gray-800 text-sm mb-2">Watch: Drone video captures the world’s largest hatching of baby turtles</p>
+              <p class="text-gray-800 text-sm mb-2">Watch: Drone video captures the world's largest hatching of baby turtles</p>
               <a href="#" class="text-teal-600 text-sm font-medium">Fox News Weather</a>
             </div>
           </div>
-          <div class="swiper-slide w-72">
-            <div class="bg-gray-50 rounded-lg shadow p-4 h-[22rem] transition transform hover:scale-105 duration-300">
-              <img src="/assets/img/pexel 3.jpg" alt="News Image 3" class="rounded-md mb-4 w-full h-40 object-cover">
+          <div class="swiper-slide">
+            <div class="bg-gray-50 rounded-lg shadow p-4 h-[22rem] transition transform hover:scale-105 duration-300 mx-2">
+              <img src="https://placehold.co/300x200/7c2d12/ffffff?text=Jaguar" alt="News Image 3" class="rounded-md mb-4 w-full h-40 object-cover">
               <p class="text-sm text-gray-500 mb-1">2 February 2023</p>
-              <p class="text-gray-800 text-sm mb-2">The illegal jaguar trade is thriving online. Why aren’t governments stopping it?</p>
+              <p class="text-gray-800 text-sm mb-2">The illegal jaguar trade is thriving online. Why aren't governments stopping it?</p>
               <a href="#" class="text-teal-600 text-sm font-medium">Mongabay</a>
             </div>
           </div>
-
-          <div class="swiper-slide w-72">
-            <div class="bg-gray-50 rounded-lg shadow p-4 h-[22rem] transition transform hover:scale-105 duration-300">
-              <img src="/assets/img/pexel 2.jpg" alt="News Image 3" class="rounded-md mb-4 w-full h-40 object-cover">
-              <p class="text-sm text-gray-500 mb-1">2 February 2023</p>
-              <p class="text-gray-800 text-sm mb-2">The illegal jaguar trade is thriving online. Why aren’t governments stopping it?</p>
-              <a href="#" class="text-teal-600 text-sm font-medium">Mongabay</a>
+          <div class="swiper-slide">
+            <div class="bg-gray-50 rounded-lg shadow p-4 h-[22rem] transition transform hover:scale-105 duration-300 mx-2">
+              <img src="https://placehold.co/300x200/312e81/ffffff?text=Conservation" alt="News Image 4" class="rounded-md mb-4 w-full h-40 object-cover">
+              <p class="text-sm text-gray-500 mb-1">15 March 2023</p>
+              <p class="text-gray-800 text-sm mb-2">New conservation efforts show promising results for endangered species</p>
+              <a href="#" class="text-teal-600 text-sm font-medium">National Geographic</a>
             </div>
           </div>
-          <div class="swiper-slide w-72">
-            <div class="bg-gray-50 rounded-lg shadow p-4 h-[22rem] transition transform hover:scale-105 duration-300">
-              <img src="./assets/img/pexel_1.jpg" alt="News Image 3" class="rounded-md mb-4 w-full h-40 object-cover">
-              <p class="text-sm text-gray-500 mb-1">2 February 2023</p>
-              <p class="text-gray-800 text-sm mb-2">The illegal jaguar trade is thriving online. Why aren’t governments stopping it?</p>
-              <a href="#" class="text-teal-600 text-sm font-medium">Mongabay</a>
+          <div class="swiper-slide">
+            <div class="bg-gray-50 rounded-lg shadow p-4 h-[22rem] transition transform hover:scale-105 duration-300 mx-2">
+              <img src="https://placehold.co/300x200/047857/ffffff?text=Forest" alt="News Image 5" class="rounded-md mb-4 w-full h-40 object-cover">
+              <p class="text-sm text-gray-500 mb-1">8 May 2023</p>
+              <p class="text-gray-800 text-sm mb-2">Reforestation project brings back native species to damaged ecosystems</p>
+              <a href="#" class="text-teal-600 text-sm font-medium">Science Daily</a>
             </div>
           </div>
-          <!-- Add 10 more swiper-slide elements with similar structure -->
         </div>
   
         <!-- Bottom Navigation Arrows -->
         <div class="flex items-center justify-center gap-4 mt-8">
-          <button class="swiper-button-prev w-10 h-10 rounded-full border border-blue-900 text-blue-900 bg-white flex items-center justify-center hover:bg-blue-900 hover:text-white transition">
-            <svg class="w-2 h-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+          <button class="swiper-button-prev-news w-10 h-10 rounded-full border border-blue-900 text-blue-900 bg-white flex items-center justify-center hover:bg-blue-900 hover:text-white transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
           </button>
-          <button class="swiper-button-next w-10 h-10 rounded-full border border-blue-900 text-blue-900 bg-white flex items-center justify-center hover:bg-blue-900 hover:text-white transition">
-            <svg class="w-2 h-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+          <button class="swiper-button-next-news w-10 h-10 rounded-full border border-blue-900 text-blue-900 bg-white flex items-center justify-center hover:bg-blue-900 hover:text-white transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
           </button>
         </div>
       </div>
@@ -346,7 +496,7 @@
   <div class="flex justify-center items-center gap-10 flex-wrap">
     <img src="/assets/img/Logo-TotalEnergies-2021-1-removebg-preview.png" alt="DocuSign" class="h-12">
     <img src="/assets/img/netflix-removebg-preview.png" alt="Acacia Foundation" class="h-16">
-    <img src="/assets/img/nfl-removebg-preview (1).png" alt="RBC" class="h-1">
+    <img src="/assets/img/nfl-removebg-preview (1).png" alt="RBC" class="h-14">
     <img src="/assets/img/peecho logo white (1).webp" alt="Peecho" class="h-20">
     <img src="/assets/img/Logo_colored_2-removebg-preview.png" alt="" class="h-8">
   </div>
@@ -401,11 +551,128 @@
   <p class="text-sm text-gray-400">Copyright 2025 by Wildlife Conservation Society &nbsp; | &nbsp; <a href="#" class="hover:underline">Privacy Policy</a> &nbsp; | &nbsp; <a href="#" class="hover:underline">User Agreement</a></p>
 </footer>
 
-
-
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  // Navbar scroll effect with search bar visibility
+  window.addEventListener('scroll', function() {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 100) {
+      navbar.classList.add('scrolled-nav', 'text-gray-900');
+      navbar.classList.remove('bg-transparent', 'text-white');
+    } else {
+      navbar.classList.remove('scrolled-nav', 'text-gray-900');
+      navbar.classList.add('bg-transparent', 'text-white');
+    }
+  });
   
-
-
-<script src="assets/js/index.js"></script>
+  // Initialize Main Swiper Carousel
+  const mainSwiper = new Swiper('.mySwiper', {
+    // Effect
+    effect: 'fade',
+    fadeEffect: {
+      crossFade: true
+    },
+    
+    // Autoplay
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    
+    // Loop
+    loop: true,
+    
+    // Speed
+    speed: 800,
+    
+    // Navigation
+    navigation: {
+      nextEl: '.swiper-button-next-custom',
+      prevEl: '.swiper-button-prev-custom',
+    },
+    
+    // Pagination
+    pagination: {
+      el: '.swiper-pagination-custom',
+      clickable: true,
+      renderBullet: function (index, className) {
+        return '<span class="' + className + ' swiper-pagination-bullet-custom"></span>';
+      },
+    },
+    
+    // Callbacks
+    on: {
+      init: function() {
+        updateProgressBar();
+      },
+      slideChange: function() {
+        updateProgressBar();
+      },
+    },
+  });
+  
+  // Custom progress bar functionality for main carousel
+  function updateProgressBar() {
+    const progressBar = document.querySelector('.swiper-progress-bar');
+    progressBar.style.transition = 'none';
+    progressBar.style.width = '0%';
+    
+    // Force reflow
+    void progressBar.offsetWidth;
+    
+    progressBar.style.transition = 'width 5s linear';
+    progressBar.style.width = '100%';
+  }
+  
+  // Pause autoplay on hover for main carousel
+  const mainSwiperContainer = document.querySelector('.mySwiper');
+  mainSwiperContainer.addEventListener('mouseenter', function() {
+    mainSwiper.autoplay.stop();
+  });
+  
+  mainSwiperContainer.addEventListener('mouseleave', function() {
+    mainSwiper.autoplay.start();
+    updateProgressBar();
+  });
+  
+  // Update progress bar when manually navigating main carousel
+  document.querySelector('.swiper-button-next-custom').addEventListener('click', function() {
+    updateProgressBar();
+  });
+  
+  document.querySelector('.swiper-button-prev-custom').addEventListener('click', function() {
+    updateProgressBar();
+  });
+  
+  // Update progress bar when clicking pagination on main carousel
+  const paginationBullets = document.querySelectorAll('.swiper-pagination-bullet-custom');
+  paginationBullets.forEach(bullet => {
+    bullet.addEventListener('click', function() {
+      updateProgressBar();
+    });
+  });
+  
+  // Initialize News Swiper
+  const newsSwiper = new Swiper('.newsSwiper', {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: true,
+    navigation: {
+      nextEl: '.swiper-button-next-news',
+      prevEl: '.swiper-button-prev-news',
+    },
+    breakpoints: {
+      640: {
+        slidesPerView: 2,
+      },
+      1024: {
+        slidesPerView: 3,
+      },
+      1280: {
+        slidesPerView: 4,
+      },
+    },
+  });
+</script>
 </body>
 </html>
