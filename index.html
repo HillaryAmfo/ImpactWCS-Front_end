@@ -9,6 +9,34 @@
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+       /* Minimal custom styles for the news carousel section */
+      #caro {
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      }
+      
+      #caro::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23047857' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+        opacity: 0.5;
+        z-index: 0;
+      }
+      
+      .swiper-pagination-bullet {
+        width: 10px;
+        height: 10px;
+        background: #cbd5e1;
+        opacity: 1;
+      }
+      
+      .swiper-pagination-bullet-active {
+        background: #047857;
+        transform: scale(1.2);
+      }
       .carousel-slide {
         transition: opacity 500ms ease;
       }
@@ -264,71 +292,160 @@
   </section>
 
 
-  <section class="bg-white py-20 px-6 md:px-20">
-    <div class="text-center mb-10">
-      <p class="text-sm font-semibold text-blue-900 uppercase">Our Global News</p>
-      <h2 class="text-3xl font-bold text-gray-900">
-        Latest news from our global portfolio of Nature's Strongholds
-      </h2>
-    </div>
+  <section id="caro" class="relative py-20 px-6 md:px-20 overflow-hidden">
+    <div class="max-w-7xl mx-auto relative z-10">
+      <!-- Section Header -->
+      <div class="text-center mb-16 relative">
+        <p class="text-sm font-semibold text-blue-900 uppercase tracking-wider mb-2">Our Global News</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Latest News from Our Global Portfolio
+        </h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Stay updated with the latest conservation stories, breakthroughs, and initiatives from our Nature's Strongholds around the world.
+        </p>
+        
+      </div>
   
-    <div class="relative">
-      <div class="swiper mySwiper">
-        <div class="swiper-wrapper gap-12">
-          <!-- 13 News Cards -->
-          <div class="swiper-slide w-72">
-            <div class="bg-gray-50 rounded-lg shadow p-4 h-[22rem] transition transform hover:scale-105 duration-300">
-              <img src="/assets/img/pexels-adi-k-182036-582590.jpg" alt="News Image 1" class="rounded-md mb-4 w-full h-40 object-cover">
-              <p class="text-sm text-gray-500 mb-1">20 April 2023</p>
-              <p class="text-gray-800 text-sm mb-2">'Extinct' lion spotted in Chad national park</p>
-              <a href="#" class="text-teal-600 text-sm font-medium">BBC</a>
+      <!-- Swiper Container -->
+      <div class="relative">
+        <div class="swiper newsSwiper pb-12">
+          <div class="swiper-wrapper">
+            <!-- News Card 1 -->
+            <div class="swiper-slide">
+              <div class="bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-500 ease-out hover:scale-105 hover:-translate-y-3 hover:shadow-2xl h-full relative group">
+                <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-emerald-700 shadow-sm z-10">Wildlife</div>
+                <div class="overflow-hidden h-44">
+                  <img src="/assets/img/pexels-adi-k-182036-582590.jpg" alt="Lion spotted in Chad" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+                <div class="p-5">
+                  <div class="flex items-center text-gray-500 text-xs mb-2">
+                    <i class="far fa-calendar text-xs mr-1"></i> 20 April 2023
+                  </div>
+                  <h3 class="text-gray-800 font-semibold text-base leading-tight mb-3 line-clamp-2">'Extinct' lion spotted in Chad national park for the first time in 20 years</h3>
+                  <a href="#" class="inline-flex items-center text-emerald-700 font-medium text-sm hover:text-blue-600 transition-colors">
+                    <i class="far fa-newspaper mr-1"></i> BBC News
+                  </a>
+                </div>
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-600 to-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+              </div>
+            </div>
+            
+            <!-- News Card 2 -->
+            <div class="swiper-slide">
+              <div class="bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-500 ease-out hover:scale-105 hover:-translate-y-3 hover:shadow-2xl h-full relative group">
+                <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-emerald-700 shadow-sm z-10">Conservation</div>
+                <div class="overflow-hidden h-44">
+                  <img src="/assets/img/pexels-jeremy-bishop-1260133-2765872.jpg" alt="Turtle hatching" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+                <div class="p-5">
+                  <div class="flex items-center text-gray-500 text-xs mb-2">
+                    <i class="far fa-calendar text-xs mr-1"></i> 24 January 2023
+                  </div>
+                  <h3 class="text-gray-800 font-semibold text-base leading-tight mb-3 line-clamp-2">Watch: Drone video captures the world's largest hatching of baby turtles</h3>
+                  <a href="#" class="inline-flex items-center text-emerald-700 font-medium text-sm hover:text-blue-600 transition-colors">
+                    <i class="far fa-newspaper mr-1"></i> Fox News Weather
+                  </a>
+                </div>
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-600 to-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+              </div>
+            </div>
+            
+            <!-- News Card 3 -->
+            <div class="swiper-slide">
+              <div class="bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-500 ease-out hover:scale-105 hover:-translate-y-3 hover:shadow-2xl h-full relative group">
+                <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-emerald-700 shadow-sm z-10">Wildlife Crime</div>
+                <div class="overflow-hidden h-44">
+                  <img src="/assets/img/pexels-belle-co-99483-847393.jpg" alt="Jaguar in forest" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+                <div class="p-5">
+                  <div class="flex items-center text-gray-500 text-xs mb-2">
+                    <i class="far fa-calendar text-xs mr-1"></i> 2 February 2023
+                  </div>
+                  <h3 class="text-gray-800 font-semibold text-base leading-tight mb-3 line-clamp-2">The illegal jaguar trade is thriving online. Why aren't governments stopping it?</h3>
+                  <a href="#" class="inline-flex items-center text-emerald-700 font-medium text-sm hover:text-blue-600 transition-colors">
+                    <i class="far fa-newspaper mr-1"></i> Mongabay
+                  </a>
+                </div>
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-600 to-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+              </div>
+            </div>
+            
+            <!-- News Card 4 -->
+            <div class="swiper-slide">
+              <div class="bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-500 ease-out hover:scale-105 hover:-translate-y-3 hover:shadow-2xl h-full relative group">
+                <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-emerald-700 shadow-sm z-10">Research</div>
+                <div class="overflow-hidden h-44">
+                  <img src="/assets/img/pexels-tomfisk-2739666.jpg" alt="Marine conservation" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+                <div class="p-5">
+                  <div class="flex items-center text-gray-500 text-xs mb-2">
+                    <i class="far fa-calendar text-xs mr-1"></i> 15 March 2023
+                  </div>
+                  <h3 class="text-gray-800 font-semibold text-base leading-tight mb-3 line-clamp-2">New study reveals coral reefs recovering in protected marine areas</h3>
+                  <a href="#" class="inline-flex items-center text-emerald-700 font-medium text-sm hover:text-blue-600 transition-colors">
+                    <i class="far fa-newspaper mr-1"></i> National Geographic
+                  </a>
+                </div>
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-600 to-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+              </div>
+            </div>
+            
+            <!-- News Card 5 -->
+            <div class="swiper-slide">
+              <div class="bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-500 ease-out hover:scale-105 hover:-translate-y-3 hover:shadow-2xl h-full relative group">
+                <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-emerald-700 shadow-sm z-10">Community</div>
+                <div class="overflow-hidden h-44">
+                  <img src="/assets/img/pexels-timmossholder-1618424.jpg" alt="Community conservation" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+                <div class="p-5">
+                  <div class="flex items-center text-gray-500 text-xs mb-2">
+                    <i class="far fa-calendar text-xs mr-1"></i> 8 May 2023
+                  </div>
+                  <h3 class="text-gray-800 font-semibold text-base leading-tight mb-3 line-clamp-2">Indigenous communities lead successful rewilding project in Amazon</h3>
+                  <a href="#" class="inline-flex items-center text-emerald-700 font-medium text-sm hover:text-blue-600 transition-colors">
+                    <i class="far fa-newspaper mr-1"></i> The Guardian
+                  </a>
+                </div>
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-600 to-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+              </div>
+            </div>
+            
+            <!-- News Card 6 -->
+            <div class="swiper-slide">
+              <div class="bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-500 ease-out hover:scale-105 hover:-translate-y-3 hover:shadow-2xl h-full relative group">
+                <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-emerald-700 shadow-sm z-10">Climate</div>
+                <div class="overflow-hidden h-44">
+                  <img src="/assets/img/pexels-adi-k-182036-582590.jpg" alt="Climate impact" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+                <div class="p-5">
+                  <div class="flex items-center text-gray-500 text-xs mb-2">
+                    <i class="far fa-calendar text-xs mr-1"></i> 12 June 2023
+                  </div>
+                  <h3 class="text-gray-800 font-semibold text-base leading-tight mb-3 line-clamp-2">How protecting forests helps combat climate change: New findings</h3>
+                  <a href="#" class="inline-flex items-center text-emerald-700 font-medium text-sm hover:text-blue-600 transition-colors">
+                    <i class="far fa-newspaper mr-1"></i> Scientific American
+                  </a>
+                </div>
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-600 to-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+              </div>
             </div>
           </div>
-          <div class="swiper-slide w-72">
-            <div class="bg-gray-50 rounded-lg shadow p-4 h-[22rem] transition transform hover:scale-105 duration-300">
-              <img src="/assets/img/pexels-jeremy-bishop-1260133-2765872.jpg" alt="News Image 2" class="rounded-md mb-4 w-full h-40 object-cover">
-              <p class="text-sm text-gray-500 mb-1">24 January 2023</p>
-              <p class="text-gray-800 text-sm mb-2">Watch: Drone video captures the world’s largest hatching of baby turtles</p>
-              <a href="#" class="text-teal-600 text-sm font-medium">Fox News Weather</a>
-            </div>
-          </div>
-          <div class="swiper-slide w-72">
-            <div class="bg-gray-50 rounded-lg shadow p-4 h-[22rem] transition transform hover:scale-105 duration-300">
-              <img src="/assets/img/pexels-belle-co-99483-847393.jpg" alt="News Image 3" class="rounded-md mb-4 w-full h-40 object-cover">
-              <p class="text-sm text-gray-500 mb-1">2 February 2023</p>
-              <p class="text-gray-800 text-sm mb-2">The illegal jaguar trade is thriving online. Why aren’t governments stopping it?</p>
-              <a href="#" class="text-teal-600 text-sm font-medium">Mongabay</a>
-            </div>
-          </div>
-
-          <div class="swiper-slide w-72">
-            <div class="bg-gray-50 rounded-lg shadow p-4 h-[22rem] transition transform hover:scale-105 duration-300">
-              <img src="/assets/img/pexels-belle-co-99483-847393.jpg" alt="News Image 3" class="rounded-md mb-4 w-full h-40 object-cover">
-              <p class="text-sm text-gray-500 mb-1">2 February 2023</p>
-              <p class="text-gray-800 text-sm mb-2">The illegal jaguar trade is thriving online. Why aren’t governments stopping it?</p>
-              <a href="#" class="text-teal-600 text-sm font-medium">Mongabay</a>
-            </div>
-          </div>
-          <div class="swiper-slide w-72">
-            <div class="bg-gray-50 rounded-lg shadow p-4 h-[22rem] transition transform hover:scale-105 duration-300">
-              <img src="/assets/img/pexels-belle-co-99483-847393.jpg" alt="News Image 3" class="rounded-md mb-4 w-full h-40 object-cover">
-              <p class="text-sm text-gray-500 mb-1">2 February 2023</p>
-              <p class="text-gray-800 text-sm mb-2">The illegal jaguar trade is thriving online. Why aren’t governments stopping it?</p>
-              <a href="#" class="text-teal-600 text-sm font-medium">Mongabay</a>
-            </div>
-          </div>
-          <!-- Add 10 more swiper-slide elements with similar structure -->
+          
+          <!-- Pagination -->
+          <div class="swiper-pagination mt-8"></div>
         </div>
-  
-        <!-- Bottom Navigation Arrows -->
-        <div class="flex items-centerjustify-center gap-4 mt-8">
-          <button class="swiper-button-prev w-10 h-10 rounded-full border border-blue-900 text-blue-900 bg-white flex items-center justify-center hover:bg-blue-900 hover:text-white transition">
-            <svg class="w-2 h-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
-          </button>
-          <button class="swiper-button-next w-10 h-10 rounded-full border border-blue-900 text-blue-900 bg-white flex items-center justify-center hover:bg-blue-900 hover:text-white transition">
-            <svg class="w-2 h-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
-          </button>
-        </div>
+        
+        <!-- Navigation Buttons -->
+        <div class="swiper-button-next mt-4 bg-white w-11 h-11 rounded-full shadow-lg flex items-center justify-center hover:bg-emerald-600 hover:scale-110 transition-all duration-300 after:text-emerald-700 after:text-sm after:font-bold hover:after:text-white "></div>
+        <div class="swiper-button-prev mt-4 bg-white w-11 h-11 rounded-full shadow-lg flex items-center justify-center hover:bg-emerald-600 hover:scale-110 transition-all duration-300 after:text-emerald-700 after:text-sm after:font-bold hover:after:text-white"></div>
+      </div>
+      
+      <!-- View All News Button -->
+      <div class="text-center mt-12">
+        <a href="#" class="inline-flex items-center gap-3 bg-blue-900 text-white px-8 py-4 rounded-full hover:bg-emerald-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:gap-4">
+          <span class="font-semibold">View All News</span>
+          <i class="fas fa-arrow-right text-sm transition-transform duration-300 group-hover:translate-x-1"></i>
+        </a>
       </div>
     </div>
   </section>
@@ -371,27 +488,45 @@
 
 <footer class="bg-gray-900 text-white py-10 px-6 md:px-20 text-center">
   <div class="mb-6">
-     
     <img src="https://placehold.co/40x40/047857/FFFFFF?text=WL" alt="WCS Impact" class="mx-auto h-6">
   </div>
   <nav class="flex justify-center gap-8 items-center mb-6 relative">
     <!-- About Dropdown -->
     <div class="relative group">
-      <button class="px-4 py-2 border border-white rounded-full text-white group-hover:bg-white group-hover:text-blue-800 transition">About</button>
-      <div class="absolute hidden group-hover:block bg-white text-left mt-2 py-2 rounded shadow-md min-w-[200px] z-10">
-        <a href="/about.html" class="block px-4 py-2 text-blue-800 hover:text-green-600 transition">WCS</a>
-        <a href="/nature's.html" class="block px-4 py-2 text-blue-800 hover:text-green-600 transition">Nature's Stronghold</a>
-        <a href="#" class="block px-4 py-2 text-blue-800 hover:text-green-600 transition">Partners</a>
+      <button class="px-4 py-2 border border-white rounded-full text-white group-hover:bg-white group-hover:text-blue-800 transition-all duration-300 flex items-center">
+        About
+        <!-- Animated chevron -->
+        <svg class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </button>
+      <!-- Drop-up menu with enhanced styling -->
+      <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 hidden group-hover:block bg-white text-left mb-2 py-3 rounded-lg shadow-xl min-w-[220px] z-10 border border-gray-200 overflow-hidden">
+        <!-- Decorative top element -->
+        <div class="absolute -top-1 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white rotate-45"></div>
+        
+        <a href="/about.html" class="block px-4 py-3 text-blue-800 hover:text-green-600 hover:bg-blue-50 transition-all duration-200 border-l-4 border-transparent hover:border-green-500">
+          <span class="font-medium">WCS</span>
+          <span class="text-xs text-gray-500 block">Our mission & vision</span>
+        </a>
+        <a href="/nature's.html" class="block px-4 py-3 text-blue-800 hover:text-green-600 hover:bg-blue-50 transition-all duration-200 border-l-4 border-transparent hover:border-green-500">
+          <span class="font-medium">Nature's Stronghold</span>
+          <span class="text-xs text-gray-500 block">Our conservation approach</span>
+        </a>
+        <a href="#" class="block px-4 py-3 text-blue-800 hover:text-green-600 hover:bg-blue-50 transition-all duration-200 border-l-4 border-transparent hover:border-green-500">
+          <span class="font-medium">Partners</span>
+          <span class="text-xs text-gray-500 block">Collaboration network</span>
+        </a>
       </div>
     </div>
 
     <!-- Dashboard Link -->
-    <a href="#" class="relative after:content-[''] after:block after:h-0.5 after:bg-blue-500 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left">Dashboard</a>
+    <a href="#" class="relative after:content-[''] after:block after:h-0.5 after:bg-blue-500 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left px-2 py-1 rounded transition-colors duration-300 hover:bg-blue-900/30">Dashboard</a>
 
     <!-- Contact Link -->
-    <a href="/contact.html" class="relative after:content-[''] after:block after:h-0.5 after:bg-blue-500 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left">Contact</a>
+    <a href="/contact.html" class="relative after:content-[''] after:block after:h-0.5 after:bg-blue-500 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left px-2 py-1 rounded transition-colors duration-300 hover:bg-blue-900/30">Contact</a>
   </nav>
-  <p class="text-sm text-gray-400">Copyright 2025 by Wildlife Conservation Society &nbsp; | &nbsp; <a href="#" class="hover:underline">Privacy Policy</a> &nbsp; | &nbsp; <a href="#" class="hover:underline">User Agreement</a></p>
+  <p class="text-sm text-gray-400">Copyright 2025 by Wildlife Conservation Society &nbsp; | &nbsp; <a href="#" class="hover:underline transition-colors duration-300 hover:text-gray-300">Privacy Policy</a> &nbsp; | &nbsp; <a href="#" class="hover:underline transition-colors duration-300 hover:text-gray-300">User Agreement</a></p>
 </footer>
 
 
@@ -400,5 +535,34 @@
 
 
 <script src="assets/js/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    // Initialize Swiper for the news section
+    const newsSwiper = new Swiper('.newsSwiper', {
+      slidesPerView: 1,
+      spaceBetween: 24,
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        640: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 3,
+        },
+      },
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+    });
+  </script>
 </body>
 </html>
