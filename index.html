@@ -82,9 +82,75 @@
             overflow: hidden;
         }
         
-      .carousel-slide {
-        transition: opacity 500ms ease;
-      }
+      .carousel-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .carousel-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23047857' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.5;
+            z-index: 0;
+        }
+        
+        .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            background: #cbd5e1;
+            opacity: 1;
+        }
+        
+        .swiper-pagination-bullet-active {
+            background: #047857;
+            transform: scale(1.2);
+        }
+        
+        .swiper-button-next, .swiper-button-prev {
+            background-color: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .swiper-button-next:after, .swiper-button-prev:after {
+            font-size: 18px;
+            color: #047857;
+            font-weight: bold;
+        }
+        
+        .swiper-button-next:hover, .swiper-button-prev:hover {
+            background-color: #047857;
+            transform: scale(1.1);
+        }
+        
+        .swiper-button-next:hover:after, .swiper-button-prev:hover:after {
+            color: white;
+        }
+        
+        .carousel-slide {
+            transition: opacity 500ms ease;
+        }
+        
+        .slide-caption {
+            transition: transform 0.5s ease-out;
+        }
+        
+        .swiper-slide-active .slide-caption {
+            transform: translateY(0);
+        }
+        
+        .swiper-slide-active .swiper-image {
+            transform: scale(1.05);
+        }
       .volunteer-card {
         transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
@@ -189,93 +255,83 @@
   </section>
   
 
-<section class="relative w-full bg-slate-100">
-  <!-- Text content -->
-  <div class="container mx-auto px-4 md:px-8 lg:px-16 max-w-6xl text-center pt-16">
-    <div class="text-4xl md:text-3xl font-bold text-gray-900 mb-10">WCS GLOBAL</div>
-    <p class="mt-10 mb-10 text-base md:text-lg max-w-4xl mx-auto text-gray-700 leading-relaxed">
-      With the largest and longest-standing field conservation program in the
-      world, WCS works with governments, Indigenous Peoples, and local
-      communities in more than 56 countries to support the conservation of
-      over 20 million square kilometers of the highest ecological integrity
-      areas in Nature's Strongholds across the globe.
-    </p>
-  </div>
+  <section class="carousel-section relative w-full bg-slate-100">
+        <!-- Text content -->
+        <div class="container mx-auto px-4 md:px-8 lg:px-16 max-w-6xl text-center pt-16">
+            <div class="text-4xl md:text-3xl font-bold text-gray-900 mb-10">WCS GLOBAL</div>
+            <p class="mt-10 mb-10 text-base md:text-lg max-w-4xl mx-auto text-gray-700 leading-relaxed">
+                With the largest and longest-standing field conservation program in the
+                world, WCS works with governments, Indigenous Peoples, and local
+                communities in more than 56 countries to support the conservation of
+                over 20 million square kilometers of the highest ecological integrity
+                areas in Nature's Strongholds across the globe.
+            </p>
+        </div>
 
-  <!-- Enhanced Swiper Carousel container -->
-  <div class="relative max-w-5xl mx-auto h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px] mb-10 rounded-2xl overflow-hidden shadow-2xl">
-    <!-- Progress bar -->
-    <div class="absolute top-0 left-0 w-full h-1 bg-white/50 z-20">
-      <div class="swiper-progress-bar h-full bg-white w-0 transition-all duration-5000 ease-linear"></div>
-    </div>
-    
-    <!-- Year indicator -->
-    <div class="absolute top-5 left-5 bg-white/90 px-3 py-1.5 rounded-full text-sm font-semibold text-gray-900 shadow-lg z-20 backdrop-blur-sm">
-      2022
-    </div>
-    
-    <!-- Swiper container -->
-    <div class="swiper mySwiper h-full w-full">
-      <div class="swiper-wrapper">
-        <!-- Slide 1 -->
-        <div class="swiper-slide relative overflow-hidden">
-          <img src="/assets/img/pexel 4.jpg" alt="Conservation work slide 1" class="w-full h-full object-cover transition-transform duration-8000 ease-out swiper-image" />
-          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-6 md:p-8 transform translate-y-full transition-transform duration-500 ease-out slide-caption">
-            <h3 class="text-lg md:text-xl font-bold mb-2">Wildlife Protection</h3>
-            <p class="text-sm md:text-base opacity-90">Conservation efforts in action across global ecosystems</p>
-          </div>
+        <!-- Enhanced Swiper Carousel container -->
+        <div class="relative max-w-5xl mx-auto h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px] mb-10 rounded-2xl overflow-hidden shadow-2xl">
+            <!-- Progress bar -->
+            <div class="absolute top-0 left-0 w-full h-1 bg-white/50 z-20">
+                <div class="swiper-progress-bar h-full bg-white w-0 transition-all duration-5000 ease-linear"></div>
+            </div>
+            
+            <!-- Year indicator -->
+            <div class="absolute top-5 left-5 bg-white/90 px-3 py-1.5 rounded-full text-sm font-semibold text-gray-900 shadow-lg z-20 backdrop-blur-sm">
+                2022
+            </div>
+            
+            <!-- Swiper container -->
+            <div class="swiper mySwiper h-full w-full">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide relative overflow-hidden">
+                        <img src="/assets/img/pexel 4.jpg" alt="Conservation work slide 1" class="w-full h-full object-cover transition-transform duration-8000 ease-out swiper-image" />
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-6 md:p-8 transform translate-y-full transition-transform duration-500 ease-out slide-caption">
+                            <h3 class="text-lg md:text-xl font-bold mb-2">Wildlife Protection</h3>
+                            <p class="text-sm md:text-base opacity-90">Conservation efforts in action across global ecosystems</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide relative overflow-hidden">
+                        <img src="/assets/img/pexels-shvetsa-5029853.jpg" alt="Conservation work slide 2" class="w-full h-full object-cover transition-transform duration-8000 ease-out swiper-image" />
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-6 md:p-8 transform translate-y-full transition-transform duration-500 ease-out slide-caption">
+                            <h3 class="text-lg md:text-xl font-bold mb-2">Community Engagement</h3>
+                            <p class="text-sm md:text-base opacity-90">Working with local communities for sustainable conservation</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide relative overflow-hidden">
+                        <img src="/assets/img/pexels-pixabay-73759.jpg" alt="Conservation work slide 3" class="w-full h-full object-cover transition-transform duration-8000 ease-out swiper-image" />
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-6 md:p-8 transform translate-y-full transition-transform duration-500 ease-out slide-caption">
+                            <h3 class="text-lg md:text-xl font-bold mb-2">Research Initiatives</h3>
+                            <p class="text-sm md:text-base opacity-90">Scientific research driving conservation strategies</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 4 -->
+                    <div class="swiper-slide relative overflow-hidden">
+                        <img src="/assets/img/Eli_Miller_Belize__1_ (1).jpg" alt="Conservation work slide 4" class="w-full h-full object-cover transition-transform duration-8000 ease-out swiper-image" />
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-6 md:p-8 transform translate-y-full transition-transform duration-500 ease-out slide-caption">
+                            <h3 class="text-lg md:text-xl font-bold mb-2">Global Partnerships</h3>
+                            <p class="text-sm md:text-base opacity-90">Collaborating with organizations worldwide for conservation impact</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="swiper-pagination"></div>
+                
+                <!-- Navigation buttons -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
         </div>
-        
-        <!-- Slide 2 -->
-        <div class="swiper-slide relative overflow-hidden">
-          <img src="/assets/img/pexels-shvetsa-5029853.jpg" alt="Conservation work slide 2" class="w-full h-full object-cover transition-transform duration-8000 ease-out swiper-image" />
-          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-6 md:p-8 transform translate-y-full transition-transform duration-500 ease-out slide-caption">
-            <h3 class="text-lg md:text-xl font-bold mb-2">Community Engagement</h3>
-            <p class="text-sm md:text-base opacity-90">Working with local communities for sustainable conservation</p>
-          </div>
-        </div>
-        
-        <!-- Slide 3 -->
-        <div class="swiper-slide relative overflow-hidden">
-          <img src="/assets/img/pexels-pixabay-73759.jpg" alt="Conservation work slide 3" class="w-full h-full object-cover transition-transform duration-8000 ease-out swiper-image" />
-          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-6 md:p-8 transform translate-y-full transition-transform duration-500 ease-out slide-caption">
-            <h3 class="text-lg md:text-xl font-bold mb-2">Research Initiatives</h3>
-            <p class="text-sm md:text-base opacity-90">Scientific research driving conservation strategies</p>
-          </div>
-        </div>
-        
-        <!-- Slide 4 -->
-        <div class="swiper-slide relative overflow-hidden">
-          <img src="/assets/img/Eli_Miller_Belize__1_ (1).jpg" alt="Conservation work slide 4" class="w-full h-full object-cover transition-transform duration-8000 ease-out swiper-image" />
-          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-6 md:p-8 transform translate-y-full transition-transform duration-500 ease-out slide-caption">
-            <h3 class="text-lg md:text-xl font-bold mb-2">Global Partnerships</h3>
-            <p class="text-sm md:text-base opacity-90">Collaborating with organizations worldwide for conservation impact</p>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Custom pagination -->
-      <div class="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-20 swiper-pagination-custom"></div>
-      
-      <!-- Custom navigation buttons -->
-      <div class="absolute bottom-4 right-4 flex gap-2 z-20">
-        <button class="swiper-button-prev-custom w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-lg hover:bg-white hover:scale-110 transition-all duration-300 group">
-          <svg class="w-5 h-5 text-gray-900 group-hover:text-emerald-600 transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m15 18-6-6 6-6"/>
-          </svg>
-        </button>
-        <button class="swiper-button-next-custom w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-lg hover:bg-white hover:scale-110 transition-all duration-300 group">
-          <svg class="w-5 h-5 text-gray-900 group-hover:text-emerald-600 transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6"/>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </div>
 
-  <!-- Space for next section overlap -->
-  <div class="h-10 md:h-20"></div>
-</section>
+        <!-- Space for next section overlap -->
+        <div class="h-10 md:h-20"></div>
+    </section>
 
   <section class="bg-white py-20 px-6 md:px-20">
     <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
@@ -527,7 +583,7 @@
           </section>
 
         <!-- Supporters Section -->
-        <section class="bg-white py-16 px-6 md:px-20 text-center"></section>
+        <section class="bg-slate-100 py-4 px-6 md:px-20 text-center"></section>
   <h2 class="text-xl text-center md:text-2xl font-bold text-gray-900 mb-8">
     This platform was built with the generous support of a number of donors.
   </h2>
@@ -639,6 +695,61 @@
                     },
                 },
             });
+        });
+
+         // Initialize Swiper for Carousel
+        document.addEventListener('DOMContentLoaded', function() {
+            const swiper = new Swiper('.mySwiper', {
+                loop: true,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                on: {
+                    init: function() {
+                        // Show caption for initial active slide
+                        const activeSlide = this.slides[this.activeIndex];
+                        const caption = activeSlide.querySelector('.slide-caption');
+                        if (caption) {
+                            caption.style.transform = 'translateY(0)';
+                        }
+                    },
+                    slideChangeTransitionStart: function() {
+                        // Hide all captions
+                        const slides = this.slides;
+                        for (let i = 0; i < slides.length; i++) {
+                            const caption = slides[i].querySelector('.slide-caption');
+                            if (caption) {
+                                caption.style.transform = 'translateY(100%)';
+                            }
+                        }
+                    },
+                    slideChangeTransitionEnd: function() {
+                        // Show caption for active slide
+                        const activeSlide = this.slides[this.activeIndex];
+                        const caption = activeSlide.querySelector('.slide-caption');
+                        if (caption) {
+                            caption.style.transform = 'translateY(0)';
+                        }
+                    }
+                }
+            });
+            
+            // Progress bar animation
+            const progressBar = document.querySelector('.swiper-progress-bar');
+            if (progressBar) {
+                swiper.on('autoplayTimeLeft', function(s, time, progress) {
+                    progressBar.style.width = (progress * 100) + '%';
+                });
+            }
         });
     </script>
 
