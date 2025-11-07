@@ -12,7 +12,7 @@
     <!-- Font Awesome for social media brand icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
-  :root { --bg:#0b1020; --card:#111634; --muted:#aeb7e9; }
+  :root { --bg:#aac1ee; --card:#111634; --muted:#aeb7e9; }
   body{margin:0;font-family: Inter, system-ui, Segoe UI, Roboto, Arial;background:var(--bg);color:#e8eefc}
   .wrap{display:grid;grid-template-columns:1.15fr 1fr;gap:14px;padding:14px}
   #mapdiv{height:72vh;min-height:540px;border-radius:14px;overflow:hidden;background:var(--card)}
@@ -71,6 +71,67 @@
     </div>
   </div>
 
+     <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 py-4 navbar-transition bg-green-600 text-black">
+        <div class="container mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8">
+            <!-- Logo -->
+            <a href="/index.html" class="flex items-center space-x-2">
+                <img src="https://placehold.co/40x40/047857/FFFFFF?text=WL" alt="Wildlife Logo" class="rounded-full">
+                <span class="text-2xl font-bold">WCS Impact</span>
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="lg:hidden focus:outline-none p-2 rounded-md hover:bg-gray-700/30 transition-colors duration-200">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+
+            <!-- Navigation Links (Hidden on small screens) -->
+            <div id="navbar-links" class="hidden lg:flex flex-col lg:flex-row lg:space-x-8 mt-4 lg:mt-0 items-center">
+                <div class="relative group">
+                  <button  id="about-toggle" class="px-4 py-2  text-lg text-black group-hover:bg-white group-hover:text-blue-800 transition">About</button>
+                  <div class="absolute hidden group-hover:block bg-white text-left mt-2 py-2 rounded shadow-md min-w-[200px] z-10">
+                    <a href="/about.html" class="block px-4 py-2 text-blue-800 hover:text-green-600 transition">WCS</a>
+                    <a href="/nature's.html" class="block px-4 py-2 text-blue-800 hover:text-green-600 transition">Nature's Stronghold</a>
+                    <a href="./partners.html" class="block px-4 py-2 text-blue-800 hover:text-green-600 transition">Partners</a>
+                  </div>
+                </div>
+               
+                <a href="./map_data.html" class="block lg:inline-block text-lg font-bold hover:text-green-300 py-2 lg:py-0 transition-colors duration-200 border-b-2 border-green-500">Dashboard</a>
+                <a href="./projects.html" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Projects</a>
+                <a href="./donate.html" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Donate</a>
+                <a href="./volunteer.html" class="block lg:inline-block text-lg font-meduim py-2 lg:py-0 transition-colors duration-200">Volunteer</a>
+                <a href="./contact.html" class="block lg:inline-block text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Contact</a>
+                
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-70 z-40 hidden"></div>
+
+    <!-- Mobile Menu Sidebar -->
+    <div id="mobile-menu-sidebar" class="fixed top-0 right-0 w-64 h-full bg-white z-50 transform translate-x-full transition-transform duration-300 ease-in-out p-6 shadow-xl">
+        <div class="flex justify-end mb-8">
+            <button id="close-mobile-menu" class="text-gray-700 focus:outline-none p-2 rounded-md hover:bg-gray-100">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex flex-col space-y-4">
+            <a href="./about.html" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">About Us</a>
+            <a href="./map_data.html" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">Dashboard</a>
+            <a href="./volunteer.html" class="block text-xl font-bold text-green-600 hover:text-green-700 transition-colors duration-200 py-2">Volunteer</a>
+            <a href="./projects.html" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">Projects</a>
+            <a href="./donate.html" class="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors duration-200 py-2">Donate</a>
+
+            
+        </nav>
+    </div>
+  </header>
+
   <!-- Country drill panel -->
   <div class="country-panel" id="countryPanel">
     <div class="country-head">
@@ -86,6 +147,8 @@
       </div>
     </div>
   </div>
+
+ 
 
   <footer class="bg-gray-900 text-white py-10 px-6 md:px-20 text-center">
   <div class="mb-6">
@@ -106,7 +169,7 @@
         <!-- Decorative top element -->
         <div class="absolute -top-1 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white rotate-45"></div>
         
-        <a href="/about.html" class="block px-4 py-3 text-blue-800 hover:text-green-600 hover:bg-blue-50 transition-all duration-200 border-l-4 border-transparent hover:border-green-500">
+        <a href="/wcs.html" class="block px-4 py-3 text-blue-800 hover:text-green-600 hover:bg-blue-50 transition-all duration-200 border-l-4 border-transparent hover:border-green-500">
           <span class="font-medium">WCS</span>
           <span class="text-xs text-gray-500 block">Our mission & vision</span>
         </a>
@@ -114,7 +177,7 @@
           <span class="font-medium">Nature's Stronghold</span>
           <span class="text-xs text-gray-500 block">Our conservation approach</span>
         </a>
-        <a href="#" class="block px-4 py-3 text-blue-800 hover:text-green-600 hover:bg-blue-50 transition-all duration-200 border-l-4 border-transparent hover:border-green-500">
+        <a href="./partners.html" class="block px-4 py-3 text-blue-800 hover:text-green-600 hover:bg-blue-50 transition-all duration-200 border-l-4 border-transparent hover:border-green-500">
           <span class="font-medium">Partners</span>
           <span class="text-xs text-gray-500 block">Collaboration network</span>
         </a>
@@ -122,284 +185,15 @@
     </div>
 
     <!-- Dashboard Link -->
-    <a href="#" class="relative after:content-[''] after:block after:h-0.5 after:bg-blue-500 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left px-2 py-1 rounded transition-colors duration-300 hover:bg-blue-900/30">Dashboard</a>
+    <a href="./map_data.html" class="relative after:content-[''] after:block after:h-0.5 after:bg-blue-500 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left px-2 py-1 rounded transition-colors duration-300 hover:bg-blue-900/30">Dashboard</a>
 
     <!-- Contact Link -->
     <a href="/contact.html" class="relative after:content-[''] after:block after:h-0.5 after:bg-blue-500 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left px-2 py-1 rounded transition-colors duration-300 hover:bg-blue-900/30">Contact</a>
   </nav>
   <p class="text-sm text-gray-400">Copyright 2025 by Wildlife Conservation Society &nbsp; | &nbsp; <a href="#" class="hover:underline transition-colors duration-300 hover:text-gray-300">Privacy Policy</a> &nbsp; | &nbsp; <a href="#" class="hover:underline transition-colors duration-300 hover:text-gray-300">User Agreement</a></p>
-</footer>
+</footer> 
 
-<script>
-/* ================== Regions / country codes ================== */
-const REGION_CODES = {
-  AFRICA:  new Set(["DZ","AO","BJ","BW","BF","BI","CM","CV","CF","TD","KM","CD","CG","CI","DJ","EG","GQ","ER","SZ","ET","GA","GM","GH","GN","GW","KE","LS","LR","LY","MG","MW","ML","MR","MU","MA","MZ","NA","NE","NG","RE","RW","ST","SN","SC","SL","SO","ZA","SS","SD","TZ","TG","TN","UG","EH","ZM","ZW"]),
-  ASIA:    new Set(["AF","AM","AZ","BH","BD","BT","BN","KH","CN","CY","GE","IN","ID","IR","IQ","IL","JP","JO","KZ","KW","KG","LA","LB","MY","MV","MN","MM","NP","KP","OM","PK","PS","PH","QA","SA","SG","KR","LK","SY","TW","TJ","TH","TL","TR","TM","AE","UZ","VN","YE","RU"]),
-  EUROPE:  new Set(["AL","AD","AT","BY","BE","BA","BG","HR","CY","CZ","DK","EE","FI","FR","DE","GI","GR","HU","IS","IE","IT","XK","LV","LI","LT","LU","MT","MD","MC","ME","NL","MK","NO","PL","PT","RO","RU","SM","RS","SK","SI","ES","SE","CH","UA","GB","VA","TR"]),
-  N_AMERICA: new Set(["AG","BS","BB","BZ","CA","CR","CU","DM","DO","SV","GD","GT","HT","HN","JM","MX","NI","PA","KN","LC","VC","TT","US","GL","BM","PM"]),
-  S_AMERICA: new Set(["AR","BO","BR","CL","CO","EC","FK","GF","GY","PY","PE","SR","UY","VE"]),
-  OCEANIA: new Set(["AS","AU","CK","FJ","PF","GU","KI","MH","FM","NR","NC","NZ","MP","PW","PG","PN","WS","SB","TK","TO","TV","VU","WF"])
-};
-const PRETTY = {AFRICA:"Africa",ASIA:"Asia",EUROPE:"Europe",N_AMERICA:"North America",S_AMERICA:"South America",OCEANIA:"Oceania"};
 
-/* ================== Fetch World Bank data (live) ================== */
-/* ER.LND.PTLD.ZS (protected % of land), AG.LND.TOTL.K2 (land km²) */
-const WB_BASE = "https://api.worldbank.org/v2";
-const INDICATORS = {
-  PROT_PCT: "ER.LND.PTLD.ZS",
-  LAND_KM2: "AG.LND.TOTL.K2"
-};
-async function fetchWB(indicator){
-  // pull all years for all countries; per_page high to get all rows
-  const url = `${WB_BASE}/country/all/indicator/${indicator}?format=json&per_page=20000`;
-  const res = await fetch(url);
-  const js = await res.json();
-  return js[1] || [];
-}
-function latestByCountry(rows){
-  // rows: [{country:{id:'GH'}, date:'2022', value: 21.3, ...}, ...]
-  const out = {};
-  rows.forEach(r=>{
-    const id = r.country && r.country.id;
-    const yr = +r.date;
-    if(!id || r.value == null || isNaN(yr)) return;
-    if(!out[id] || yr > out[id].year){
-      out[id] = { value: +r.value, year: yr };
-    }
-  });
-  return out;
-}
-function seriesByCountry(rows){
-  // returns { GH: [{year:2010,value:..}, ...], ... }
-  const out = {};
-  rows.forEach(r=>{
-    const id = r.country && r.country.id;
-    const yr = +r.date;
-    if(!id || r.value==null || isNaN(yr)) return;
-    (out[id] ||= []).push({ year: yr, value: +r.value });
-  });
-  // sort each series ascending year
-  Object.values(out).forEach(arr=>arr.sort((a,b)=>a.year-b.year));
-  return out;
-}
-
-/* ================== State ================== */
-let currentRegion = "AFRICA";
-let latestPct = {};        // { ISO2: {value, year} }
-let pctSeries = {};        // { ISO2: [{year,value}...] }
-let landKm2Latest = {};    // { ISO2: {value, year} }
-
-/* ================== UI helpers ================== */
-const $loading = document.getElementById("loading");
-function fmtKm2(v){ if(v==null || isNaN(v)) return "—"; const m = v/1e6; return m>=0.1? m.toFixed(2)+"M" : (v/1e3).toFixed(0)+"k"; }
-function avg(nums){ const a = nums.filter(x=>x!=null && !isNaN(x)); return a.length? a.reduce((p,c)=>p+c,0)/a.length : null; }
-function sum(nums){ const a = nums.filter(x=>x!=null && !isNaN(x)); return a.length? a.reduce((p,c)=>p+c,0) : null; }
-
-/* ================== Build charts ================== */
-// MAP
-let mapRoot = am5.Root.new("mapdiv");
-mapRoot.setThemes([ am5themes_Animated.new(mapRoot) ]);
-let mapChart = mapRoot.container.children.push(am5map.MapChart.new(mapRoot, {
-  panX:"translateX", panY:"translateY", projection: am5map.geoMercator()
-}));
-mapChart.set("zoomControl", am5map.ZoomControl.new(mapRoot, {}));
-let countrySeries = mapChart.series.push(am5map.MapPolygonSeries.new(mapRoot, {
-  geoJSON: am5geodata_worldLow, exclude:["AQ"], valueField:"value"
-}));
-countrySeries.mapPolygons.template.setAll({
-  tooltipText: "{name}: {value.formatNumber('#.0')}%",
-  interactive: true,
-  fill: am5.color(0x2a3a7a),
-  stroke: am5.color(0x3d4c95), strokeOpacity:.7
-});
-countrySeries.set("heatRules", [{
-  target: countrySeries.mapPolygons.template,
-  dataField: "value",
-  min: am5.color(0x93c5fd), // light
-  max: am5.color(0x1d4ed8), // deep
-  key: "fill"
-}]);
-countrySeries.mapPolygons.template.states.create("dimmed", { fillOpacity:.15, strokeOpacity:.1 });
-countrySeries.mapPolygons.template.states.create("hover", { fill: am5.color(0x3f58c9) });
-
-let heatLegend = mapChart.children.push(am5.HeatLegend.new(mapRoot, {
-  orientation: "horizontal",
-  startColor: am5.color(0x93c5fd), endColor: am5.color(0x1d4ed8),
-  startText: "Lower", endText: "Higher",
-  y: am5.percent(100), centerX: am5.p50, x: am5.p50, paddingTop:8
-}));
-
-// Continents (for zoom)
-let continents = mapChart.series.push(am5map.MapPolygonSeries.new(mapRoot, {
-  geoJSON: am5geodata_continentsLow, exclude:["antarctica"], visible:false
-}));
-function zoomToContinentByName(name){
-  const di = continents.dataItems.find(d => (d.get("name")||"").toLowerCase() === name.toLowerCase());
-  if(!di) return;
-  const p = di.get("polygon"); if(p && p._geoBounds) mapChart.zoomToGeoBounds(p._geoBounds, 800);
-}
-
-// BAR
-let barRoot = am5.Root.new("barchartdiv");
-barRoot.setThemes([ am5themes_Animated.new(barRoot) ]);
-let barChart = barRoot.container.children.push(am5xy.XYChart.new(barRoot, { panX:false, panY:false, wheelX:"none", wheelY:"none", paddingLeft:10, paddingRight:10 }));
-let catAxis = barChart.xAxes.push(am5xy.CategoryAxis.new(barRoot, {
-  categoryField:"metric",
-  renderer: am5xy.AxisRendererX.new(barRoot, { minGridDistance:20, grid:{visible:false}, labels:{ centerY: am5.p50, rotation:-15 } })
-}));
-let valAxis = barChart.yAxes.push(am5xy.ValueAxis.new(barRoot, { renderer: am5xy.AxisRendererY.new(barRoot, {}) }));
-let colSeries = barChart.series.push(am5xy.ColumnSeries.new(barRoot, {
-  xAxis:catAxis, yAxis:valAxis, categoryXField:"metric", valueYField:"value",
-  tooltip: am5.Tooltip.new(barRoot, { labelText: "{categoryX}: {valueY}" })
-}));
-colSeries.columns.template.setAll({ cornerRadiusTL:6, cornerRadiusTR:6 });
-
-// LINE
-let lineRoot = am5.Root.new("linechartdiv");
-lineRoot.setThemes([ am5themes_Animated.new(lineRoot) ]);
-let lineChart = lineRoot.container.children.push(am5xy.XYChart.new(lineRoot, { panX:true, panY:false, wheelX:"panX", wheelY:"zoomX", paddingLeft:10, paddingRight:10 }));
-let dateAxis = lineChart.xAxes.push(am5xy.DateAxis.new(lineRoot, { baseInterval:{timeUnit:"year",count:1}, renderer: am5xy.AxisRendererX.new(lineRoot, {}) }));
-let valueAxis = lineChart.yAxes.push(am5xy.ValueAxis.new(lineRoot, { renderer: am5xy.AxisRendererY.new(lineRoot, {}) }));
-let lineSeries = lineChart.series.push(am5xy.LineSeries.new(lineRoot, {
-  name:"Avg protected land (% of land)",
-  xAxis:dateAxis, yAxis:valueAxis,
-  valueYField:"value", valueXField:"date",
-  tooltip: am5.Tooltip.new(lineRoot, { labelText:"{valueY.formatNumber('#.0')}%" }),
-  connect:true
-}));
-
-// DRILL sparkline
-const panel = document.getElementById("countryPanel");
-const titleEl = document.getElementById("countryTitle");
-const regionEl = document.getElementById("countryRegion");
-const fact1v = document.getElementById("fact1v");
-const fact2v = document.getElementById("fact2v");
-document.getElementById("closePanel").onclick = ()=> panel.style.display="none";
-
-let sparkRoot = am5.Root.new("sparkdiv");
-sparkRoot.setThemes([ am5themes_Animated.new(sparkRoot) ]);
-let sparkChart = sparkRoot.container.children.push(am5xy.XYChart.new(sparkRoot, {
-  panX:false, panY:false, wheelX:"none", wheelY:"none",
-  paddingLeft:6, paddingRight:6, paddingTop:6, paddingBottom:6
-}));
-let sDateAxis = sparkChart.xAxes.push(am5xy.DateAxis.new(sparkRoot, { baseInterval:{timeUnit:"year",count:1}, renderer: am5xy.AxisRendererX.new(sparkRoot,{inside:true,visible:false}) }));
-let sValAxis  = sparkChart.yAxes.push(am5xy.ValueAxis.new(sparkRoot, { renderer: am5xy.AxisRendererY.new(sparkRoot,{inside:true,visible:false}) }));
-let sSeries   = sparkChart.series.push(am5xy.LineSeries.new(sparkRoot, {
-  xAxis:sDateAxis, yAxis:sValAxis, valueXField:"date", valueYField:"value",
-  tooltip: am5.Tooltip.new(sparkRoot, { labelText:"{valueY.formatNumber('#.0')}%" }), connect:true
-}));
-countrySeries.mapPolygons.template.events.on("click", ev=>{
-  const di = ev.target.dataItem;
-  const iso2 = di.get("id");
-  const name = di.get("name");
-  const regionKey = Object.keys(REGION_CODES).find(r => REGION_CODES[r].has(iso2)) || "—";
-  const pct = latestPct[iso2]?.value ?? null;
-  const land = landKm2Latest[iso2]?.value ?? null;
-  const protKm2 = (pct!=null && land!=null) ? land * (pct/100) : null;
-
-  // country series
-  const ser = (pctSeries[iso2] || []).map(d=>({ date: new Date(d.year,0,1).getTime(), value: d.value }));
-  sSeries.data.setAll(ser);
-
-  titleEl.textContent = name || iso2;
-  regionEl.textContent = PRETTY[regionKey] || regionKey;
-  fact1v.textContent = pct!=null ? pct.toFixed(1) + "%" : "—";
-  fact2v.textContent = protKm2!=null ? fmtKm2(protKm2) : "—";
-  panel.style.display = "block";
-});
-
-/* ================== Region wiring & updates ================== */
-const buttons = document.querySelectorAll(".toolbar button");
-buttons.forEach(btn => btn.addEventListener("click", ()=> setRegion(btn.dataset.region)));
-
-function setRegion(regionKey){
-  currentRegion = regionKey;
-  buttons.forEach(b => b.classList.toggle("active", b.dataset.region === regionKey));
-
-  // heat data and dimming
-  const heatData = [];
-  countrySeries.mapPolygons.each(p => {
-    const id = p.dataItem.get("id");
-    const inRegion = REGION_CODES[regionKey].has(id);
-    const v = latestPct[id]?.value ?? null;
-    p.states.applyAnimate(inRegion ? "default" : "dimmed");
-    p.set("interactive", !!(inRegion && v!=null));
-    if(v!=null) heatData.push({ id, value: v });
-  });
-  countrySeries.data.setAll(heatData);
-
-  // legend scale
-  const vals = heatData.map(d=>d.value);
-  if(vals.length){
-    heatLegend.setAll({ startValue: Math.min(...vals), endValue: Math.max(...vals) });
-  }
-
-  // zoom
-  zoomToContinentByName(PRETTY[regionKey]);
-
-  // BAR: build 3 metrics
-  // 1) Protected land (km², sum)  2) Avg % protected  3) #countries >=30% (Kunming-Montreal Target 3)
-  const iso2s = [...REGION_CODES[regionKey]];
-  const pctVals = iso2s.map(c => latestPct[c]?.value).filter(v=>v!=null);
-  const landVals = iso2s.map(c => {
-    const land = landKm2Latest[c]?.value;
-    const pct  = latestPct[c]?.value;
-    return (land!=null && pct!=null) ? land * (pct/100) : null;
-  }).filter(v=>v!=null);
-
-  const protKm2Sum = sum(landVals) || 0;
-  const avgPct = avg(pctVals) || 0;
-  const count30 = iso2s.reduce((n,c)=> n + ((latestPct[c]?.value||0) >= 30 ? 1 : 0), 0);
-
-  const barData = [
-    { metric: "Protected land (km², est.)", value: +protKm2Sum.toFixed(0) },
-    { metric: "Avg % protected", value: +avgPct.toFixed(1) },
-    { metric: "Countries ≥30% target", value: count30 }
-  ];
-  catAxis.data.setAll(barData);
-  colSeries.data.setAll(barData);
-
-  // LINE: average % per year (2000→latest)
-  const years = new Set();
-  iso2s.forEach(c => (pctSeries[c]||[]).forEach(d=>years.add(d.year)));
-  const yearsSorted = [...years].sort((a,b)=>a-b).filter(y=>y>=2000);
-  const lineData = yearsSorted.map(y=>{
-    const arr = iso2s.map(c => {
-      const d = (pctSeries[c]||[]).find(t=>t.year===y);
-      return d ? d.value : null;
-    }).filter(v=>v!=null);
-    return { date: new Date(y,0,1).getTime(), value: arr.length ? arr.reduce((p,c)=>p+c,0)/arr.length : null };
-  }).filter(d=>d.value!=null);
-  lineSeries.data.setAll(lineData);
-}
-
-/* ================== Boot: load data then init ================== */
-(async function init(){
-  try{
-    const [protPctRows, landRows] = await Promise.all([
-      fetchWB(INDICATORS.PROT_PCT), // ER.LND.PTLD.ZS
-      fetchWB(INDICATORS.LAND_KM2)  // AG.LND.TOTL.K2
-    ]);
-
-    latestPct = latestByCountry(protPctRows);
-    pctSeries = seriesByCountry(protPctRows);
-    landKm2Latest = latestByCountry(landRows);
-
-    $loading.textContent = "Data loaded";
-    setTimeout(()=> $loading.style.display = "none", 800);
-
-    // set defaults
-    setRegion("AFRICA");
-    mapChart.appear(800,200);
-    barChart.appear(800,200);
-    lineChart.appear(800,200);
-  }catch(err){
-    console.error(err);
-    $loading.textContent = "Data load failed. Check your internet connection.";
-  }
-})();
-</script>
-
-<script src="/assets/js/main.js"></script>
+<script src="/assets/js/map data.js"></script>
 </body>
 </html>

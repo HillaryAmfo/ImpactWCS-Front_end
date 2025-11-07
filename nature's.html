@@ -189,24 +189,25 @@
 
                 <!-- Desktop Navigation Links -->
                 <div id="navbar-links" class="hidden lg:flex flex-col lg:flex-row lg:space-x-6 xl:space-x-8 mt-4 lg:mt-0 items-center">
-                    <a href="./index.html" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Home</a>
+                    
                     <div class="relative group">
-                        <button id="about-toggle" class="px-3 xl:px-4 py-2 text-white hover:text-green-300 group-hover:bg-white group-hover:text-blue-800 transition flex items-center text-base xl:text-lg">
+                        <button id="about-toggle" class="px-3 xl:px-4 py-2  hover:text-green-300 group-hover:bg-white group-hover:text-blue-800  transition duration-200 border-b-2 border-green-300 flex items-center text-base xl:text-lg">
                             About
                             <svg class="w-4 h-4 ml-1 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </button>
                         <div class="absolute hidden group-hover:block bg-white text-left mt-2 py-2 rounded-lg shadow-xl min-w-[200px] z-10 border border-gray-100">
-                            <a href="./about.html" class="block px-4 py-3 text-blue-800 hover:text-green-600 transition hover:bg-gray-50">WCS</a>
+                            <a href="./wcs.html" class="block px-4 py-3 text-blue-800 hover:text-green-600 transition hover:bg-gray-50">WCS</a>
                             <a href="./nature's.html" class="block px-4 py-3 text-blue-800 hover:text-green-600 transition hover:bg-gray-50">Nature's Stronghold</a>
                             <a href="./partners.html" class="block px-4 py-3 text-blue-800 hover:text-green-600 transition hover:bg-gray-50">Partners</a>
                         </div>
                     </div>
-                    <a href="#" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Our Work</a>
-                    <a href="./projects.html" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Projects</a>
-                    <a href="./support.html" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Support Us</a>
-                    <a href="./contact.html" class="text-base xl:text-lg font-bold text-green-300 py-2 lg:py-0 transition-colors duration-200 border-b-2 border-green-300">Contact</a>
+                    <a href="./map_data.html" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Dashboard</a>
+                    <a href="./volunteer.html" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Volunteer</a>
+                    <a href="./contact.html" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Contact</a>
+                    <a href="./donate.html" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Donate</a>
+                    
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -255,7 +256,7 @@
                         </svg>
                     </button>
                     <div id="mobile-about-menu" class="mt-1 ml-4 hidden space-y-1 border-l-2 border-green-600/50">
-                        <a href="./about.html" class="block text-white hover:bg-green-700/30 rounded-lg px-4 py-2 transition-all duration-200 transform hover:translate-x-1 text-sm mobile-menu-item">
+                        <a href="./wcs.html" class="block text-white hover:bg-green-700/30 rounded-lg px-4 py-2 transition-all duration-200 transform hover:translate-x-1 text-sm mobile-menu-item">
                             WCS
                         </a>
                         <a href="./nature's.html" class="block text-white hover:bg-green-700/30 rounded-lg px-4 py-2 transition-all duration-200 transform hover:translate-x-1 text-sm mobile-menu-item">
@@ -267,21 +268,21 @@
                     </div>
                 </div>
                 
-                <a href="#" class="menu-item mobile-menu-item text-base font-medium text-white hover:bg-green-700/50 rounded-lg px-3 py-3 transition-all duration-200 flex items-center">
+                <a href="./map_data.html" class="menu-item mobile-menu-item text-base font-medium text-white hover:bg-green-700/50 rounded-lg px-3 py-3 transition-all duration-200 flex items-center">
                     <i class="fas fa-hands-helping mr-3 text-green-300 w-5 text-center"></i>
-                    Our Work
+                    Dashboard
                 </a>
-                <a href="projects.html" class="menu-item mobile-menu-item text-base font-medium text-white hover:bg-green-700/50 rounded-lg px-3 py-3 transition-all duration-200 flex items-center">
+                <a href="./volunteer.html" class="menu-item mobile-menu-item text-base font-medium text-white hover:bg-green-700/50 rounded-lg px-3 py-3 transition-all duration-200 flex items-center">
                     <i class="fas fa-project-diagram mr-3 text-green-300 w-5 text-center"></i>
-                    Projects
+                    Volunteer
                 </a>
-                <a href="./support.html" class="menu-item mobile-menu-item text-base font-medium text-white hover:bg-green-700/50 rounded-lg px-3 py-3 transition-all duration-200 flex items-center">
+                <a href="./contact.html" class="menu-item mobile-menu-item text-base font-medium text-white hover:bg-green-700/50 rounded-lg px-3 py-3 transition-all duration-200 flex items-center">
                     <i class="fas fa-hand-holding-heart mr-3 text-green-300 w-5 text-center"></i>
-                    Support Us
-                </a>
-                <a href="./contact.html" class="menu-item mobile-menu-item text-base font-bold text-green-300 hover:bg-green-700/50 rounded-lg px-3 py-3 transition-all duration-200 flex items-center">
-                    <i class="fas fa-envelope mr-3 text-green-300 w-5 text-center"></i>
                     Contact
+                </a>
+                <a href="./donate.html" class="menu-item mobile-menu-item text-base font-bold text-green-300 hover:bg-green-700/50 rounded-lg px-3 py-3 transition-all duration-200 flex items-center">
+                    <i class="fas fa-envelope mr-3 text-green-300 w-5 text-center"></i>
+                    Donate
                 </a>
             </nav>
 
@@ -309,7 +310,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class="pt-16">
+    <main>
         <!-- Hero Section -->
         <section class="hero-bg-natures-stronghold text-white py-16 lg:py-24 flex items-center justify-center text-center min-h-[500px]">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -432,7 +433,7 @@
                 <div class="max-w-3xl mx-auto bg-white rounded-2xl p-8 shadow-lg quote-block animate-fadeInUp">
                     <div class="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-6">
                         <div class="flex-shrink-0">
-                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="Photo of Dr. Evelyn Reed" class="rounded-full w-24 h-24 object-cover border-4 border-green-200">
+                            <img src="./assets/img/pexels-korede-adenola-2888552-20742108.jpg" alt="Photo of Dr. Evelyn Reed" class="rounded-full w-24 h-24 object-cover border-4 border-green-200">
                         </div>
                         <div class="flex-grow text-center md:text-left">
                             <p class="text-xl lg:text-2xl italic font-medium text-gray-700 mb-4">
@@ -539,7 +540,7 @@
                     <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">Support Our Strongholds</h2>
                     <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">Your contribution helps protect these critical ecosystems and the species that depend on them</p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="/support.html" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-4 rounded-lg transition duration-300 shadow-lg">
+                        <a href="./donate.html" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-4 rounded-lg transition duration-300 shadow-lg">
                             Donate Now
                         </a>
                         <a href="/contact.html" class="bg-transparent border-2 border-green-600 text-green-600 font-semibold px-8 py-4 rounded-lg hover:bg-green-50 transition duration-300">
@@ -566,20 +567,20 @@
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Home</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">About Us</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Our Work</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Projects</a></li>
+                        <li><a href="./index.html" class="text-gray-400 hover:text-white transition duration-200">Home</a></li>
+                        <li><a href="./map_data.html" class="text-gray-400 hover:text-white transition duration-200">Dashboard</a></li>
+                        <li><a href="./volunteer.html" class="text-gray-400 hover:text-white transition duration-200">Volunteer</a></li>
+                        <li><a href="./contact.html" class="text-gray-400 hover:text-white transition duration-200">Contact</a></li>
                     </ul>
                 </div>
                 
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Get Involved</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Donate</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Volunteer</a></li>
+                        <li><a href="./donate.html" class="text-gray-400 hover:text-white transition duration-200">Donate</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Careers</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Partnerships</a></li>
+                        <li><a href="./projects.html" class="text-gray-400 hover:text-white transition duration-200">Projects</a></li>
+                        <li><a href="./partners.html" class="text-gray-400 hover:text-white transition duration-200">Partnerships</a></li>
                     </ul>
                 </div>
                 

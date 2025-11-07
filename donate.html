@@ -159,7 +159,7 @@
 
                 <!-- Desktop Navigation Links -->
                 <div id="navbar-links" class="hidden lg:flex flex-col lg:flex-row lg:space-x-6 xl:space-x-8 mt-4 lg:mt-0 items-center">
-                    <a href="./index.html" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Home</a>
+                    
                     <div class="relative group">
                         <button id="about-toggle" class="px-3 xl:px-4 py-2 text-white hover:text-green-300 group-hover:bg-white group-hover:text-blue-800 transition flex items-center text-base xl:text-lg">
                             About
@@ -168,15 +168,15 @@
                             </svg>
                         </button>
                         <div class="absolute hidden group-hover:block bg-white text-left mt-2 py-2 rounded-lg shadow-xl min-w-[200px] z-10 border border-gray-100">
-                            <a href="./about.html" class="block px-4 py-3 text-blue-800 hover:text-green-600 transition hover:bg-gray-50">WCS</a>
+                            <a href="./wcs.html" class="block px-4 py-3 text-blue-800 hover:text-green-600 transition hover:bg-gray-50">WCS</a>
                             <a href="./nature's.html" class="block px-4 py-3 text-blue-800 hover:text-green-600 transition hover:bg-gray-50">Nature's Stronghold</a>
                             <a href="./partners.html" class="block px-4 py-3 text-blue-800 hover:text-green-600 transition hover:bg-gray-50">Partners</a>
                         </div>
                     </div>
-                    <a href="#" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Our Work</a>
-                    <a href="./projects.html" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Projects</a>
-                    <a href="./support.html" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Support Us</a>
-                    <a href="./contact.html" class="text-base xl:text-lg font-bold text-green-300 py-2 lg:py-0 transition-colors duration-200 border-b-2 border-green-300">Contact</a>
+                    <a href="./map_data.html" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Dashboard</a>
+                    <a href="./volunteer.html" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Volunteer</a>
+                    <a href="./contact.html" class="text-base xl:text-lg font-medium hover:text-green-300 py-2 lg:py-0 transition-colors duration-200">Contact</a>
+                    <a href="./donate.html" class="text-base xl:text-lg font-bold text-green-300 py-2 lg:py-0 transition-colors duration-200 border-b-2 border-green-300">Donate</a>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -225,7 +225,7 @@
                         </svg>
                     </button>
                     <div id="mobile-about-menu" class="mt-1 ml-4 hidden space-y-1 border-l-2 border-green-600/50">
-                        <a href="./about.html" class="block text-white hover:bg-green-700/30 rounded-lg px-4 py-2 transition-all duration-200 transform hover:translate-x-1 text-sm mobile-menu-item">
+                        <a href="./wcs.html" class="block text-white hover:bg-green-700/30 rounded-lg px-4 py-2 transition-all duration-200 transform hover:translate-x-1 text-sm mobile-menu-item">
                             WCS
                         </a>
                         <a href="./nature's.html" class="block text-white hover:bg-green-700/30 rounded-lg px-4 py-2 transition-all duration-200 transform hover:translate-x-1 text-sm mobile-menu-item">
@@ -279,9 +279,9 @@
     </header>
 
     <!-- Main Content -->
-    <main class="pt-16">
+    <main>
         <!-- Hero Section -->
-        <section class="hero-gradient text-white py-16 lg:py-24">
+        <section class="bg-[url('/assets/img/pexel_1.jpg')] text-white py-16 lg:py-24">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-3xl mx-auto text-center">
                     <h1 class="text-4xl lg:text-5xl font-bold mb-6">Support Wildlife Conservation</h1>
@@ -560,20 +560,20 @@
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Home</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">About Us</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Our Work</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Projects</a></li>
+                        <li><a href="./index.html" class="text-gray-400 hover:text-white transition duration-200">Home</a></li>
+                        <li><a href="./wcs.html" class="text-gray-400 hover:text-white transition duration-200">About</a></li>
+                        <li><a href="./map_data.html" class="text-gray-400 hover:text-white transition duration-200">Dashboard</a></li>
+                        <li><a href="./contact.html" class="text-gray-400 hover:text-white transition duration-200">Contact</a></li>
                     </ul>
                 </div>
                 
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Get Involved</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Donate</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Volunteer</a></li>
+                        <li><a href="./donate.html" class="text-gray-400 hover:text-white transition duration-200">Donate</a></li>
+                        <li><a href="./volunteer.html" class="text-gray-400 hover:text-white transition duration-200">Volunteer</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Careers</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Partnerships</a></li>
+                        <li><a href="./partners.html" class="text-gray-400 hover:text-white transition duration-200">Partnerships</a></li>
                     </ul>
                 </div>
                 
@@ -620,153 +620,6 @@
             </div>
         </div>
     </footer>
-
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-        const mobileMenuSidebar = document.getElementById('mobile-menu-sidebar');
-        const closeMobileMenuButton = document.getElementById('close-mobile-menu');
-        const menuItems = document.querySelectorAll('.menu-item');
-
-        function openMobileMenu() {
-            mobileMenuOverlay.classList.remove('hidden');
-            mobileMenuSidebar.classList.remove('translate-x-full');
-            mobileMenuOverlay.classList.add('fade-in');
-            mobileMenuSidebar.classList.add('slide-in-right');
-            
-            // Prevent body scroll
-            document.body.style.overflow = 'hidden';
-            document.documentElement.style.overflow = 'hidden';
-            
-            // Animate menu items with staggered delay
-            menuItems.forEach((item, index) => {
-                setTimeout(() => {
-                    item.classList.add('visible');
-                }, 100 + (index * 50));
-            });
-        }
-
-        function closeMobileMenu() {
-            mobileMenuOverlay.classList.add('hidden');
-            mobileMenuSidebar.classList.add('translate-x-full');
-            
-            // Reset menu items animation
-            menuItems.forEach(item => {
-                item.classList.remove('visible');
-            });
-            
-            // Close any open dropdowns
-            document.getElementById('mobile-about-menu').classList.add('hidden');
-            document.getElementById('mobile-about-arrow').classList.remove('rotate-180');
-            
-            // Restore body scroll
-            document.body.style.overflow = 'auto';
-            document.documentElement.style.overflow = 'auto';
-        }
-
-        mobileMenuButton.addEventListener('click', openMobileMenu);
-        closeMobileMenuButton.addEventListener('click', closeMobileMenu);
-        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
-
-        // Mobile About Dropdown Toggle
-        const mobileAboutToggle = document.getElementById('mobile-about-toggle');
-        const mobileAboutMenu = document.getElementById('mobile-about-menu');
-        const mobileAboutArrow = document.getElementById('mobile-about-arrow');
-
-        if (mobileAboutToggle) {
-            mobileAboutToggle.addEventListener('click', (e) => {
-                e.stopPropagation();
-                mobileAboutMenu.classList.toggle('hidden');
-                mobileAboutArrow.classList.toggle('rotate-180');
-            });
-        }
-
-        // Navbar Scroll Effect
-        const navbar = document.getElementById('navbar');
-        if (navbar) {
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    navbar.classList.remove('bg-transparent', 'text-white', 'py-3', 'lg:py-4');
-                    navbar.classList.add('bg-white', 'text-gray-800', 'shadow-md', 'py-2', 'lg:py-3');
-                } else {
-                    navbar.classList.remove('bg-white', 'text-gray-800', 'shadow-md', 'py-2', 'lg:py-3');
-                    navbar.classList.add('bg-transparent', 'text-white', 'py-3', 'lg:py-4');
-                }
-            });
-        }
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('#mobile-menu-sidebar a').forEach(link => {
-            link.addEventListener('click', closeMobileMenu);
-        });
-
-        // Close menu with Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeMobileMenu();
-            }
-        });
-
-        // Handle window resize
-        window.addEventListener('resize', () => {
-            if (window.innerWidth >= 1024) {
-                closeMobileMenu();
-            }
-        });
-
-        // Donation form functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            // Donation type selection
-            const donationOptions = document.querySelectorAll('.donation-option');
-            donationOptions.forEach(option => {
-                option.addEventListener('click', function() {
-                    // Remove selected class from all options
-                    donationOptions.forEach(opt => {
-                        opt.classList.remove('selected');
-                        const radio = opt.querySelector('.w-6');
-                        radio.classList.remove('bg-green-500', 'border-green-500');
-                        radio.classList.add('border-gray-300');
-                    });
-                    
-                    // Add selected class to clicked option
-                    this.classList.add('selected');
-                    const radio = this.querySelector('.w-6');
-                    radio.classList.add('bg-green-500', 'border-green-500');
-                    radio.classList.remove('border-gray-300');
-                });
-            });
-            
-            // Donation amount selection
-            const donationAmounts = document.querySelectorAll('.donation-amount');
-            donationAmounts.forEach(amount => {
-                amount.addEventListener('click', function() {
-                    // Remove selected style from all amounts
-                    donationAmounts.forEach(amt => {
-                        amt.classList.remove('border-green-500', 'bg-green-50');
-                        amt.classList.add('border-gray-200', 'bg-white');
-                    });
-                    
-                    // Add selected style to clicked amount
-                    this.classList.add('border-green-500', 'bg-green-50');
-                    this.classList.remove('border-gray-200', 'bg-white');
-                    
-                    // Set custom amount field to empty when preset amount is selected
-                    document.getElementById('custom-amount').value = '';
-                });
-            });
-            
-            // Clear preset amount when custom amount is entered
-            const customAmount = document.getElementById('custom-amount');
-            customAmount.addEventListener('input', function() {
-                if (this.value) {
-                    donationAmounts.forEach(amt => {
-                        amt.classList.remove('border-green-500', 'bg-green-50');
-                        amt.classList.add('border-gray-200', 'bg-white');
-                    });
-                }
-            });
-        });
-    </script>
+</script src="./assets/js/donate.js"></script>
 </body>
 </html>
