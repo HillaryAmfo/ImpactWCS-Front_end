@@ -136,3 +136,122 @@ document.addEventListener('DOMContentLoaded', () => {
     window.lucide.createIcons();
   }
 });
+
+  // Mobile Menu Toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+    const mobileMenuSidebar = document.getElementById('mobile-menu-sidebar');
+    const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+    const menuItems = document.querySelectorAll('.menu-item');
+
+    function openMobileMenu() {
+         mobileMenuOverlay.classList.remove('hidden');
+         mobileMenuSidebar.classList.remove('translate-x-full');
+         mobileMenuOverlay.classList.add('fade-in');
+         mobileMenuSidebar.classList.add('slide-in-right');
+            
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = 'hidden';
+            
+            // Animate menu items with staggered delay
+            menuItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.add('visible');
+                }, 100 + (index * 50));
+            });
+        }
+
+        function closeMobileMenu() {
+            mobileMenuOverlay.classList.add('hidden');
+            mobileMenuSidebar.classList.add('translate-x-full');
+            
+            // Reset menu items animation
+            menuItems.forEach(item => {
+                item.classList.remove('visible');
+            });
+            
+            // Close any open dropdowns
+            document.getElementById('mobile-about-menu').classList.add('hidden');
+            document.getElementById('mobile-about-arrow').classList.remove('rotate-180');
+            
+            // Restore body scroll
+            document.body.style.overflow = 'auto';
+            document.documentElement.style.overflow = 'auto';
+        }
+
+        mobileMenuButton.addEventListener('click', openMobileMenu);
+        closeMobileMenuButton.addEventListener('click', closeMobileMenu);
+        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+        // Mobile About Dropdown Toggle
+        const mobileAboutToggle = document.getElementById('mobile-about-toggle');
+        const mobileAboutMenu = document.getElementById('mobile-about-menu');
+        const mobileAboutArrow = document.getElementById('mobile-about-arrow');
+
+        if (mobileAboutToggle) {
+            mobileAboutToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                mobileAboutMenu.classList.toggle('hidden');
+                mobileAboutArrow.classList.toggle('rotate-180');
+            });
+        }
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        if (navbar) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.remove('bg-transparent', 'text-white', 'py-3', 'lg:py-4');
+                    navbar.classList.add('bg-white', 'text-gray-800', 'shadow-md', 'py-2', 'lg:py-3');
+                } else {
+                    navbar.classList.remove('bg-white', 'text-gray-800', 'shadow-md', 'py-2', 'lg:py-3');
+                    navbar.classList.add('bg-transparent', 'text-white', 'py-3', 'lg:py-4');
+                }
+            });
+        }
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu-sidebar a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Close menu with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeMobileMenu();
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024) {
+                closeMobileMenu();
+            }
+        });
+
+        // Form submission handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.querySelector('form');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Simple form validation
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const subject = document.getElementById('subject').value;
+                    const message = document.getElementById('message').value;
+                    
+                    if (name && email && subject && message) {
+                        // In a real application, you would send the form data to a server
+                        // For now, we'll just show a success message
+                        alert('Thank you for your message! We will get back to you soon.');
+                        contactForm.reset();
+                    } else {
+                        alert('Please fill in all required fields.');
+                    }
+                });
+            }
+        });
